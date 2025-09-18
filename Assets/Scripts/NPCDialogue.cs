@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using TMPro;
 
 
-public class NPCDialogue : MonoBehaviour
+public class NPCDialogue : MonoBehaviour, IClickable
 {
     [Header("Dialogue UI")]
     public GameObject dialogueBox;
@@ -22,63 +21,47 @@ public class NPCDialogue : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start.");
-        Debug.Log("isDialogueActive: " + isDialogueActive);
-        Debug.Log("dialogueLines.Length: " + dialogueLines.Length);
+        Debug.Log("NPC Dialog Starts.");
     }
 
-    // void OnMouseOver()
-    // {
-    //     Debug.Log("Mouse over NPC");
-    // }
 
-    void OnMouseDown()
+    public void OnClick()
     {
-        Debug.Log("Mouse Clicked on NPC");
-        Debug.Log("isDialogueActive: " + isDialogueActive);
-        Debug.Log("dialogueLines.Length: " + dialogueLines.Length);
-    }
-
-    void Update()
-    {
-        // if (Mouse.current.leftButton.wasPressedThisFrame)
-        // {
-        //     Debug.Log("AAAAMouse Left Button was pressed this frame.");
-        // }
-  
+        Debug.Log("NPC Clicked. isDialogueActive: " + isDialogueActive);
+        if (!isDialogueActive)
+        {
+            StartDialogue();
+        }
+        else
+        {
+            NextDialogue();
+        }
     }
 
 
     void StartDialogue()
     {
-        // dialogueBox.SetActive(true);
-        // nameText.text = npcName;
-        // currentLine = 0;
-        // dialogueText.text = dialogueLines[currentLine];
-        // isDialogueActive = true;
-
-        // // 停止 NPC 移动
-        // // if (npcMovement != null) npcMovement.StopMoving();
-
-        // // UI 跟随 NPC 头顶
-        // Vector3 npcScreenPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f, 0));
-        // dialogueBox.transform.position = npcScreenPos;
+        Debug.Log("Starting dialogue with " + npcName);
+        dialogueBox.SetActive(true);
+        nameText.text = npcName;
+        currentLine = 0;
+        dialogueText.text = dialogueLines[currentLine];
+        isDialogueActive = true;
     }
 
     void NextDialogue()
     {
-        // currentLine++;
-        // if (currentLine < dialogueLines.Length)
-        // {
-        //     dialogueText.text = dialogueLines[currentLine];
-        // }
-        // else
-        // {
-        //     dialogueBox.SetActive(false);
-        //     isDialogueActive = false;
+        Debug.Log("Next dialogue.");
+        currentLine++;
+        if (currentLine < dialogueLines.Length)
+        {
+            dialogueText.text = dialogueLines[currentLine];
+        }
+        else
+        {
+            dialogueBox.SetActive(false);
+            isDialogueActive = false;
 
-        //     // 恢复移动
-        //     // if (npcMovement != null) npcMovement.ResumeMoving();
-        // }
+        }
     }
 }
