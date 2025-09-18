@@ -11,7 +11,6 @@ public class ClickManager : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Debug.Log("Mouse Left Button was pressed this frame.");
             Vector2 worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
 
