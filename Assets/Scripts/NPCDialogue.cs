@@ -2,66 +2,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-public class NPCDialogue : MonoBehaviour, IClickable
+public class NPCManager : MonoBehaviour, IClickable
 {
-    [Header("Dialogue UI")]
-    public GameObject dialogueBox;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI dialogueText;
-    public Button nextButton;
-
     [Header("NPC Info")]
     public string npcName;
-    [TextArea(1, 5)]
-    public string[] dialogueLines;
 
-    private int currentLine = 0;
-    private bool isDialogueActive = false;
-
+    [Header("Dialogue Lines")]
+    public DialogueLine[] dialogueLines;
+    
     void Start()
     {
-        Debug.Log("NPC Dialog Starts.");
+        Debug.Log("NPCManager started.");
     }
-
 
     public void OnClick()
+  {
+    Debug.Log("Clicked NPC: " + npcName);
+
+    // Find the DialogueManager in the scene
+    DialogueManager manager = FindFirstObjectByType<DialogueManager>();
+
+    if (manager != null)
     {
-        Debug.Log("NPC Clicked. isDialogueActive: " + isDialogueActive);
-        if (!isDialogueActive)
-        {
-            StartDialogue();
-        }
-        else
-        {
-            NextDialogue();
-        }
+      manager.StartDialogue(npcName, dialogueLines);
     }
-
-
-    void StartDialogue()
+    else
     {
-        Debug.Log("Starting dialogue with " + npcName);
-        dialogueBox.SetActive(true);
-        nameText.text = npcName;
-        currentLine = 0;
-        dialogueText.text = dialogueLines[currentLine];
-        isDialogueActive = true;
+      Debug.LogWarning("DialogueManager not found in scene!");
     }
-
-    void NextDialogue()
-    {
-        Debug.Log("Next dialogue.");
-        currentLine++;
-        if (currentLine < dialogueLines.Length)
-        {
-            dialogueText.text = dialogueLines[currentLine];
-        }
-        else
-        {
-            dialogueBox.SetActive(false);
-            isDialogueActive = false;
-
-        }
-    }
+  }
 }
