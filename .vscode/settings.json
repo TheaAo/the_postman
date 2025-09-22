@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "The Postman.sln"
+    "dotnet.defaultSolution": "the_postman.sln"
 }
