@@ -3,15 +3,30 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
-public class BasicMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float speed = 3f;
     private Animator animator;
-   
+    private Rigidbody2D rb;
+    public InputSystem_Actions inputControl;
+    public Vector2 inputDirection;
+    public float jumpForce = 8f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        inputControl = new InputSystem_Actions();
+        rb.gravityScale = 4f;
+    }
+    private void OnEnable()
+    {
+        inputControl.Enable();
+    }
+    private void OnDisable()
+    {
+        inputControl.Disable();
     }
 
     // Update is called once per frame
@@ -19,38 +34,21 @@ public class BasicMovement : MonoBehaviour
 
     void Update()
     {
-        float horizontal = GetHorizontalAxis();
+        inputDirection = inputControl.Player.Move.ReadValue<Vector2>();
         if (animator != null)
         {
-            animator.SetFloat("Horizontal", horizontal);
+            animator.SetFloat("Horizontal", inputDirection.x);
         }
-        Vector3 movementInput = GetMovementInput();
-        transform.position += movementInput * speed * Time.deltaTime;
+        if (inputControl.Player.Jump.triggered)
+        {
+            Jump();
+        }
+        rb.linearVelocity = new Vector2(inputDirection.x * speed, rb.linearVelocity.y);
     }
 
-    private float GetHorizontalAxis()
+    private void Jump()
     {
-		float axis = 0f;
-
-		// Keyboard (A/D and Left/Right arrows)
-		if (Keyboard.current != null)
-		{
-			if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-			{
-				axis -= 1f;
-			}
-			if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-			{
-				axis += 1f;
-			}
-		}
-
-		return axis;
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
     }
 
-    private Vector3 GetMovementInput()
-    {
-		float axis = GetHorizontalAxis();
-		return new Vector3(axis, 0f, 0f);
-    }
 }
