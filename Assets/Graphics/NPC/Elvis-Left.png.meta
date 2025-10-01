@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72ab67e29244d44e386e6ffe82d37262
+guid: 8b618e5ac167e4948b2f9f5a8bc17f50
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4196342776197190759
-    second: NPCPolice_0
+      213: -7885742634877162459
+    second: Elvis-Left_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPCPolice_0
+      name: Elvis-Left_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 8
-        width: 55
-        height: 166
+        x: 0
+        y: 0
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99b6dfc6a7893c5c0800000000000000
-      internalID: -4196342776197190759
+      spriteID: 52c6ef1aad6309290800000000000000
+      internalID: -7885742634877162459
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c38f779b3b1fb4a659ad6e338852557a
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      NPCPolice_0: -4196342776197190759
+      Elvis-Left_0: -7885742634877162459
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72ab67e29244d44e386e6ffe82d37262
+guid: 7031a84be781741f18caea66e38f6f5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4196342776197190759
-    second: NPCPolice_0
+      213: 6663887827619208831
+    second: Scenario1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPCPolice_0
+      name: Scenario1_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 8
-        width: 55
-        height: 166
+        x: 0
+        y: 0
+        width: 2408
+        height: 1362
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99b6dfc6a7893c5c0800000000000000
-      internalID: -4196342776197190759
+      spriteID: f7eda442ca2ea7c50800000000000000
+      internalID: 6663887827619208831
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      NPCPolice_0: -4196342776197190759
+      Scenario1_0: 6663887827619208831
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
