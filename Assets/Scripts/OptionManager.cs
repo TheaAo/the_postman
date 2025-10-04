@@ -1,21 +1,32 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 
 public class OptionManager : MonoBehaviour
 {
-  DialogueLine GenerateNewLineFromText(string text)
+  DialogueLine[] GenerateNewLinesFromText(string[] texts)
   {
-    return new DialogueLine
+    DialogueLine[] lines = new DialogueLine[texts.Length];
+    for (int i = 0; i < texts.Length; i++)
     {
-      npcText = text,
-      options = new DialogueOption[0]
-    };
+      lines[i] = new DialogueLine
+      {
+        npcText = texts[i],
+        options = new DialogueOption[0] // No options for these lines
+      };
+    }
+    return lines;
   }
 
-  void AddNewLines(string lineText)
+  void AddNewLinesFromTexts(string[] text)
   {
-    DialogueLine[] newLines = { GenerateNewLineFromText(lineText) };
+    DialogueLine[] newLines = GenerateNewLinesFromText(text);
+    AddNewLines(newLines);
+  }
+
+  void AddNewLines(DialogueLine[] newLines)
+  {
     DialogueManager manager = FindFirstObjectByType<DialogueManager>();
     if (manager != null)
     {
@@ -36,13 +47,51 @@ public class OptionManager : MonoBehaviour
 
   public void NelsonOption1()
   {
-    string lineText = "Nelson: You do know the rules. Go to 'TBD' and say Rabbit recommands you. ";
-    AddNewLines(lineText);
+    DialogueLine[] lines = {
+      new DialogueLine
+      {
+        npcText = "Nelson: You do know the rules. Go to 'TBD' and say Rabbit recommands you. ",
+        options = new DialogueOption[]
+        {
+          new DialogueOption
+          {
+            buttonText = "Thanks.",
+            onClick = new UnityEvent()
+          }
+        }
+      }
+    };
+    lines[0].options[0].onClick.AddListener(() => {
+      SceneManager.LoadScene("GameScene3");
+    });
+    AddNewLines(lines);
   }
 
   public void NelsonOption2()
   {
-    string lineText = "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.";
-    AddNewLines(lineText);
+    string[] lineTexts = new string[]
+    {
+      "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+    };
+    AddNewLinesFromTexts(lineTexts);
+  }
+
+  public void AngeloOption1()
+  {
+    string[] lineText = new string[]
+    {
+      "Angelo: Aha that Nelson, you should told me earlier. You can go in now. ",
+      "Tom: (That's my last money... Damn it)"
+    };
+    AddNewLinesFromTexts(lineText);
+  }
+
+  public void AngeloOption2()
+  {
+    string[] lineText = new string[]
+    {
+      "Angelo: I don't care about your problems. Go away."
+    };
+    AddNewLinesFromTexts(lineText);
   }
 }
