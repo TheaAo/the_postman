@@ -26,11 +26,13 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void LoadScene(string sceneName, string message = "Loading...")
     {
-        StartCoroutine(DoTransition(sceneName, message));
+      Debug.Log($"SceneManager Loading scene: {sceneName} with message: {message}");
+      StartCoroutine(DoTransition(sceneName, message));
     }
 
     private IEnumerator DoTransition(string sceneName, string message)
     {
+        Debug.Log($"DoTransition: {sceneName} with message: {message}");
         loadingText.text = message;
         animator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(fadeTime);

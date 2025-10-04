@@ -70,7 +70,7 @@ public class OptionManager : MonoBehaviour
     };
     lines[0].options[0].onClick.AddListener(() =>
     {
-      LoadNextScene("GameScene3");
+      LoadNextScene("GameScene3", "To GameScene3...");
     });
     AddNewLines(lines);
   }
@@ -101,7 +101,7 @@ public class OptionManager : MonoBehaviour
 
     leaveLine.options[0].onClick.AddListener(() =>
     {
-      SceneManager.LoadScene("GameScene4");
+      LoadNextScene("GameScene4");
     });
 
     DialogueLine[] lines = {
