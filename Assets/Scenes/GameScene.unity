@@ -2127,6 +2127,42 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 1
+  - npcText: 1
+    options:
+    - buttonText: I know, I'll complete her wish
+      onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 11500000, guid: 57ef0f06b2fec4fa7ad48edf60587eef, type: 3}
+            m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
+            m_MethodName: set_name
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 1
+  - npcText: 2
+    options:
+    - buttonText: I know, I'll complete her wish
+      onClick:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 11500000, guid: 57ef0f06b2fec4fa7ad48edf60587eef, type: 3}
+            m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
+            m_MethodName: set_name
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 1
 --- !u!212 &1694366859
 SpriteRenderer:
   m_ObjectHideFlags: 0
