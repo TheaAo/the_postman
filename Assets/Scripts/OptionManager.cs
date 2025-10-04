@@ -70,7 +70,7 @@ public class OptionManager : MonoBehaviour
     };
     lines[0].options[0].onClick.AddListener(() =>
     {
-      SceneManager.LoadScene("GameScene3");
+      LoadNextScene("GameScene3");
     });
     AddNewLines(lines);
   }
