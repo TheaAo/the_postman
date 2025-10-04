@@ -40,9 +40,16 @@ public class OptionManager : MonoBehaviour
     }
   }
 
+  void LoadNextScene(string sceneName, string message = "Several days later...")
+  {
+    Debug.Log($"Loading scene: {sceneName} with message: {message}");
+
+    SceneTransitionManager.Instance.LoadScene(sceneName, message);
+  }
+
   public void ElvisOption1()
   {
-    SceneManager.LoadScene("GameScene2");
+    LoadNextScene("GameScene2");
   }
 
   public void NelsonOption1()
@@ -63,7 +70,7 @@ public class OptionManager : MonoBehaviour
     };
     lines[0].options[0].onClick.AddListener(() =>
     {
-      SceneManager.LoadScene("GameScene3");
+      LoadNextScene("GameScene3", "To GameScene3...");
     });
     AddNewLines(lines);
   }
@@ -94,7 +101,7 @@ public class OptionManager : MonoBehaviour
 
     leaveLine.options[0].onClick.AddListener(() =>
     {
-      SceneManager.LoadScene("GameScene4");
+      LoadNextScene("GameScene4");
     });
 
     DialogueLine[] lines = {
