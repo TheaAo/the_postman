@@ -17,7 +17,15 @@ public class DialogueBoxOnClick : MonoBehaviour, IPointerClickHandler
 
     if (manager != null && manager.dialogueBox.activeSelf)
     {
-      manager.NextLine();
+      if (manager.CurrentLineOptionExists())
+      {
+        Debug.Log("Current line has options, not advancing.");
+        return; // Do not advance if options are present
+      }
+      else
+      {
+        manager.NextLine();
+      }
     }
     else
     {
