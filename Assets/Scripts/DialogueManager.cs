@@ -27,6 +27,11 @@ public class DialogueManager : MonoBehaviour
 
   private DialogueLine[] dialogueLines;
   private int currentLineIndex = 0;
+  
+  void Start()
+  {
+    dialogueBox.SetActive(false);
+  }
 
   public void StartDialogue(DialogueLine[] lines)
   {
