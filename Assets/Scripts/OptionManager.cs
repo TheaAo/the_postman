@@ -61,7 +61,8 @@ public class OptionManager : MonoBehaviour
         }
       }
     };
-    lines[0].options[0].onClick.AddListener(() => {
+    lines[0].options[0].onClick.AddListener(() =>
+    {
       SceneManager.LoadScene("GameScene3");
     });
     AddNewLines(lines);
@@ -91,7 +92,8 @@ public class OptionManager : MonoBehaviour
       }
     };
 
-    leaveLine.options[0].onClick.AddListener(() => {
+    leaveLine.options[0].onClick.AddListener(() =>
+    {
       SceneManager.LoadScene("GameScene4");
     });
 
@@ -111,6 +113,37 @@ public class OptionManager : MonoBehaviour
     string[] lineText = new string[]
     {
       "Angelo: I don't care about your problems. Go away."
+    };
+    AddNewLinesFromTexts(lineText);
+  }
+
+  public void BrainTeaserOption1()
+  {
+    string[] lineText = new string[]
+    {
+      "The Boss: Ummm... interesting answer.",
+      "The Boss: Acturally, that does make sense.",
+      "The Boss: You make me happy. You can have the flower now.",
+      "The Boss: The one who gave me the flower also left a letter here. Do you want it?"
+    };
+    DialogueLine[] newLines = GenerateNewLinesFromText(lineText);
+    newLines[newLines.Length - 1].options = new DialogueOption[]
+    {
+      new DialogueOption
+      {
+        buttonText = "Read the letter",
+        onClick = new UnityEvent()
+      }
+    };
+    AddNewLines(newLines);
+  }
+
+  public void BrainTeaserOption2()
+  {
+    string[] lineText = new string[]
+    {
+      "The Boss: Nice try, but I don't think so.",
+      "The Boss: You see, I don't get my answer. So you can't get your flower. It's fair enough, right?"
     };
     AddNewLinesFromTexts(lineText);
   }
