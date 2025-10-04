@@ -78,12 +78,32 @@ public class OptionManager : MonoBehaviour
 
   public void AngeloOption1()
   {
-    string[] lineText = new string[]
+    DialogueLine leaveLine = new DialogueLine
     {
-      "Angelo: Aha that Nelson, you should told me earlier. You can go in now. ",
-      "Tom: (That's my last money... Damn it)"
+      npcText = "Tom: (That's my last money... Damn it)",
+      options = new DialogueOption[]
+      {
+        new DialogueOption
+        {
+          buttonText = "Leave",
+          onClick = new UnityEvent()
+        }
+      }
     };
-    AddNewLinesFromTexts(lineText);
+
+    leaveLine.options[0].onClick.AddListener(() => {
+      SceneManager.LoadScene("GameScene4");
+    });
+
+    DialogueLine[] lines = {
+      new DialogueLine
+      {
+        npcText = "Angelo: Aha that Nelson, you should told me earlier. You can go in now. ",
+        options = new DialogueOption[0]
+      },
+      leaveLine
+    };
+    AddNewLines(lines);
   }
 
   public void AngeloOption2()
