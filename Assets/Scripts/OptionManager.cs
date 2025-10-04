@@ -1,40 +1,48 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class OptionManager : MonoBehaviour
 {
-  
-  DialogueLine ConfigNextLine(string text)
+  DialogueLine GenerateNewLineFromText(string text)
   {
     return new DialogueLine
     {
       npcText = text,
-      options = new DialogueOption[0] // 没有选项
+      options = new DialogueOption[0]
     };
   }
 
-  void ConfigOptionLine(string text)
+  void AddNewLines(string lineText)
   {
-    Debug.Log("ConfigOptionLine: " + text);
-    DialogueLine line = ConfigNextLine(text);
+    DialogueLine[] newLines = { GenerateNewLineFromText(lineText) };
     DialogueManager manager = FindFirstObjectByType<DialogueManager>();
     if (manager != null)
     {
-      Debug.Log("Dialogue manager exists");
-      manager.ShowLine(line);
+      manager.AddLines(newLines);
+      manager.NextLine();
+      Debug.Log("Added new lines to dialogue manager.");
     }
     else
     {
       Debug.LogWarning("DialogueManager not found in scene!");
     }
-
   }
+
+  public void ElvisOption1()
+  {
+    SceneManager.LoadScene("GameScene2");
+  }
+
   public void NelsonOption1()
   {
-    ConfigOptionLine("Nelson: You do know the rules. Go to 'TBD' and say Rabbit recommands you. ");
+    string lineText = "Nelson: You do know the rules. Go to 'TBD' and say Rabbit recommands you. ";
+    AddNewLines(lineText);
   }
 
   public void NelsonOption2()
   {
-    ConfigOptionLine("Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police. ");
+    string lineText = "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.";
+    AddNewLines(lineText);
   }
 }

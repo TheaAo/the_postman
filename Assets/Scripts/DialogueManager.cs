@@ -97,7 +97,19 @@ public class DialogueManager : MonoBehaviour
       EndDialogue();
     }
   }
-    
+
+  public bool CurrentLineOptionExists()
+  {
+    return dialogueLines[currentLineIndex].options.Length > 0;
+  }
+
+  public void AddLines(DialogueLine[] newLines)
+  {
+    int oldLength = dialogueLines.Length;
+    Array.Resize(ref dialogueLines, oldLength + newLines.Length);
+    Array.Copy(newLines, 0, dialogueLines, oldLength, newLines.Length);
+  }
+
   public void EndDialogue()
   {
     dialogueBox.SetActive(false);
