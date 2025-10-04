@@ -22,27 +22,36 @@ public class DialogueManager : MonoBehaviour
 {
   [Header("UI References")]
   public GameObject dialogueBox;
-  public TextMeshProUGUI nameText;
   public TextMeshProUGUI dialogueText;
   public Button[] buttons;   // Pre-create some buttons (e.g. 2–3)
 
   private DialogueLine[] dialogueLines;
   private int currentLineIndex = 0;
-
-  public void StartDialogue(string npcName, DialogueLine[] lines)
+  
+  void Start()
   {
+    dialogueBox.SetActive(false);
+  }
+
+  public void StartDialogue(DialogueLine[] lines)
+  {
+    Debug.Log("Starting dialogue..." + dialogueBox.activeSelf);
+
     if (dialogueBox.activeSelf)
+    {
+      Debug.Log("Dialogue already active.");
       return; // Dialogue already active
+    }
 
     dialogueBox.SetActive(true);
-    nameText.text = npcName;
+    // nameText.text = npcName;
     dialogueLines = lines;
     currentLineIndex = 0;
 
     ShowLine(dialogueLines[currentLineIndex]);
   }
 
-  void ShowLine(DialogueLine line)
+  public void ShowLine(DialogueLine line)
   {
     dialogueText.text = line.npcText;
 
@@ -63,13 +72,20 @@ public class DialogueManager : MonoBehaviour
 
       buttons[optionIndex].onClick.AddListener(() =>
       {
-        option.onClick.Invoke();
-        NextLine();
+        Debug.Log($"Option chosen: {option.buttonText}");
+        if (option.onClick != null)
+        {
+          option.onClick.Invoke();
+        }
+        else
+        {
+          NextLine();
+        }
       });
     }
   }
 
-  void NextLine()
+  public void NextLine()
   {
     currentLineIndex++;
     if (currentLineIndex < dialogueLines.Length)

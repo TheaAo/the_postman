@@ -2,29 +2,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NPCManager : MonoBehaviour, IClickable
+public class DialogueConfig : MonoBehaviour, IClickable
 {
-    [Header("NPC Info")]
-    public string npcName;
+    // [Header("NPC Info")]
+    // public string npcName;
 
     [Header("Dialogue Lines")]
     public DialogueLine[] dialogueLines;
-    
+
     void Start()
     {
-        Debug.Log("NPCManager started.");
+        Debug.Log("DialogueConfig started.");
     }
 
     public void OnClick()
   {
-    Debug.Log("Clicked NPC: " + npcName);
+    Debug.Log("DialogueConfig OnClick");
 
     // Find the DialogueManager in the scene
     DialogueManager manager = FindFirstObjectByType<DialogueManager>();
 
     if (manager != null)
     {
-      manager.StartDialogue(npcName, dialogueLines);
+      Debug.Log("Dialogue manager exists");
+      manager.StartDialogue(dialogueLines);
     }
     else
     {
