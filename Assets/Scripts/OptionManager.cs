@@ -43,12 +43,12 @@ public class OptionManager : MonoBehaviour
   void LoadNextScene(string sceneName, string message = "Several days later...")
   {
     Debug.Log($"Loading scene: {sceneName} with message: {message}");
-    // SceneTransitionManager.Instance.LoadScene(sceneName, message);
+
+    SceneTransitionManager.Instance.LoadScene(sceneName, message);
   }
 
   public void ElvisOption1()
   {
-    SceneManager.LoadScene("GameScene2");
     LoadNextScene("GameScene2");
   }
 

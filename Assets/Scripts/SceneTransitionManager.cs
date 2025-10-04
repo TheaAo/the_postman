@@ -32,8 +32,8 @@ public class SceneTransitionManager : MonoBehaviour
     private IEnumerator DoTransition(string sceneName, string message)
     {
         loadingText.text = message;
-        // animator.SetTrigger("FadeOut");
-        // yield return new WaitForSeconds(fadeTime);
+        animator.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(fadeTime);
 
         SceneManager.LoadScene(sceneName);
         yield return null;
