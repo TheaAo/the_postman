@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2107490951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a4ed07ff2e647f68f4829fe2c64c14, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f95ec08c29b8405e9d2f37e5add1af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleFloatEffect
   floatSpeed: 2
