@@ -1,0 +1,222 @@
+{
+  "id": "graph_bm_gate_angelo",
+  "startNodeId": "angelo_entry_router",
+  "nodes": {
+    "angelo_entry_router": {
+      "id": "angelo_entry_router",
+      "speaker": "Angelo",
+      "text": "Hold on there. You are not allow to get in here.",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [
+        {
+          "text": "(Have Nelson's recommendation)",
+          "nextId": "angelo_nelson_01",
+          "requireFlags": [
+            "has_nelson_reco"
+          ],
+          "setFlags": []
+        },
+        {
+          "text": "(Delivering ramen for Knife)",
+          "nextId": "angelo_ramen_01",
+          "requireFlags": [
+            "has_ramen_for_knife"
+          ],
+          "setFlags": []
+        },
+        {
+          "text": "(Got nothing)",
+          "nextId": "angelo_nothing_end",
+          "requireFlags": [],
+          "setFlags": []
+        }
+      ],
+      "events": []
+    },
+    "angelo_nelson_01": {
+      "id": "angelo_nelson_01",
+      "speaker": "Tom",
+      "text": "Rabbit told me to be here.",
+      "portraitKey": "",
+      "nextId": "angelo_nelson_02",
+      "options": [],
+      "events": []
+    },
+    "angelo_nelson_02": {
+      "id": "angelo_nelson_02",
+      "speaker": "Angelo",
+      "text": "And my dog told me to buy some steaks for dinner. Now get off.",
+      "portraitKey": "",
+      "nextId": "angelo_nelson_03",
+      "options": [],
+      "events": []
+    },
+    "angelo_nelson_03": {
+      "id": "angelo_nelson_03",
+      "speaker": "Tom",
+      "text": "What? It's Nelson. You must know him, he said I can go in, please.",
+      "portraitKey": "",
+      "nextId": "angelo_nelson_04",
+      "options": [],
+      "events": []
+    },
+    "angelo_nelson_04": {
+      "id": "angelo_nelson_04",
+      "speaker": "Angelo",
+      "text": "Which Nelson? Been dizzy these days, might need something to refresh.",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [
+        {
+          "text": "Give him the last 100 euros",
+          "nextId": "angelo_nelson_bribe_ok",
+          "requireFlags": [],
+          "setFlags": [
+            "money",
+            "market_entry_granted"
+          ]
+        },
+        {
+          "text": "Save the last 100 to buy the flower (leave)",
+          "nextId": "angelo_nelson_denied",
+          "requireFlags": [],
+          "setFlags": []
+        }
+      ],
+      "events": []
+    },
+    "angelo_nelson_bribe_ok": {
+      "id": "angelo_nelson_bribe_ok",
+      "speaker": "Angelo",
+      "text": "Aha that Nelson, you should told me earlier. You can go in now.",
+      "portraitKey": "",
+      "nextId": "angelo_end",
+      "options": [],
+      "events": []
+    },
+    "angelo_nelson_denied": {
+      "id": "angelo_nelson_denied",
+      "speaker": "Angelo",
+      "text": "(shouting and laughing) Remember feed your rabbit well and let her be here herself, hahahaha.",
+      "portraitKey": "",
+      "nextId": "angelo_end",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_01": {
+      "id": "angelo_ramen_01",
+      "speaker": "Tom",
+      "text": "I got some ramen here for Knife.",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_02",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_02": {
+      "id": "angelo_ramen_02",
+      "speaker": "Angelo",
+      "text": "Who are you? It's always been Brien.",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_03",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_03": {
+      "id": "angelo_ramen_03",
+      "speaker": "Tom",
+      "text": "Brien is busy and he told me to help him.",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_04",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_04": {
+      "id": "angelo_ramen_04",
+      "speaker": "Angelo",
+      "text": "Why I would trust you?",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [
+        {
+          "text": "Give him the last 100 euros",
+          "nextId": "angelo_ramen_bribe_reject",
+          "requireFlags": [],
+          "setFlags": [
+            "money"
+          ]
+        },
+        {
+          "text": "Threaten him",
+          "nextId": "angelo_ramen_threat",
+          "requireFlags": [],
+          "setFlags": []
+        }
+      ],
+      "events": []
+    },
+    "angelo_ramen_bribe_reject": {
+      "id": "angelo_ramen_bribe_reject",
+      "speaker": "Angelo",
+      "text": "Get the fuck off, I am not taking it.",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_push",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_push": {
+      "id": "angelo_ramen_push",
+      "speaker": "Tom",
+      "text": "The ramen is really important for Knife and Knife wants it now. Let me in or I told Brien who told me to leave.",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_wait",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_threat": {
+      "id": "angelo_ramen_threat",
+      "speaker": "Tom",
+      "text": "You are just a gatekeeper. How dare you get in the way of Knife’s business?",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_wait",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_wait": {
+      "id": "angelo_ramen_wait",
+      "speaker": "Narration",
+      "text": "(After a few seconds)",
+      "portraitKey": "",
+      "nextId": "angelo_ramen_ok",
+      "options": [],
+      "events": []
+    },
+    "angelo_ramen_ok": {
+      "id": "angelo_ramen_ok",
+      "speaker": "Angelo",
+      "text": "Alright, now get in, Knife's waiting for you.",
+      "portraitKey": "",
+      "nextId": "angelo_end",
+      "options": [],
+      "events": []
+    },
+    "angelo_nothing_end": {
+      "id": "angelo_nothing_end",
+      "speaker": "Narration",
+      "text": "(Conversation ends.)",
+      "portraitKey": "",
+      "nextId": "angelo_end",
+      "options": [],
+      "events": []
+    },
+    "angelo_end": {
+      "id": "angelo_end",
+      "speaker": "",
+      "text": "",
+      "portraitKey": "",
+      "nextId": "",
+      "options": [],
+      "events": []
+    }
+  }
+}

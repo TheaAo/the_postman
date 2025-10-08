@@ -1,0 +1,104 @@
+{
+  "id": "graph_npc_nelson_street",
+  "startNodeId": "nelson_01",
+  "nodes": {
+    "nelson_01": {
+      "id": "nelson_01",
+      "speaker": "Tom",
+      "text": "How's going Nelson, you're on street duty today huh.",
+      "portraitKey": "",
+      "nextId": "nelson_02",
+      "options": [],
+      "events": []
+    },
+    "nelson_02": {
+      "id": "nelson_02",
+      "speaker": "Nelson",
+      "text": "Yeah nothing interesting. You?",
+      "portraitKey": "",
+      "nextId": "nelson_03",
+      "options": [],
+      "events": []
+    },
+    "nelson_03": {
+      "id": "nelson_03",
+      "speaker": "Tom",
+      "text": "Just hanging around.",
+      "portraitKey": "",
+      "nextId": "nelson_04",
+      "options": [],
+      "events": []
+    },
+    "nelson_04": {
+      "id": "nelson_04",
+      "speaker": "Nelson",
+      "text": "You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
+      "portraitKey": "",
+      "nextId": "nelson_05",
+      "options": [],
+      "events": []
+    },
+    "nelson_05": {
+      "id": "nelson_05",
+      "speaker": "Tom",
+      "text": "Well... I wanna get something that could not be found in a casual grocery. Any thought?",
+      "portraitKey": "",
+      "nextId": "nelson_06",
+      "options": [],
+      "events": []
+    },
+    "nelson_06": {
+      "id": "nelson_06",
+      "speaker": "Nelson",
+      "text": "Maybe I have and maybe I don't.",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [
+        {
+          "text": "(Lowkey) Give him 500 euros",
+          "nextId": "nelson_bribe",
+          "requireFlags": [],
+          "setFlags": [
+            "money",
+            "has_nelson_reco",
+            "bribed_nelson"
+          ]
+        },
+        {
+          "text": "Nelson, come on—don't be like that.",
+          "nextId": "nelson_refuse",
+          "requireFlags": [],
+          "setFlags": []
+        }
+      ],
+      "events": []
+    },
+    "nelson_bribe": {
+      "id": "nelson_bribe",
+      "speaker": "Nelson",
+      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
+      "portraitKey": "",
+      "nextId": "nelson_end",
+      "options": [],
+      "events": []
+    },
+    "nelson_refuse": {
+      "id": "nelson_refuse",
+      "speaker": "Nelson",
+      "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+      "portraitKey": "",
+      "nextId": "nelson_end",
+      "options": [],
+      "events": []
+    },
+    "nelson_end": {
+      "id": "nelson_end",
+      "speaker": "",
+      "text": "",
+      "portraitKey": "",
+      "nextId": "",
+      "options": [],
+      "events": []
+    }
+  }
+}
