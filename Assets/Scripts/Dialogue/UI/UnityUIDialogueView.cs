@@ -19,6 +19,7 @@ namespace Game.Dialogue.Runtime {
         [SerializeField] private TextMeshProUGUI speakerText;
         [SerializeField] private TextMeshProUGUI bodyText;
         [SerializeField] private Image portraitImage;
+        [SerializeField] private GameObject panelRoot;  // 指向整个对话Panel的根
 
         [Header("确认（继续）")]
         [SerializeField] private Button continueButton;     // 点它等于“确认”
@@ -28,11 +29,11 @@ namespace Game.Dialogue.Runtime {
         [SerializeField] private Transform optionsRoot;     // 选项按钮容器
         [SerializeField] private OptionButton optionPrefab; // 选项按钮预制体（见下方类）
 
-        [Header("打字机（可选）")]
+        [Header("打字机")]
         [SerializeField] private bool enableTypewriter = true;
         [SerializeField, Range(1, 120)] private float charsPerSecond = 45f;
 
-        [Header("自动化（与 DebugConsole 行为保持一致）")]
+        [Header("自动化（用于测试）")]
         public bool autoConfirm = false;                    // true 时 WaitForConfirm 自动通过
         public bool autoChooseFirstOption = false;          // true 时自动选择第一个选项
         [Range(0f, 2f)] public float autoDelay = 0.05f;
@@ -43,10 +44,26 @@ namespace Game.Dialogue.Runtime {
         private bool _waitingConfirm;
         private Coroutine _typingCo;
         private string _currentFullText;
+        private GameObject Root => panelRoot ? panelRoot : gameObject;
 
         // ================= IRuntimeDialogueView =================
+        private void SetPanelVisible(bool v) {
+            if (Root) Root.SetActive(v);
+        }
 
+        void OnEnable() {
+            Game.Dialogue.Runtime.DialogueEvents.OnStarted += HandleStarted;
+            Game.Dialogue.Runtime.DialogueEvents.OnEnded += HandleEnded;
+            SetPanelVisible(false); // 初始隐藏
+        }
+        void OnDisable() {
+            Game.Dialogue.Runtime.DialogueEvents.OnStarted -= HandleStarted;
+            Game.Dialogue.Runtime.DialogueEvents.OnEnded -= HandleEnded;
+        }
+        private void HandleStarted(string graphId) => SetPanelVisible(true);
+        private void HandleEnded(string graphId) => SetPanelVisible(false);
         public void ShowLine(string speaker, string text) {
+            SetPanelVisible(true);
             // 每次显示一行：清掉选项、停止打字机、更新头像&名字
             ClearOptions();
             StopTypingIfAny();
@@ -114,6 +131,8 @@ namespace Game.Dialogue.Runtime {
         }
 
         public void ShowOptions(IReadOnlyList<string> options, Action<int> onChosen) {
+            SetPanelVisible(true);
+
             _onChoose = onChosen;
             EnsureCount(options?.Count ?? 0);
 
