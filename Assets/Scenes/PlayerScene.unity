@@ -512,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e7d0722e065d940a993add72210b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GemCollect
+  pickupSound: {fileID: 8300000, guid: 28a7e67ca249e874887b4c601e4f5e1b, type: 3}
 --- !u!1 &1667243652
 GameObject:
   m_ObjectHideFlags: 0
