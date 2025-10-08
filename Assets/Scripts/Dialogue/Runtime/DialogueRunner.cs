@@ -114,6 +114,8 @@ namespace Game.Dialogue.Runtime {
         IRuntimeDialogueSource Source;
         IRuntimeDialogueView View;
 
+        bool _isRunning;
+
         void Awake() {
             Source = sourceComponent as IRuntimeDialogueSource;
             View = viewComponent;
@@ -123,17 +125,23 @@ namespace Game.Dialogue.Runtime {
         }
 
         public Coroutine StartDialogue(string graphId, string startNodeId = null) {
+            if (_isRunning) return null;          // 忽略重复启动
             return StartCoroutine(Run(graphId, startNodeId));
         }
 
         IEnumerator Run(string graphId, string startNodeId) {
             if (Source == null || View == null) yield break;
-
+            Debug.Log("已进入DialogueRunner.run");
             State.graphId = graphId;
             State.currentNodeId = string.IsNullOrEmpty(startNodeId) ? Source.GetStartNodeId(graphId) : startNodeId;
             DialogueEvents.RaiseStarted(graphId);
+            
 
             while (!string.IsNullOrEmpty(State.currentNodeId)) {
+                if (Source == null || View == null) yield break;
+                _isRunning = true;
+                Debug.Log("已进入DialogueRunner.run");
+
                 if (!Source.TryGetNode(State.graphId, State.currentNodeId, out var node)) {
                     Debug.LogWarning($"[DialogueRunner] 节点不存在：{State.currentNodeId}");
                     break;
@@ -171,6 +179,7 @@ namespace Game.Dialogue.Runtime {
             }
 
             DialogueEvents.RaiseEnded(graphId);
+            _isRunning = false;
         }
 
         List<RuntimeOption> FilterOptions(List<RuntimeOption> options) {
