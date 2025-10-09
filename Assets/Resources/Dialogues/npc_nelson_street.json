@@ -1,5 +1,5 @@
 {
-  "id": "graph_npc_nelson_street",
+  "id": "npc_nelson_street",
   "startNodeId": "nelson_01",
   "nodes": {
     "nelson_01": {
@@ -78,7 +78,7 @@
       "speaker": "Nelson",
       "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
       "portraitKey": "",
-      "nextId": "nelson_end",
+      "nextId": "",
       "options": [],
       "events": []
     },
@@ -86,15 +86,6 @@
       "id": "nelson_refuse",
       "speaker": "Nelson",
       "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
-      "portraitKey": "",
-      "nextId": "nelson_end",
-      "options": [],
-      "events": []
-    },
-    "nelson_end": {
-      "id": "nelson_end",
-      "speaker": "",
-      "text": "",
       "portraitKey": "",
       "nextId": "",
       "options": [],

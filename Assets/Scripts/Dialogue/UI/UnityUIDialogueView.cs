@@ -52,16 +52,24 @@ namespace Game.Dialogue.Runtime {
         }
 
         void OnEnable() {
+            SetPanelVisible(false); // 初始隐藏
             Game.Dialogue.Runtime.DialogueEvents.OnStarted += HandleStarted;
             Game.Dialogue.Runtime.DialogueEvents.OnEnded += HandleEnded;
-            SetPanelVisible(false); // 初始隐藏
         }
         void OnDisable() {
             Game.Dialogue.Runtime.DialogueEvents.OnStarted -= HandleStarted;
             Game.Dialogue.Runtime.DialogueEvents.OnEnded -= HandleEnded;
         }
         private void HandleStarted(string graphId) => SetPanelVisible(true);
-        private void HandleEnded(string graphId) => SetPanelVisible(false);
+        private void HandleEnded(string _) {
+            StopTypingIfAny();
+            SetContinueInteractable(false);
+            ClearOptions();
+            if (bodyText) bodyText.text = "";
+            if (speakerText) speakerText.text = "";
+            SetPanelVisible(false);                  
+        }
+
         public void ShowLine(string speaker, string text) {
             SetPanelVisible(true);
             // 每次显示一行：清掉选项、停止打字机、更新头像&名字

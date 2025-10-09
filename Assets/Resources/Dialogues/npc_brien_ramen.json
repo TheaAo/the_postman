@@ -1,5 +1,5 @@
 {
-  "id": "graph_npc_brien_ramen",
+  "id": "npc_brien_ramen",
   "startNodeId": "brien_01",
   "nodes": {
     "brien_01": {
@@ -247,16 +247,7 @@
       "speaker": "Brien",
       "text": "No. Now hurry, they won't be happy if you are late.",
       "portraitKey": "",
-      "nextId": "brien_end",
-      "options": [],
-      "events": []
-    },
-    "brien_end": {
-      "id": "brien_end",
-      "speaker": "",
-      "text": "",
-      "portraitKey": "",
-      "nextId": null,
+      "nextId": "",
       "options": [],
       "events": []
     }

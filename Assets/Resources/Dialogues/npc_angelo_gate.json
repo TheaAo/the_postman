@@ -1,5 +1,5 @@
 {
-  "id": "graph_bm_gate_angelo",
+  "id": "npc_angelo_gate",
   "startNodeId": "angelo_entry_router",
   "nodes": {
     "angelo_entry_router": {
@@ -18,7 +18,7 @@
           "setFlags": []
         },
         {
-          "text": "(Delivering ramen for Knife)",
+          "text": "(Delivering ramen to Knife)",
           "nextId": "angelo_ramen_01",
           "requireFlags": [
             "has_ramen_for_knife"
@@ -91,7 +91,7 @@
       "speaker": "Angelo",
       "text": "Aha that Nelson, you should told me earlier. You can go in now.",
       "portraitKey": "",
-      "nextId": "angelo_end",
+      "nextId": "",
       "options": [],
       "events": []
     },
@@ -100,7 +100,7 @@
       "speaker": "Angelo",
       "text": "(shouting and laughing) Remember feed your rabbit well and let her be here herself, hahahaha.",
       "portraitKey": "",
-      "nextId": "angelo_end",
+      "nextId": "",
       "options": [],
       "events": []
     },
@@ -196,23 +196,23 @@
       "speaker": "Angelo",
       "text": "Alright, now get in, Knife's waiting for you.",
       "portraitKey": "",
-      "nextId": "angelo_end",
+      "nextId": "",
       "options": [],
       "events": []
     },
-    "angelo_nothing_end": {
-      "id": "angelo_nothing_end",
-      "speaker": "Narration",
-      "text": "(Conversation ends.)",
+    "angelo_nothing_01": {
+      "id": "angelo_nothing_01",
+      "speaker": "Tom",
+      "text": "I am not causing any trouble",
       "portraitKey": "",
-      "nextId": "angelo_end",
+      "nextId": "angelo_nothing_02",
       "options": [],
       "events": []
     },
-    "angelo_end": {
-      "id": "angelo_end",
-      "speaker": "",
-      "text": "",
+    "angelo_nothing_02": {
+      "id": "angelo_nothing_02",
+      "speaker": "Angelo",
+      "text": "Then go away. Don't test my patience.",
       "portraitKey": "",
       "nextId": "",
       "options": [],
