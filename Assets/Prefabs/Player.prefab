@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6581657986897345343}
   - component: {fileID: 892855894916639135}
   - component: {fileID: 6547712941935216477}
-  m_Layer: 0
+  - component: {fileID: 2196696460246436113}
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,3 +196,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.014249533, y: -0.13028145}
   m_Size: {x: 0.11009869, y: 0.5394372}
   m_Direction: 0
+--- !u!114 &2196696460246436113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419498054456093964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e7d0722e065d940a993add72210b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GemCollect
+  pickupSound: {fileID: 8300000, guid: 1be2fcc16ab0da84f99ba7c633037620, type: 3}

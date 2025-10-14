@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7031a84be781741f18caea66e38f6f5e
+guid: d5bf33d3e40b1447c94bf12120324bef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6663887827619208831
-    second: Scenario1_0
+      213: -5389424956894132603
+    second: Banknotes-2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scenario1_0
+      name: Banknotes-2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2408
-        height: 1362
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7eda442ca2ea7c50800000000000000
-      internalID: 6663887827619208831
+      spriteID: 58643bc5e8ae435b0800000000000000
+      internalID: -5389424956894132603
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 18d305e01cd4344558fca8550700e345
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Scenario1_0: 6663887827619208831
+      Banknotes-2_0: -5389424956894132603
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
