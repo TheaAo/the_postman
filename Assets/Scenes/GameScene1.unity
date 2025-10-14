@@ -892,8 +892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartElvisDialogueOnInteract
   runner: {fileID: 1877509311}
-  graphId: flag_npc_elvis_intro
-  key: 101
+  graphId: npc_nelson_street
 --- !u!1 &1554229286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2189565111478084945, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
@@ -906,7 +905,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554229286}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cba43185a627454ab18960209ee8323, type: 3}
   m_Name: 
@@ -918,22 +917,41 @@ MonoBehaviour:
   optionPrefab: {fileID: 0}
   enableTypewriter: 1
   charsPerSecond: 30
---- !u!114 &1554229288 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7353901705059599787, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
-  m_PrefabInstance: {fileID: 4890575678397121530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554229286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fcaa8b571ae4ac49ac93d6bdad58e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.Runtime.UnityUIDialogueView
 --- !u!224 &1554229289 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1227057041800182357, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
   m_PrefabInstance: {fileID: 4890575678397121530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1599709929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8075409783532608391, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
+  m_PrefabInstance: {fileID: 4890575678397121530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1599709934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599709929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fcaa8b571ae4ac49ac93d6bdad58e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.Runtime.UnityUIDialogueView
+  speakerText: {fileID: 0}
+  bodyText: {fileID: 906450534}
+  portraitImage: {fileID: 0}
+  panelRoot: {fileID: 1554229286}
+  continueButton: {fileID: 0}
+  clickAnywhereMask: {fileID: 636043169}
+  optionsRoot: {fileID: 4890575678397121531}
+  optionPrefab: {fileID: 6285748333588389679, guid: ded83ddd898b04f47a5dcbf3a2d8b168, type: 3}
+  enableTypewriter: 1
+  charsPerSecond: 45
+  autoConfirm: 0
+  autoChooseFirstOption: 0
+  autoDelay: 0.05
 --- !u!1 &1637707505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.Runtime.DialogueRunner
   sourceComponent: {fileID: 1877509310}
-  viewComponent: {fileID: 1554229288}
+  viewComponent: {fileID: 1599709934}
   Store:
     _flags: []
   State:
@@ -1439,19 +1457,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 686137869557295612, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 686137869557295612, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 686137869557295612, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 542
       objectReference: {fileID: 0}
     - target: {fileID: 686137869557295612, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 2179788531286534249, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_Enabled
@@ -1545,17 +1563,21 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4326521750759227165, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4491747698470228348, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4491747698470228348, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4491747698470228348, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1067
       objectReference: {fileID: 0}
     - target: {fileID: 4491747698470228348, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1563,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4491747698470228348, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 533.5
       objectReference: {fileID: 0}
     - target: {fileID: 4491747698470228348, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1591,19 +1613,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5985921643332040164, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5985921643332040164, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5985921643332040164, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 542
       objectReference: {fileID: 0}
     - target: {fileID: 5985921643332040164, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 6560645388237482877, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_Enabled
@@ -1635,12 +1657,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6997366461537210663, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -310.5
+      value: -350.5
       objectReference: {fileID: 0}
     - target: {fileID: 7353901705059599787, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: bodyText
       value: 
       objectReference: {fileID: 906450534}
+    - target: {fileID: 7353901705059599787, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
+      propertyPath: panelRoot
+      value: 
+      objectReference: {fileID: 1554229286}
     - target: {fileID: 7353901705059599787, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: optionsRoot
       value: 
@@ -1653,6 +1679,10 @@ PrefabInstance:
       propertyPath: clickAnywhereMask
       value: 
       objectReference: {fileID: 636043169}
+    - target: {fileID: 7394073141909529349, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8075409783532608391, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
@@ -1669,13 +1699,17 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7353901705059599787, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1227057041800182357, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 636043168}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8075409783532608391, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1599709934}
     - targetCorrespondingSourceObject: {fileID: 2189565111478084945, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1554229287}
