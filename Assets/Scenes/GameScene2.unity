@@ -1208,6 +1208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1415293901}
   - component: {fileID: 1415293900}
+  - component: {fileID: 1415293903}
+  - component: {fileID: 1415293902}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -1288,6 +1290,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415293902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415293899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7318c711b144fa4389357babb70d852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxFollow2D
+  cam: {fileID: 519420031}
+  parallax: 0.2
+--- !u!114 &1415293903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415293899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5223ca4398424489b6ba09210c006a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FitSpriteToCamera
+  cam: {fileID: 519420031}
+  fillFactor: 1.2
+  keepAspect: 1
 --- !u!1001 &1527761639
 PrefabInstance:
   m_ObjectHideFlags: 0
