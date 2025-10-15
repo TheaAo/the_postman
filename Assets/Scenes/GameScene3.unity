@@ -218,6 +218,8 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -391,6 +393,43 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
+  m_ComponentVersion: 1
+  m_AssetsPPU: 1
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3637ab0c29715849bcd4d352f32131f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClampCameraToBackground
+  background: {fileID: 861869149}
 --- !u!1 &567798638
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +713,8 @@ GameObject:
   m_Component:
   - component: {fileID: 861869150}
   - component: {fileID: 861869149}
+  - component: {fileID: 861869151}
+  - component: {fileID: 861869152}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -754,6 +795,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &861869151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861869148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5223ca4398424489b6ba09210c006a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FitSpriteToCamera
+  cam: {fileID: 519420031}
+  fillFactor: 1.2
+  keepAspect: 1
+--- !u!114 &861869152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861869148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7318c711b144fa4389357babb70d852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxFollow2D
+  cam: {fileID: 519420031}
+  parallax: 0.2
 --- !u!114 &906450534 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8978241234038751276, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
@@ -894,6 +964,14 @@ PrefabInstance:
     - target: {fileID: 388228406739330953, guid: 52076d9d6331f4326baf86274a85ef4e, type: 3}
       propertyPath: m_Name
       value: Police
+      objectReference: {fileID: 0}
+    - target: {fileID: 388228406739330953, guid: 52076d9d6331f4326baf86274a85ef4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 388228406739330953, guid: 52076d9d6331f4326baf86274a85ef4e, type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 8069568057987902141, guid: 52076d9d6331f4326baf86274a85ef4e, type: 3}
       propertyPath: m_SortingLayer
@@ -1657,7 +1735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669823479709360562, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000022888184
+      value: 0.00002288852
       objectReference: {fileID: 0}
     - target: {fileID: 5985921643332040164, guid: 88e5e57411d524418b6daa1d99f697f8, type: 3}
       propertyPath: m_AnchorMax.y

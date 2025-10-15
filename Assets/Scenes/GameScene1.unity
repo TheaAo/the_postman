@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 868780177}
   - component: {fileID: 868780176}
   m_Layer: 0
-  m_Name: Background
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -803,7 +803,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -823,7 +823,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -831047859
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7031a84be781741f18caea66e38f6f5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1104,8 +1104,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 394549777
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1185,6 +1185,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Gem
       objectReference: {fileID: 0}
+    - target: {fileID: 5073704644137580674, guid: 4b83a9d56f4b2401c82fd6caa244e7d6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073704644137580674, guid: 4b83a9d56f4b2401c82fd6caa244e7d6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 394549777
+      objectReference: {fileID: 0}
     - target: {fileID: 7417471223196771231, guid: 4b83a9d56f4b2401c82fd6caa244e7d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.094026
@@ -1249,6 +1257,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 153196423262573776, guid: d97e0a861112b40aaa00d8de19586a43, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 153196423262573776, guid: d97e0a861112b40aaa00d8de19586a43, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -476421533
+      objectReference: {fileID: 0}
+    - target: {fileID: 153196423262573776, guid: d97e0a861112b40aaa00d8de19586a43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 892855894916639135, guid: d97e0a861112b40aaa00d8de19586a43, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -1478,6 +1498,14 @@ PrefabInstance:
     - target: {fileID: 7490386070465887780, guid: 82e2f900eb6bf407487ba2e611f2f0bf, type: 3}
       propertyPath: m_BodyType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890596344326146024, guid: 82e2f900eb6bf407487ba2e611f2f0bf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890596344326146024, guid: 82e2f900eb6bf407487ba2e611f2f0bf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 394549777
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
