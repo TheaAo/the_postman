@@ -48,7 +48,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -146,5 +146,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fcbda736b33526d41b69d02a9a2e8e9a, type: 3}
   - {fileID: 8300000, guid: 86f77d2f77c26644f9241766076c87c1, type: 3}
   - {fileID: 8300000, guid: 9b0b16d1407bd414b8361c024f253a53, type: 3}
+  - {fileID: 8300000, guid: c8a8940c73a99584db71433dbc2a44f5, type: 3}
+  - {fileID: 8300000, guid: 7fc121ff6d17091458c395afd6f37bce, type: 3}
   - {fileID: 8300000, guid: c8a8940c73a99584db71433dbc2a44f5, type: 3}
   bgmVolume: 0.5

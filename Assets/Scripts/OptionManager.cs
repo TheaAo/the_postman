@@ -142,6 +142,12 @@ public class OptionManager : MonoBehaviour
         onClick = new UnityEvent()
       }
     };
+
+    newLines[newLines.Length - 1].options[0].onClick.AddListener(() => 
+    {
+        AudioManager.Instance.PlayBGM(4); 
+    });
+
     AddNewLines(newLines);
   }
 

@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a0dac8224291244b7a700c36d0dce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneBGM
-  bgmIndex: 0
+  bgmIndex: 3
 --- !u!4 &1137977462
 Transform:
   m_ObjectHideFlags: 0
