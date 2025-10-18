@@ -67,6 +67,9 @@ namespace Game.Dialogue.Runtime {
         public string nextId;             // 点击后的跳转（可空表示结束）
         public List<string> setFlags;     // 点击后写入的 flags（可空）
         public List<string> requireFlags; // 该选项自身出现条件（可空）
+
+        public int cost = 0;                     // 需要金币，0 表示不收费
+        public string insufficientText = null;   // 不足时吐槽文本；null 用默认
     }
 
     // =========================
@@ -172,6 +175,29 @@ namespace Game.Dialogue.Runtime {
 
                 var opt = visible[chosen.Value];
                 DialogueEvents.RaiseOption(node.id, chosen.Value);
+
+                // == 付费校验 ==
+                bool payOk = true;
+                if (opt.cost > 0) {
+                    int currentGold = 0;
+                    var gm = GameManager.I; // 已有的单例
+                    if (gm != null) currentGold = gm.GetGold();
+
+                    if (currentGold < opt.cost) {
+                        // 不足：吐槽一行并回到同一节点，不写 flag、不跳转
+                        string msg = string.IsNullOrEmpty(opt.insufficientText)
+                            ? "This is a lot..."
+                            : opt.insufficientText;
+                        View.ShowLine(null, msg);
+                        yield return View.WaitForConfirm();
+                        // 重新渲染当前节点（等价于 continue while 循环）
+                        continue;
+                    }
+                    else {
+                        // 足够：扣费再继续
+                        if (gm != null) gm.AddGold(-opt.cost);
+                    }
+                }
 
                 Store.AddMany(opt.setFlags);
                 State.currentNodeId = string.IsNullOrEmpty(opt.nextId) ? null : opt.nextId;

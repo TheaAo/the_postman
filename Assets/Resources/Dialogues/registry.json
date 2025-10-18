@@ -1,8 +1,25 @@
 {
   "npcToGraph": {
     "Angelo": "npc_angelo_gate",
-    "Brien": "npc_brien_ramen",
-    "Elvis": "npc_elvis_intro",
+    "Brien":  "npc_brien_ramen",
+    "Elvis":  "npc_elvis_intro",
     "Nelson": "npc_nelson_street"
-  }
+  },
+  "routes": [
+    {
+      "npc": "Brien",
+      "whenAllFlags": ["brien.persuade"],
+      "nextGraph": "npc_brien_after_persuade"
+    },
+    {
+      "npc": "Brien",
+      "whenAllFlags": ["brien.bribe"],
+      "nextGraph": "npc_brien_after_bribe"
+    },
+    {
+      "npc": "Brien",
+      "whenAllFlags": ["NPC.Brien.Visited"],
+      "nextGraph": "npc_brien_repeat_short"
+    }
+  ]
 }

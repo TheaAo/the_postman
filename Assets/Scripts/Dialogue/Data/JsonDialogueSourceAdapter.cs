@@ -95,7 +95,10 @@ namespace Game.Dialogue.Runtime {
                                 text = oObj["text"]?.Value<string>(),
                                 nextId = oObj["nextId"]?.Type == JTokenType.Null ? null : oObj["nextId"]?.Value<string>(),
                                 setFlags = ReadStringList(oObj["setFlags"]),
-                                requireFlags = ReadStringList(oObj["requireFlags"])
+                                requireFlags = ReadStringList(oObj["requireFlags"]),
+
+                                cost = oObj["cost"] != null ? oObj["cost"].Value<int>() : 0,
+                                insufficientText = oObj["insufficientText"]?.Value<string>()
                             });
                         }
                     }

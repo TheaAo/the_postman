@@ -121,15 +121,15 @@
           "text": "(Try to bribe) Give him 500 euros",
           "nextId": "brien_bribe_fail_to_agree",
           "requireFlags": [],
-          "setFlags": [
-            "money"
-          ]
+          "setFlags": ["brien.bribe"],
+          "cost": 500,
+          "insufficientText": "我哪来这么多钱！"
         },
         {
           "text": "I know you got a way.",
           "nextId": "brien_persuade",
           "requireFlags": [],
-          "setFlags": []
+          "setFlags": ["brien.persuade"]
         }
       ],
       "events": []
@@ -247,7 +247,7 @@
       "speaker": "Brien",
       "text": "No. Now hurry, they won't be happy if you are late.",
       "portraitKey": "",
-      "nextId": "",
+      "nextId": null,
       "options": [],
       "events": []
     }

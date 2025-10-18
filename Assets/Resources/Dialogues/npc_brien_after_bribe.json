@@ -1,0 +1,15 @@
+{
+  "id": "npc_brien_after_bribe",
+  "startNodeId": "start",
+  "nodes": {
+    "start": {
+      "id": "start",
+      "speaker": "Brien",
+      "text": "You again? Well, money talks. What do you want this time?",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [],
+      "events": []
+    }
+  }
+}

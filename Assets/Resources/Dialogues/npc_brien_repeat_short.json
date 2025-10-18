@@ -1,0 +1,15 @@
+{
+  "id": "npc_brien_repeat_short",
+  "startNodeId": "start",
+  "nodes": {
+    "start": {
+      "id": "start",
+      "speaker": "Brien",
+      "text": "Back again, huh? I’ve got nothing new for you.",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [],
+      "events": []
+    }
+  }
+}
