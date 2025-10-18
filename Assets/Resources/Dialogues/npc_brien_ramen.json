@@ -1,5 +1,5 @@
 {
-  "id": "graph_npc_brien_ramen",
+  "id": "npc_brien_ramen",
   "startNodeId": "brien_01",
   "nodes": {
     "brien_01": {
@@ -121,15 +121,15 @@
           "text": "(Try to bribe) Give him 500 euros",
           "nextId": "brien_bribe_fail_to_agree",
           "requireFlags": [],
-          "setFlags": [
-            "money"
-          ]
+          "setFlags": ["brien.bribe"],
+          "cost": 500,
+          "insufficientText": "我哪来这么多钱！"
         },
         {
           "text": "I know you got a way.",
           "nextId": "brien_persuade",
           "requireFlags": [],
-          "setFlags": []
+          "setFlags": ["brien.persuade"]
         }
       ],
       "events": []
@@ -246,15 +246,6 @@
       "id": "brien_denial",
       "speaker": "Brien",
       "text": "No. Now hurry, they won't be happy if you are late.",
-      "portraitKey": "",
-      "nextId": "brien_end",
-      "options": [],
-      "events": []
-    },
-    "brien_end": {
-      "id": "brien_end",
-      "speaker": "",
-      "text": "",
       "portraitKey": "",
       "nextId": null,
       "options": [],

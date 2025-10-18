@@ -1,5 +1,5 @@
 {
-  "id": "graph_npc_elvis_intro",
+  "id": "npc_elvis_intro",
   "startNodeId": "elvis_intro_01",
   "nodes": {
     "elvis_intro_01": {
