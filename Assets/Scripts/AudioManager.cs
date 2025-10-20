@@ -38,16 +38,25 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-   
-    public void PlayBGM(int clipIndex)
+   private int currentBGMIndex = -1; 
+
+public void PlayBGM(int clipIndex)
+{
+    if (bgmSource != null && clipIndex >= 0 && clipIndex < bgmClips.Length && bgmClips[clipIndex] != null)
     {
-        if (bgmSource != null && clipIndex >= 0 && clipIndex < bgmClips.Length && bgmClips[clipIndex] != null)
+        
+        if (currentBGMIndex == clipIndex && bgmSource.isPlaying)
         {
-            bgmSource.clip = bgmClips[clipIndex];
-            bgmSource.Play();
+            return; 
         }
+        
+        
+        currentBGMIndex = clipIndex;
+        bgmSource.clip = bgmClips[clipIndex];
+        bgmSource.loop = true; 
+        bgmSource.Play();
     }
-    
+}
    
     public void StopBGM()
     {
