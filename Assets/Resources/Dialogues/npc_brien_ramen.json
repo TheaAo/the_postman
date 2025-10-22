@@ -123,7 +123,7 @@
           "requireFlags": [],
           "setFlags": ["brien.bribe"],
           "cost": 500,
-          "insufficientText": "我哪来这么多钱！"
+          "insufficientText": "This is a lot..."
         },
         {
           "text": "I know you got a way.",

@@ -1,42 +1,48 @@
 using UnityEngine;
 using Game.Dialogue.Runtime;
 using UnityEngine.InputSystem;
+
 public class StartNpcDialogueOnInteract : MonoBehaviour {
     public DialogueRunner runner;
+    public string npcKey;
+    public ConversationDirector director;
     public string graphId;
-    public string npcKey;  
-    public ConversationDirector director; 
-    bool inRange;
-    bool isTalking; // 防重入
 
-    void OnEnable() {
-        Game.Dialogue.Runtime.DialogueEvents.OnEnded += HandleEnded;
-    }
-    void OnDisable() {
-        Game.Dialogue.Runtime.DialogueEvents.OnEnded -= HandleEnded;
-    }
-    void HandleEnded(string g) { isTalking = false; }
+    [Header("非触发检测设置")]
+    public float interactRadius = 1.6f;
+    public LayerMask playerMask;
+    public Transform player;
 
-    void OnTriggerEnter2D(Collider2D other) { if (other.CompareTag("Player")) inRange = true; }
-    void OnTriggerExit2D(Collider2D other) { if (other.CompareTag("Player")) inRange = false; }
+    bool isTalking;
+
+    void Awake() {
+        if (player == null) {
+            var p = GameObject.FindGameObjectWithTag("Player");
+            if (p) player = p.transform;
+        }
+    }
+
+    void OnEnable() { DialogueEvents.OnEnded += HandleEnded; }
+    void OnDisable() { DialogueEvents.OnEnded -= HandleEnded; }
+    void HandleEnded(string _) { isTalking = false; }
 
     void Update() {
-        if (!inRange || isTalking) return;
+        if (isTalking || runner == null) return;
+
+        bool inRange = Physics2D.OverlapCircle(transform.position, interactRadius, playerMask);
         var kb = Keyboard.current;
-        if (kb != null && kb.fKey.wasPressedThisFrame) {
-            if (runner != null) {
-                isTalking = true;
-                // 向 Director 查询这次要开的图
-                var finalGraph = (director != null)
-                    ? director.GetGraphForNpc(runner.Store, npcKey)
-                    : null;
-                if (string.IsNullOrEmpty(finalGraph)) {
-                    Debug.LogWarning($"[StartDialogue] Director 未给出图，回落到 registry 默认或手填 graphId。");
-                }
-                // 回落逻辑：如果无 director，可直接用旧的 graphId
-                var g = string.IsNullOrEmpty(finalGraph) ? /* 旧字段 */ graphId : finalGraph;
-                runner.StartDialogue(g);
-            }
+
+        if (inRange && kb != null && kb.fKey.wasPressedThisFrame) {
+            isTalking = true;
+            string finalGraph = director ? director.GetGraphForNpc(runner.Store, npcKey) : null;
+            if (string.IsNullOrEmpty(finalGraph))
+                finalGraph = graphId;
+            runner.StartDialogue(finalGraph);
         }
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, interactRadius);
     }
 }

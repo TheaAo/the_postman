@@ -176,28 +176,41 @@ namespace Game.Dialogue.Runtime {
                 var opt = visible[chosen.Value];
                 DialogueEvents.RaiseOption(node.id, chosen.Value);
 
+                Debug.LogWarning($"已经取到opt，value为{opt.cost}。");
+
                 // == 付费校验 ==
-                bool payOk = true;
                 if (opt.cost > 0) {
                     int currentGold = 0;
-                    var gm = GameManager.I; // 已有的单例
-                    if (gm != null) currentGold = gm.GetGold();
+                    var gm = GameManager.I; // 你的单例
+
+                    if (gm == null) {
+                        Debug.LogWarning($"[Runner][COST] GameManager.I == null，无法读取/扣除金币。当前按 0 金币处理，cost={opt.cost}。");
+                    }
+                    else {
+                        currentGold = gm.GetGold();
+                    }
+
+                    Debug.Log($"[Runner][COST] 选择 \"{opt.text}\": need={opt.cost}, have={currentGold}");
 
                     if (currentGold < opt.cost) {
-                        // 不足：吐槽一行并回到同一节点，不写 flag、不跳转
-                        string msg = string.IsNullOrEmpty(opt.insufficientText)
-                            ? "This is a lot..."
-                            : opt.insufficientText;
+                        string msg = string.IsNullOrEmpty(opt.insufficientText) ? "This is a lot..." : opt.insufficientText;
+                        Debug.Log($"[Runner][COST] 不足，提示并留在当前节点。");
                         View.ShowLine(null, msg);
                         yield return View.WaitForConfirm();
-                        // 重新渲染当前节点（等价于 continue while 循环）
+                        // 回到当前节点（重新渲染）；不写 flag，不跳转
                         continue;
                     }
                     else {
-                        // 足够：扣费再继续
-                        if (gm != null) gm.AddGold(-opt.cost);
+                        if (gm != null) {
+                            gm.AddGold(-opt.cost);
+                            Debug.Log($"[Runner][COST] 扣费 {opt.cost} 成功，新金币={gm.GetGold()}");
+                        }
+                        else {
+                            Debug.LogWarning($"[Runner][COST] 预期扣费 {opt.cost}，但 GameManager 不存在，实际未扣。");
+                        }
                     }
                 }
+
 
                 Store.AddMany(opt.setFlags);
                 State.currentNodeId = string.IsNullOrEmpty(opt.nextId) ? null : opt.nextId;
