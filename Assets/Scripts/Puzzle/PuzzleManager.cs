@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class PuzzleManager : MonoBehaviour
 {
     [Header("Setup")]
+    public GameObject puzzlePanel;   // 指向 PuzzleBoard (含 GridLayoutGroup)
     public GameObject tilePrefab;      // 指向 tile prefab (UI Button + Image + PuzzleTile)
     public Sprite sourceImage;         // 要切分的正方形图片 (Sprite)
     public int gridSize = 3;           // 3 -> 3x3
@@ -17,15 +18,13 @@ public class PuzzleManager : MonoBehaviour
     private List<PuzzleTile> tiles = new List<PuzzleTile>(); // 8 个 tile
     private int emptyIndex; // 空格的索引（0..gridSize*gridSize-1）
 
-    void Start()
-    {
-        if (gridLayout == null) Debug.LogError("GridLayout not assigned!");
-        CreatePuzzle();
-        ShufflePuzzle();
-    }
-
-    // 创建拼图（按行上到下、左到右的 sibling 顺序）
-    void CreatePuzzle()
+  void Start()
+  {
+    if (gridLayout == null) Debug.LogError("GridLayout not assigned!");
+    puzzlePanel.SetActive(false);
+  }
+    
+    void ClearPuzzle()
     {
         // 清空已有子对象（如果重复运行）
         tiles.Clear();
@@ -33,6 +32,12 @@ public class PuzzleManager : MonoBehaviour
         {
             Destroy(gridLayout.transform.GetChild(i).gameObject);
         }
+    }
+
+    // 创建拼图（按行上到下、左到右的 sibling 顺序）
+    void CreatePuzzle()
+    {
+        ClearPuzzle();
 
         // 源贴图的 texture（注意 y 方向）
         Texture2D tex = sourceImage.texture;
@@ -116,7 +121,7 @@ public class PuzzleManager : MonoBehaviour
 
     // Shuffle by doing legal random moves from solved state
     void ShufflePuzzle()
-    {
+  {
         System.Random rng = new System.Random();
         for (int i = 0; i < shuffleMoves; i++)
         {
@@ -129,21 +134,28 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    // Check win: all tiles at their original indices
-    void CheckWin()
+  // Check win: all tiles at their original indices
+  void CheckWin()
+  {
+    foreach (var t in tiles)
     {
-        foreach (var t in tiles)
-        {
-            if (!t.IsAtOrigin()) return;
-        }
-        Debug.Log("You win!");
-        // 可触发胜利 UI，比如弹窗或动画
+      if (!t.IsAtOrigin()) return;
     }
+    Debug.Log("You win!");
+    // 可触发胜利 UI，比如弹窗或动画
+  }
 
-    // Optional helper: restart
-    public void Restart()
+    public void StartPuzzle()
     {
+        Debug.Log("Start Puzzle pressed");
         CreatePuzzle();
         ShufflePuzzle();
+        puzzlePanel.SetActive(true);
+    }
+    public void ExitPuzzle()
+    {
+        Debug.Log("Exit pressed");
+        ClearPuzzle();
+        puzzlePanel.SetActive(false);
     }
 }
