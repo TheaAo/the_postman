@@ -121,7 +121,7 @@
           "text": "(Try to bribe) Give him 500 euros",
           "nextId": "brien_bribe_fail_to_agree",
           "requireFlags": [],
-          "setFlags": ["brien.bribe"],
+          "setFlags": ["brien.bribe", "has_ramen_for_knife"],
           "cost": 500,
           "insufficientText": "This is a lot..."
         },
@@ -129,7 +129,7 @@
           "text": "I know you got a way.",
           "nextId": "brien_persuade",
           "requireFlags": [],
-          "setFlags": ["brien.persuade"]
+          "setFlags": ["brien.persuade", "has_ramen_for_knife"]
         }
       ],
       "events": []
@@ -141,7 +141,7 @@
       "portraitKey": "",
       "nextId": "brien_guilt_trip",
       "options": [],
-      "events": []
+      "events": ["brien.bribe", "has_ramen_for_knife", "Route.GoGuard"]
     },
     "brien_guilt_trip": {
       "id": "brien_guilt_trip",
@@ -177,7 +177,7 @@
       "portraitKey": "",
       "nextId": "brien_persuade2",
       "options": [],
-      "events": []
+      "events": ["brien.persuade", "has_ramen_for_knife", "Route.GoGuard"]
     },
     "brien_persuade2": {
       "id": "brien_persuade2",

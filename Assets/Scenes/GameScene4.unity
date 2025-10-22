@@ -1712,13 +1712,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartNpcDialogueOnInteract
   runner: {fileID: 1332838547}
-  npcKey: Brien
+  npcKey: Elvis
   director: {fileID: 1332838545}
   graphId: 
   interactRadius: 1.6
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   player: {fileID: 0}
 --- !u!1 &1637707505
 GameObject:

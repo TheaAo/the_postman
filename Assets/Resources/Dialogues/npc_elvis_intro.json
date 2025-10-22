@@ -126,7 +126,7 @@
       "portraitKey": "",
       "nextId": "elvis_intro_15",
       "options": [],
-      "events": []
+      "events": ["Route.GoPolice"]
     },
     "elvis_intro_15": {
       "id": "elvis_intro_15",

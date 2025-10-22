@@ -82,7 +82,8 @@ namespace Game.Dialogue.Runtime {
                         text = nObj["text"]?.Value<string>(),
                         nextId = nObj["nextId"]?.Type == JTokenType.Null ? null : nObj["nextId"]?.Value<string>(),
                         requireFlags = ReadStringList(nObj["requireFlags"]),
-                        options = new List<RuntimeOption>()
+                        options = new List<RuntimeOption>(),
+                        events = ReadStringList(nObj["events"])
                     };
 
                     var opts = nObj["options"] as JArray;

@@ -60,6 +60,7 @@ namespace Game.Dialogue.Runtime {
         public string nextId;             // 无选项时的跳转（留空则结束）
         public List<RuntimeOption> options = new List<RuntimeOption>();
         public List<string> requireFlags; // 进入节点所需（可空）
+        public List<string> events = new List<string>();
     }
 
     public class RuntimeOption {
@@ -159,6 +160,15 @@ namespace Game.Dialogue.Runtime {
                 DialogueEvents.RaiseNode(node.id);
 
                 View.ClearOptions();
+                // [Added] process node.events as flags (data-driven): set into both local store and global store
+                if (node.events != null) {
+                    foreach (var ev in node.events) {
+                        if (!string.IsNullOrEmpty(ev)) {
+                            Store.Add(ev);
+                            if (GlobalFlagStore.I != null) GlobalFlagStore.I.Set(ev);
+                        }
+                    }
+                }
                 View.ShowLine(node.speaker, node.text);
                 yield return View.WaitForConfirm();
 
@@ -213,6 +223,9 @@ namespace Game.Dialogue.Runtime {
 
 
                 Store.AddMany(opt.setFlags);
+                if (opt.setFlags != null && GlobalFlagStore.I != null) {
+                    foreach (var f in opt.setFlags) GlobalFlagStore.I.Set(f);
+                }
                 State.currentNodeId = string.IsNullOrEmpty(opt.nextId) ? null : opt.nextId;
                 if (string.IsNullOrEmpty(State.currentNodeId)) break;
             }
@@ -246,7 +259,14 @@ namespace Game.Dialogue.Runtime {
 
         bool PassFlags(List<string> requires) {
             if (requires == null || requires.Count == 0) return true;
-            foreach (var r in requires) if (!Store.Has(r)) return false;
+            foreach (var r in requires) {
+                // Prefer global store if present (cross-scene), fallback to local Store for backward-compat
+                if (GlobalFlagStore.I != null) {
+                    if (!GlobalFlagStore.I.Has(r)) return false;
+                } else {
+                    if (!Store.Has(r)) return false;
+                }
+            }
             return true;
         }
     }

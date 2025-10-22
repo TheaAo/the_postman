@@ -20,6 +20,8 @@ public class StartNpcDialogueOnInteract : MonoBehaviour {
             var p = GameObject.FindGameObjectWithTag("Player");
             if (p) player = p.transform;
         }
+        if (runner == null) runner = FindAnyObjectByType<Game.Dialogue.Runtime.DialogueRunner>();
+        if (director == null) director = FindAnyObjectByType<Game.Dialogue.Runtime.ConversationDirector>();
     }
 
     void OnEnable() { DialogueEvents.OnEnded += HandleEnded; }

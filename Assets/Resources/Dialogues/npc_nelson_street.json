@@ -14,7 +14,7 @@
     "nelson_02": {
       "id": "nelson_02",
       "speaker": "Nelson",
-      "text": "Yeah. What's up, Tom.",
+      "text": "Yeah nothing interesting. You?",
       "portraitKey": "",
       "nextId": "nelson_03",
       "options": [],
@@ -23,7 +23,7 @@
     "nelson_03": {
       "id": "nelson_03",
       "speaker": "Tom",
-      "text": "Heard you know some people.",
+      "text": "Just hanging around.",
       "portraitKey": "",
       "nextId": "nelson_04",
       "options": [],
@@ -32,7 +32,7 @@
     "nelson_04": {
       "id": "nelson_04",
       "speaker": "Nelson",
-      "text": "I know people but I don't know you.",
+      "text": "You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
       "portraitKey": "",
       "nextId": "nelson_05",
       "options": [],
@@ -41,7 +41,7 @@
     "nelson_05": {
       "id": "nelson_05",
       "speaker": "Tom",
-      "text": "Come on, throw me a bone.",
+      "text": "Well... I wanna get something that could not be found in a casual grocery. Any thought?",
       "portraitKey": "",
       "nextId": "nelson_06",
       "options": [],
@@ -58,15 +58,20 @@
           "text": "(Lowkey) Give him 500 euros",
           "nextId": "nelson_bribe",
           "requireFlags": [],
-          "setFlags": ["has_nelson_reco", "bribed_nelson", "money"],
+          "setFlags": [
+            "has_nelson_reco",
+            "bribed_nelson"
+          ],
           "cost": 500,
           "insufficientText": "This is a lot..."
         },
         {
-          "text": "Nelson, come on—don't be like that.",
+          "text": "Nelson, come on\u2014don't be like that.",
           "nextId": "nelson_refuse",
           "requireFlags": [],
-          "setFlags": []
+          "setFlags": [
+            "Route.GoRamen"
+          ]
         }
       ],
       "events": []
@@ -74,11 +79,11 @@
     "nelson_bribe": {
       "id": "nelson_bribe",
       "speaker": "Nelson",
-      "text": "Alright, here's a name. And don't say I told you.",
+      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
       "portraitKey": "",
       "nextId": "",
       "options": [],
-      "events": []
+      "events": ["has_nelson_reco","Route.GoGuard"]
     },
     "nelson_refuse": {
       "id": "nelson_refuse",
@@ -87,7 +92,7 @@
       "portraitKey": "",
       "nextId": "",
       "options": [],
-      "events": []
+      "events": ["Route.GoRamen"]
     }
   }
 }

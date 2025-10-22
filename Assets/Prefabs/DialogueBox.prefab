@@ -782,7 +782,6 @@ GameObject:
   - component: {fileID: 5815998038800002370}
   - component: {fileID: 9020333125157632788}
   - component: {fileID: 4566217996223027377}
-  - component: {fileID: 387535595428107990}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -906,31 +905,6 @@ MonoBehaviour:
   optionPrefab: {fileID: 0}
   enableTypewriter: 1
   charsPerSecond: 30
---- !u!114 &387535595428107990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9010690133263201836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fcaa8b571ae4ac49ac93d6bdad58e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.Runtime.UnityUIDialogueView
-  speakerText: {fileID: 0}
-  bodyText: {fileID: 0}
-  portraitImage: {fileID: 0}
-  panelRoot: {fileID: 0}
-  continueButton: {fileID: 0}
-  clickAnywhereMask: {fileID: 0}
-  optionsRoot: {fileID: 0}
-  optionPrefab: {fileID: 0}
-  enableTypewriter: 1
-  charsPerSecond: 45
-  autoConfirm: 0
-  autoChooseFirstOption: 0
-  autoDelay: 0.05
 --- !u!1001 &781032329879844315
 PrefabInstance:
   m_ObjectHideFlags: 0
