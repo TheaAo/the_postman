@@ -25,7 +25,7 @@ public class StartNpcDialogueOnInteract : MonoBehaviour {
         if (runner == null) runner = FindAnyObjectByType<Game.Dialogue.Runtime.DialogueRunner>();
         if (director == null) director = FindAnyObjectByType<Game.Dialogue.Runtime.ConversationDirector>();
 
-        prompt?.SetActive(false);
+        if (prompt != null && prompt.activeSelf) prompt.SetActive(false);
     }
 
     void OnEnable() { DialogueEvents.OnEnded += HandleEnded; }
