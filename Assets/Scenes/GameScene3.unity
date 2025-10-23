@@ -1548,7 +1548,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 0}
-  prompt: {fileID: 0}
+  prompt: {fileID: 1383546205}
 --- !u!1 &1348008869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1654,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxFollow2D
   cam: {fileID: 519420031}
   parallax: 0.2
+--- !u!1 &1383546205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 856562864253383374, guid: ee0edfa1908e840d98cf1f4341f09af6, type: 3}
+  m_PrefabInstance: {fileID: 2111301069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1435085121
 GameObject:
   m_ObjectHideFlags: 0
