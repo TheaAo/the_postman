@@ -1,0 +1,103 @@
+{
+  "id": "npc_boss_office",
+  "startNodeId": "boss_office_01",
+  "nodes": {
+    "boss_office_01": {
+      "id": "boss_office_01",
+      "speaker": "Boss",
+      "text": "There there, you're not the first one to come here with a heavy heart. What do you want, young man?",
+      "portraitKey": "",
+      "nextId": "boss_office_02",
+      "options": [],
+      "events": []
+    },
+    "boss_office_02": {
+      "id": "boss_office_02",
+      "speaker": "Tom",
+      "text": "I came here to get a flower. I need it for a friend.",
+      "portraitKey": "",
+      "nextId": "boss_office_03",
+      "options": [],
+      "events": []
+    },
+    "boss_office_03": {
+      "id": "boss_office_03",
+      "speaker": "Boss",
+      "text": "A flower? ",
+      "portraitKey": "",
+      "nextId": "boss_office_04",
+      "options": [],
+      "events": []
+    },
+    "boss_office_04": {
+      "id": "boss_office_04",
+      "speaker": "Tom",
+      "text": "Yes, I’ll pay whatever it costs.",
+      "portraitKey": "",
+      "nextId": "boss_office_05",
+      "options": [],
+      "events": []
+    },
+    "boss_office_05": {
+      "id": "boss_office_05",
+      "speaker": "Boss",
+      "text": "Ah… Young man. Always thinking you can get whatever you want.",
+      "portraitKey": "",
+      "nextId": "boss_office_06",
+      "options": [],
+      "events": []
+    },
+    "boss_office_06": {
+      "id": "boss_office_06",
+      "speaker": "Tom",
+      "text": "Please, I need it.",
+      "portraitKey": "",
+      "nextId": "boss_office_07",
+      "options": [],
+      "events": []
+    },
+    "boss_office_07": {
+      "id": "boss_office_07",
+      "speaker": "Boss",
+      "text": "Alright, alright. I do have the thing you want. But it's locked.",
+      "portraitKey": "",
+      "nextId": "boss_office_08",
+      "options": [],
+      "events": []
+    },
+    "boss_office_08": {
+      "id": "boss_office_08",
+      "speaker": "Tom",
+      "text": "Locked?",
+      "portraitKey": "",
+      "nextId": "boss_office_09",
+      "options": [],
+      "events": []
+    },
+    "boss_office_09": {
+      "id": "boss_office_09",
+      "speaker": "Boss",
+      "text": "Yes, I was told it can only be given to worthy people. Someone who can solve the puzzle.",
+      "portraitKey": "",
+      "nextId": "boss_office_10",
+      "options": [],
+      "events": []
+    },
+    "boss_office_10": {
+      "id": "boss_office_10",
+      "speaker": "Tom",
+      "text": "Then I'd like to try.",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [
+        {
+          "text": "Start the puzzle",
+          "nextId": null,
+          "requireFlags": [],
+          "setFlags": []
+        }
+      ],
+      "events": ["StartPuzzle"]
+    }
+  }
+}

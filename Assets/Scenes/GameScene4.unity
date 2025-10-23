@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartNpcDialogueOnInteract
   runner: {fileID: 1332838547}
-  npcKey: Elvis
+  npcKey: Boss
   director: {fileID: 1332838545}
   graphId: 
   interactRadius: 1.6
