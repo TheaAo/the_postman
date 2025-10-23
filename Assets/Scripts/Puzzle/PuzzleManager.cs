@@ -19,6 +19,7 @@ public class PuzzleManager : MonoBehaviour
     // 运行数据
     private List<PuzzleTile> tiles = new List<PuzzleTile>(); // 8 个 tile
     private int emptyIndex; // 空格的索引（0..gridSize*gridSize-1）
+    private bool isShuffling = false;
 
     private void Awake() {
         if (Instance != null && Instance != this) { Destroy(this.gameObject); return; }
@@ -121,7 +122,7 @@ public class PuzzleManager : MonoBehaviour
         tile.currentIndex = emptyIndex;
         emptyIndex = tileOldIndex;
 
-        CheckWin();
+        if(!isShuffling) CheckWin();
         return true;
     }
 
@@ -130,6 +131,7 @@ public class PuzzleManager : MonoBehaviour
     void ShufflePuzzle()
   {
         System.Random rng = new System.Random();
+        isShuffling = true;
         for (int i = 0; i < shuffleMoves; i++)
         {
             // gather movable tiles
@@ -139,6 +141,7 @@ public class PuzzleManager : MonoBehaviour
             // move chosen tile; this will update emptyIndex
             TryMoveTile(sel);
         }
+        isShuffling = false;
     }
 
   // Check win: all tiles at their original indices
@@ -149,7 +152,7 @@ public class PuzzleManager : MonoBehaviour
       if (!t.IsAtOrigin()) return;
     }
     Debug.Log("You win!");
-    // 可触发胜利 UI，比如弹窗或动画
+    if (SceneTransitionManager.Instance != null) SceneTransitionManager.Instance.LoadScene("LetterScene", "");
   }
 
     public void StartPuzzle()
