@@ -2316,11 +2316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2386,6 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8d175f94bfd5c4a89a595f10ef7abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBin
+  exclamationMark: {fileID: 0}
   silverPrefab: {fileID: 2858096314898123925, guid: 4b83a9d56f4b2401c82fd6caa244e7d6, type: 3}
   goldPrefab: {fileID: 3997573689589695987, guid: a87c722e0b352493d9b94b0a89bdc03e, type: 3}
   banknotePrefab: {fileID: 8957101811985165710, guid: fdba565a393bc4a1fb49a1dd0b5b6a7a, type: 3}
@@ -2709,6 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8d175f94bfd5c4a89a595f10ef7abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBin
+  exclamationMark: {fileID: 0}
   silverPrefab: {fileID: 2858096314898123925, guid: 4b83a9d56f4b2401c82fd6caa244e7d6, type: 3}
   goldPrefab: {fileID: 3997573689589695987, guid: a87c722e0b352493d9b94b0a89bdc03e, type: 3}
   banknotePrefab: {fileID: 8957101811985165710, guid: fdba565a393bc4a1fb49a1dd0b5b6a7a, type: 3}
