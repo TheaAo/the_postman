@@ -7,6 +7,8 @@ using UnityEngine.InputSystem; // 新输入系统
 
 public class TrashBin : MonoBehaviour
 {
+     public GameObject exclamationMark;
+
     [Header("要生成的三个钱币预制体")]
     public GameObject silverPrefab;     // 银币
     public GameObject goldPrefab;       // 金币
@@ -61,6 +63,7 @@ public class TrashBin : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         playerIn = true;
         if (triggerOnEnter) TrySpawn();
+
     }
 
     // 玩家离开触发区
@@ -73,8 +76,15 @@ public class TrashBin : MonoBehaviour
     {
         // 玩家在触发区且冷却结束时按键触发
         if (triggerOnEnter || onCd || !playerIn) return;
-        if (InteractPressed()) TrySpawn();
-    }
+        if (InteractPressed()) 
+        {
+            if (exclamationMark != null)
+                {
+                    exclamationMark.SetActive(false);
+                }
+            TrySpawn();
+        }
+        }
 
     // 兼容新旧输入系统的按键检测
     bool InteractPressed()
