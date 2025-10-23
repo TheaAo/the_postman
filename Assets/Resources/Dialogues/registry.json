@@ -2,6 +2,7 @@
   "npcToGraph": {
     "Angelo": "npc_angelo_gate",
     "Brien":  "npc_brien_ramen",
+    "Boss": "npc_boss_office",
     "Elvis":  "npc_elvis_intro",
     "Nelson": "npc_nelson_street"
   },
