@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour {
     private bool _moveWasEnabled;
     private bool _jumpWasEnabled;
 
+    [Header("跳跃设置")]
+    public int maxJumps = 1;  // 最多跳1次
+
+    private int jumpCount = 0;
+
     void Awake() {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -66,13 +71,22 @@ public class PlayerMovement : MonoBehaviour {
             animator.SetFloat("Horizontal", inputDirection.x);
         }
 
-        // 跳跃
-        if (inputControl.Player.Jump.triggered) {
+        // 只有在地面时才能跳跃
+        if (inputControl.Player.Jump.triggered && jumpCount < maxJumps)
+        {
             Jump();
+            jumpCount++;
         }
 
         // 实际移动（对话期间 Move 被禁用 → 这里 inputDirection 会是 0）
         rb.linearVelocity = new Vector2(inputDirection.x * speed, rb.linearVelocity.y);
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jumpCount = 0;
+        }
     }
 
     private void Jump() {
