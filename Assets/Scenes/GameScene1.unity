@@ -352,6 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227845589}
   - component: {fileID: 227845588}
+  - component: {fileID: 227845590}
   m_Layer: 0
   m_Name: Exclamation
   m_TagString: Untagged
@@ -406,12 +407,12 @@ SpriteRenderer:
   m_SortingLayerID: 394549777
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7145195464572602083, guid: 46a3f14415a9f0c4fb9601a815f0fcfc, type: 3}
+  m_Sprite: {fileID: -1573792811662344696, guid: 656ddb36fa53ad94e9a7038e53cd1a3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.59, y: 47.48}
+  m_Size: {x: 10.580001, y: 43.760002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -432,6 +433,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2118127795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &227845590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227845587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cab7bc6ba104840a2124ab0d363b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExclamationUpDownMove
+  floatSpeed: 2.5
+  floatHeight: 0.05
 --- !u!1 &339483355 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8419498054456093964, guid: d97e0a861112b40aaa00d8de19586a43, type: 3}
