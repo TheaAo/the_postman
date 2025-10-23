@@ -2,6 +2,7 @@
 using UnityEngine;
 using Game.Dialogue.Runtime; // for DialogueEvents
 
+
 /// <summary>
 /// Listens for dialogue end, then routes to a target scene if a Route.* flag is present.
 /// Keep routing out of the DialogueRunner to maintain separation of concerns.
@@ -13,11 +14,11 @@ public sealed class DialogueSceneRouter : MonoBehaviour
     [SerializeField] private string policeSceneName = "GameScene2";
     [SerializeField] private string loadingMessage = "";
 
-    public static DialogueSceneRouter I { get; private set; }
+    public static DialogueSceneRouter Instance { get; private set; }
 
     private void Awake() {
-        if (I != null && I != this) { Destroy(this.gameObject); return; }
-        I = this;
+        if (Instance != null && Instance != this) { Destroy(this.gameObject); return; }
+        Instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -33,21 +34,28 @@ public sealed class DialogueSceneRouter : MonoBehaviour
 
     private void HandleDialogueEnded(string graphId)
     {
-        if (GlobalFlagStore.I == null || SceneTransitionManager.Instance == null) return;
-
-        if (GlobalFlagStore.I.Consume("Route.GoRamen"))
-        {
-            SceneTransitionManager.Instance.LoadScene(ramenSceneName, loadingMessage);
-            return;
+        if (GlobalFlagStore.I == null) return;
+        if (SceneTransitionManager.Instance != null) {
+            if (GlobalFlagStore.I.Consume("Route.GoRamen")) {
+                SceneTransitionManager.Instance.LoadScene(ramenSceneName, loadingMessage);
+                return;
+            }
+            if (GlobalFlagStore.I.Consume("Route.GoGuard")) {
+                SceneTransitionManager.Instance.LoadScene(guardSceneName, loadingMessage);
+                return;
+            }
+            if (GlobalFlagStore.I.Consume("Route.GoPolice")) {
+                SceneTransitionManager.Instance.LoadScene(policeSceneName, loadingMessage);
+                return;
+            }
         }
-        if (GlobalFlagStore.I.Consume("Route.GoGuard"))
-        {
-            SceneTransitionManager.Instance.LoadScene(guardSceneName, loadingMessage);
-            return;
+        if (PuzzleManager.Instance != null) {
+            if (GlobalFlagStore.I.Consume("StartPuzzle")) {
+                PuzzleManager.Instance.StartPuzzle();
+                Debug.Log("About to start the puzzle");
+                return;
+            }
         }
-        if (GlobalFlagStore.I.Consume("Route.GoPolice")) {
-            SceneTransitionManager.Instance.LoadScene(policeSceneName, loadingMessage);
-            return;
-        }
+            
     }
 }

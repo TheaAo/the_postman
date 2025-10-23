@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PuzzleManager : MonoBehaviour
 {
+    public static PuzzleManager Instance { get; private set; }
+
     [Header("Setup")]
     public GameObject puzzlePanel;   // 指向 PuzzleBoard (含 GridLayoutGroup)
     public GameObject tilePrefab;      // 指向 tile prefab (UI Button + Image + PuzzleTile)
@@ -18,7 +20,12 @@ public class PuzzleManager : MonoBehaviour
     private List<PuzzleTile> tiles = new List<PuzzleTile>(); // 8 个 tile
     private int emptyIndex; // 空格的索引（0..gridSize*gridSize-1）
 
-  void Start()
+    private void Awake() {
+        if (Instance != null && Instance != this) { Destroy(this.gameObject); return; }
+        Instance = this;
+    }
+
+    void Start()
   {
     if (gridLayout == null) Debug.LogError("GridLayout not assigned!");
     puzzlePanel.SetActive(false);
