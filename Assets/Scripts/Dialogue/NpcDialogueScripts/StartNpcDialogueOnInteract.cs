@@ -8,10 +8,12 @@ public class StartNpcDialogueOnInteract : MonoBehaviour {
     public ConversationDirector director;
     public string graphId;
 
-    [Header("·Ç´¥·¢¼ì²âÉèÖÃ")]
+    [Header("ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float interactRadius = 1.6f;
     public LayerMask playerMask;
     public Transform player;
+
+    public GameObject prompt;
 
     bool isTalking;
 
@@ -22,6 +24,8 @@ public class StartNpcDialogueOnInteract : MonoBehaviour {
         }
         if (runner == null) runner = FindAnyObjectByType<Game.Dialogue.Runtime.DialogueRunner>();
         if (director == null) director = FindAnyObjectByType<Game.Dialogue.Runtime.ConversationDirector>();
+
+        prompt?.SetActive(false);
     }
 
     void OnEnable() { DialogueEvents.OnEnded += HandleEnded; }
@@ -34,7 +38,10 @@ public class StartNpcDialogueOnInteract : MonoBehaviour {
         bool inRange = Physics2D.OverlapCircle(transform.position, interactRadius, playerMask);
         var kb = Keyboard.current;
 
+        if (prompt != null) prompt.SetActive(inRange);
+
         if (inRange && kb != null && kb.fKey.wasPressedThisFrame) {
+            Destroy(prompt);
             isTalking = true;
             string finalGraph = director ? director.GetGraphForNpc(runner.Store, npcKey) : null;
             if (string.IsNullOrEmpty(finalGraph))
