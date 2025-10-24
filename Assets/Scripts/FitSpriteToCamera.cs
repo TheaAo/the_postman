@@ -4,7 +4,7 @@ using UnityEngine;
 public class FitSpriteToCamera : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    [SerializeField, Range(1f, 2f)] private float fillFactor = 1.15f; // 比屏幕大一些
+    [SerializeField, Range(1f, 2f)] private float fillFactor = 1.15f; // A little bigger than the screen
     [SerializeField] private bool keepAspect = true;
 
     void Awake()
@@ -14,7 +14,7 @@ public class FitSpriteToCamera : MonoBehaviour
         var sr = GetComponent<SpriteRenderer>();
         if (!sr || !sr.sprite) return;
 
-        // 当前世界尺寸（含scale）
+        // Current world size (with scale)
         var size = sr.bounds.size;
 
         float worldH = cam.orthographicSize * 2f;
@@ -25,7 +25,7 @@ public class FitSpriteToCamera : MonoBehaviour
 
         if (keepAspect)
         {
-            float s = Mathf.Max(sx, sy) * fillFactor; // 覆盖并稍大
+            float s = Mathf.Max(sx, sy) * fillFactor; // Coverage and slightly larger
             transform.localScale *= s;
         }
         else
@@ -34,7 +34,7 @@ public class FitSpriteToCamera : MonoBehaviour
             transform.localScale = new Vector3(ls.x * sx * fillFactor, ls.y * sy * fillFactor, ls.z);
         }
 
-        // 背景中心跟相机中心对齐（初始）
+        // Background centre aligned with camera centre (initial)
         transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
     }
 }

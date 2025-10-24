@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class IntroController : MonoBehaviour
 {
-    // public TextMeshProUGUI storyText;      // 指向 StoryText
+    // public TextMeshProUGUI storyText;      // refer to StoryText
     // [TextArea(3,10)]
-    // public string fullStory;               // 剧情文字
-    // public float typeSpeed = 0.05f;        // 每个字母显示间隔
-    public string nextScene = "GameScene"; // 游戏主场景名字
+    // public string fullStory;               // text of a play
+    // public float typeSpeed = 0.05f;        // Display interval per letter
+    public string nextScene = "GameScene"; // Name of the main scene of the game
 
     // private bool skip = false;
 
@@ -35,7 +35,7 @@ public class IntroController : MonoBehaviour
     //     }
     //     storyText.text = fullStory;
 
-    //     // 等待玩家按任意键
+    //     // Wait for the player to press any key
     //     while (!Input.anyKeyDown)
     //         yield return null;
 

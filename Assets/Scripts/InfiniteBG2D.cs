@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InfiniteBG2D : MonoBehaviour
 {
-    public SpriteRenderer[] tiles; // 三块背景
+    public SpriteRenderer[] tiles; // Three backgrounds
     public Camera cam;
     float width;
 
@@ -11,18 +11,18 @@ public class InfiniteBG2D : MonoBehaviour
         if (cam == null) cam = Camera.main;
         if (tiles == null || tiles.Length < 3)
         {
-            Debug.LogError("请拖入3个SpriteRenderer（左中右）");
+            Debug.LogError("Please drag in 3 SpriteRenderers (centre left and right)");
             enabled = false;
             return;
         }
 
-        // 自动计算每块宽度
+        // Automatic calculation of the width of each block
         width = tiles[0].bounds.size.x;
 
-        // 排序，确保从左到右
+        // Sort, make sure it's left to right
         System.Array.Sort(tiles, (a, b) => a.transform.position.x.CompareTo(b.transform.position.x));
 
-        // 摆好间距
+        // Spacing.
         tiles[1].transform.position = new Vector3(cam.transform.position.x, tiles[1].transform.position.y, tiles[1].transform.position.z);
         tiles[0].transform.position = tiles[1].transform.position + Vector3.left * width;
         tiles[2].transform.position = tiles[1].transform.position + Vector3.right * width;
@@ -34,11 +34,11 @@ public class InfiniteBG2D : MonoBehaviour
 
         foreach (var t in tiles)
         {
-            // 相机往右走
+            // Camera to the right.
             if (camX - t.transform.position.x > width * 1.5f)
                 t.transform.position += Vector3.right * width * tiles.Length;
 
-            // 相机往左走
+            // Camera to the left.
             else if (t.transform.position.x - camX > width * 1.5f)
                 t.transform.position -= Vector3.right * width * tiles.Length;
         }

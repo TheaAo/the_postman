@@ -3,7 +3,7 @@ using System;
 
 public enum CurrencyType
 {
-    Silver,    // 银币
-    Gold,      // 金币
-    Cash       // 钞票
+    Silver,    // silver coin
+    Gold,      // gold coin
+    Cash       // cash
 }
