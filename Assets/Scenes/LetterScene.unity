@@ -751,7 +751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To whoever finds this letter:\n\nHello. My name is Chelse.\nI don\u2019t
+  m_text: "To whoever finds this letter:\n\nHello. My name is Chelsea.\nI don\u2019t
     know who you are, but if you\u2019re reading this, you must have both the wisdom
     and the curiosity to wonder what it truly means to be alive. It\u2019s not an
     easy question to answer\u2014but perhaps finding this flower is where it begins.\n\nI
@@ -767,7 +767,7 @@ MonoBehaviour:
     the same warmth I once did\u2014\ngo to Outer Zone 7. You may find more traces
     of the world we lost.\n\nBy the time you read this, I might already be imprisoned\u2026
     or still on the run.\nBut I hope that you, I, and this flower will meet again
-    someday\u2014\nin a place where we can finally be free.\n\n\u2014 Chelse"
+    someday\u2014\nin a place where we can finally be free.\n\n\u2014 Chelsea"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
