@@ -83,7 +83,7 @@ namespace Game.Dialogue.Runtime {
                         nextId = nObj["nextId"]?.Type == JTokenType.Null ? null : nObj["nextId"]?.Value<string>(),
                         requireFlags = ReadStringList(nObj["requireFlags"]),
                         options = new List<RuntimeOption>(),
-                        events = ReadStringList(nObj["events"])
+                        events = ReadStringList(nObj["events"]),
                     };
 
                     var opts = nObj["options"] as JArray;
@@ -99,7 +99,8 @@ namespace Game.Dialogue.Runtime {
                                 requireFlags = ReadStringList(oObj["requireFlags"]),
 
                                 cost = oObj["cost"] != null ? oObj["cost"].Value<int>() : 0,
-                                insufficientText = oObj["insufficientText"]?.Value<string>()
+                                insufficientText = oObj["insufficientText"]?.Value<string>(),
+                                insufficientNextId = oObj["insufficientNextId"]?.Value<string>()
                             });
                         }
                     }
