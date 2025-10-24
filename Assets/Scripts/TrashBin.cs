@@ -1,65 +1,64 @@
-// TrashBin.cs —— 2D版 + 新旧输入系统兼容 + 开盖生成钱币
 using UnityEngine;
 using System.Collections;
 #if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem; // 新输入系统
+using UnityEngine.InputSystem; 
 #endif
 
 public class TrashBin : MonoBehaviour
 {
      public GameObject exclamationMark;
 
-    [Header("要生成的三个钱币预制体")]
-    public GameObject silverPrefab;     // 银币
-    public GameObject goldPrefab;       // 金币
-    public GameObject banknotePrefab;   // 纸币
+    [Header("Three coin prefab to be generated")]
+    public GameObject silverPrefab;     // Silver coins
+    public GameObject goldPrefab;       // Gold coins
+    public GameObject banknotePrefab;   // cash
 
-    public enum SpawnMode { Fixed, Random, Sequential } // 固定/随机/顺序生成
-    [Header("生成规则")]
+    public enum SpawnMode { Fixed, Random, Sequential } // Fixed/random/sequential generation
+    [Header("Generation rules")]
     public SpawnMode mode = SpawnMode.Random;
     public enum MoneyType { Silver, Gold, Banknote }
-    public MoneyType fixedType = MoneyType.Gold; // 当模式为Fixed时使用
-    public int spawnCount = 1;                   // 一次生成数量
+    public MoneyType fixedType = MoneyType.Gold; // Used when the mode is Fixed
+    public int spawnCount = 1;                   // Quantity generated at one time
 
-    [Header("交互设置")]
+    [Header("Interactive settings")]
 #if ENABLE_INPUT_SYSTEM
-    public Key interactKey = Key.F;          // 新输入系统按键
+    public Key interactKey = Key.F;          
 #else
-    public KeyCode interactKey = KeyCode.F;  // 旧输入系统按键
+    public KeyCode interactKey = KeyCode.F;  
 #endif
-    public bool triggerOnEnter = false;      // 玩家靠近是否自动触发
-    public float reuseCooldown = 1.0f;       // 冷却时间（<0为一次性）
+    public bool triggerOnEnter = false;      // if it is automatically triggered by the player's proximity
+    public float reuseCooldown = 1.0f;       // Cooldown time 
 
-    [Header("生成位置和弹出参数")]
-    public Transform spawnPoint;             // 生成位置（可为空）
-    public float upOffset = 0.4f;            // 生成点上移高度
-    public float popForce = 3.5f;            // 向上初速度
-    public float scatter = 1.2f;             // 水平随机偏移
+    [Header("Generate location and parameters")]
+    public Transform spawnPoint;             // Generation location (can be empty)
+    public float upOffset = 0.4f;            // Generate point uplift height
+    public float popForce = 3.5f;            // upward initial velocity
+    public float scatter = 1.2f;             // Horizontal Random Offset
 
-    [Header("外观切换（方案A：两个子物体）")]
-    public GameObject closedVisual;          // 垃圾桶关闭外观
-    public GameObject openedVisual;          // 垃圾桶打开外观
-    public bool openOnlyOnce = true;         // 是否只开一次
+    [Header("Appearance Switching")]
+    public GameObject closedVisual;          // Trashcan Closure Appearance
+    public GameObject openedVisual;          // Trashcan Open appearance
+    public bool openOnlyOnce = true;         // Whether to open only once
 
-    bool playerIn;       // 玩家是否在触发区内
-    bool onCd;           // 是否在冷却中
-    bool hasOpened;      // 是否已经打开
-    int seqIdx;          // 顺序模式下的计数
+    bool playerIn;       // Whether the player is in the trigger zone
+    bool onCd;           // Is it on cooldown
+    bool hasOpened;      // Is it open
+    int seqIdx;          // Counting in Sequential Mode
     public GameObject Prompt_trashboxNotice;
     void Awake()
     {
-        // 自动查找子物体（如果没有手动拖引用）
+        // Automatically find sub-objects (if no manual drag references)
         if (!closedVisual) closedVisual = transform.Find("ClosedVisual")?.gameObject;
         if (!openedVisual) openedVisual = transform.Find("OpenedVisual")?.gameObject;
 
-        // 初始显示：关闭状态
+        // Initial display: closed status
         if (closedVisual) closedVisual.SetActive(true);
         if (openedVisual) openedVisual.SetActive(false);
 
         if (Prompt_trashboxNotice != null) Prompt_trashboxNotice.SetActive(false);
     }
 
-    // 当玩家进入触发区
+    // When player enters the trigger zone
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
@@ -68,7 +67,7 @@ public class TrashBin : MonoBehaviour
 
     }
 
-    // 玩家离开触发区
+    // When player leaves the trigger zone
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player")) playerIn = false;
@@ -77,7 +76,7 @@ public class TrashBin : MonoBehaviour
     void Update()
     {
         if (Prompt_trashboxNotice != null) Prompt_trashboxNotice.SetActive(playerIn);
-        // 玩家在触发区且冷却结束时按键触发
+        // Triggered by pressing a key when the player is in the trigger zone and the cooldown is over
         if (triggerOnEnter || onCd || !playerIn) return;
         if (InteractPressed()) 
         {
@@ -91,7 +90,6 @@ public class TrashBin : MonoBehaviour
         }
         }
 
-    // 兼容新旧输入系统的按键检测
     bool InteractPressed()
     {
 #if ENABLE_INPUT_SYSTEM
@@ -104,7 +102,7 @@ public class TrashBin : MonoBehaviour
 #endif
     }
 
-    // 生成钱币 + 切换外观
+    // Generate Coins + Switch Appearance
     void TrySpawn()
     {
         if (onCd) return;
@@ -118,7 +116,7 @@ public class TrashBin : MonoBehaviour
             var go = Instantiate(prefab, pos, Quaternion.identity);
             go.transform.rotation = Quaternion.identity;
 
-            // 给初速度（Rigidbody2D）
+            // Set initial velocity 
             var rb2d = go.GetComponent<Rigidbody2D>();
             if (rb2d)
             {
@@ -131,14 +129,13 @@ public class TrashBin : MonoBehaviour
             }
         }
 
-        // 打开垃圾桶外观
         OpenVisual();
 
         if (reuseCooldown < 0f || openOnlyOnce) { enabled = false; }
         else StartCoroutine(Cooldown());
     }
 
-    // 切换外观
+    // Switch Appearance
     void OpenVisual()
     {
         if (hasOpened && openOnlyOnce) return;
@@ -148,7 +145,7 @@ public class TrashBin : MonoBehaviour
         if (openedVisual) openedVisual.SetActive(true);
     }
 
-    // 冷却计时
+    // Cooldown timer
     IEnumerator Cooldown()
     {
         onCd = true;
@@ -156,7 +153,7 @@ public class TrashBin : MonoBehaviour
         onCd = false;
     }
 
-    // 决定生成哪种钱币
+    // Decide which coins to generate
     MoneyType ChooseType()
     {
         switch (mode)
@@ -173,7 +170,7 @@ public class TrashBin : MonoBehaviour
         }
     }
 
-    // 根据类型返回预制体
+    // Returns prefab bodies by type
     GameObject PickPrefab(MoneyType t)
     {
         switch (t)
@@ -185,7 +182,7 @@ public class TrashBin : MonoBehaviour
         }
     }
 
-    // 自动计算垃圾桶上方位置
+    // Automatically calculates the position above the dustbin
     Vector3 GetTopPos()
     {
         var col = GetComponent<Collider2D>();
