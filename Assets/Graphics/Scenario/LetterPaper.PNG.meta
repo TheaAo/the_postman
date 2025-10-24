@@ -3,8 +3,8 @@ guid: 509b366c855ab4b22b7ceb85e23ced64
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4879212928348920112
-    second: 75e7bbcb5a9bbc2a427ea6b187839931_0
+      213: 8301784975813912198
+    second: LetterPaper_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 75e7bbcb5a9bbc2a427ea6b187839931_0
+      name: LetterPaper_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1615
-        height: 1326
+        width: 1658
+        height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0391bb1ae4276b340800000000000000
-      internalID: 4879212928348920112
+      spriteID: 6862015637dd53370800000000000000
+      internalID: 8301784975813912198
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      75e7bbcb5a9bbc2a427ea6b187839931_0: 4879212928348920112
+      LetterPaper_0: 8301784975813912198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
