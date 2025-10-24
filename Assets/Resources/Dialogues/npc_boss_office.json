@@ -77,7 +77,7 @@
     "boss_office_09": {
       "id": "boss_office_09",
       "speaker": "Boss",
-      "text": "Boss: Yes, I was told it can only be given to worthy people. Someone who can solve the puzzle.",
+      "text": "Boss: Yes, I was told it can only be given to worthy people, along with a letter. Someone who can solve the puzzle.",
       "portraitKey": "",
       "nextId": "boss_office_10",
       "options": [],
