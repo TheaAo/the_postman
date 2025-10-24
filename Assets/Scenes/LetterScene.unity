@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 14905695}
   - component: {fileID: 14905694}
   - component: {fileID: 14905693}
+  - component: {fileID: 14905696}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -227,6 +228,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14905691}
   m_CullTransparentMesh: 1
+--- !u!114 &14905696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14905691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68746efffbeb4831a55f0dbe0c9c224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextReveal
+  scrollRect: {fileID: 14905693}
+  textComponent: {fileID: 1249481749}
+  actionButton: {fileID: 912776826}
+  fullText: 
+  revealSpeed: 0.05
+  autoScrollToTop: 1
+  revealByCharacter: 0
 --- !u!1 &325383902
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +358,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0000035680926}
-  m_SizeDelta: {x: 0, y: 2000}
+  m_SizeDelta: {x: 0, y: 1200}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &648491622
 GameObject:
@@ -706,7 +726,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 415768664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -10, y: 0}
@@ -731,40 +751,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, reque referrentur per te, ullum graeco oportere
-    usu cu. Ius an feugait elaboraret, ex ius quod agam officiis. Mel dictas aeterno
-    dolorum an, est eu oratio reprehendunt. Perpetua consequat id est, usu invenire
-    hendrerit scribentur id. In omittam democritum mei, mei in ubique accusam. Nec
-    evertitur rationibus cotidieque id, at has congue omittam, eam eu sapientem expetendis
-    eloquentiam.
-
-
-    In mel utinam tractatos eloquentiam, liber audire verterem
-    eu per, ex ius cibo noluisse quaerendum. Sed porro definiebas te. Per no nonumes
-    menandri. Ut veritus accusata mel, quo id dicunt inermis theophrastus. Id exerci
-    dictas legimus per, vis an nostrud facilisis. Nam cetero aperiam recteque ne,
-    ea quo nominati neglegentur. Tation exerci tempor ea mea, eam no malis mnesarchum
-    consequuntur.
-
-
-    An vix diceret luptatum aliquando, sit eleifend euripidis
-    reprimique id, porro persecuti deseruisse ea eam. Est noster causae id. Ut mea
-    sint ferri aliquando. Vim ipsum sanctus pertinacia an, antiopam adipiscing ea
-    sit.
-
-
-    Ad reque aeque consequuntur vix, cu eam laudem assentior deterruisset,
-    semper mnesarchum mei ei. In his dictas audire constituam, contentiones definitiones
-    ea est. Sea quem percipit repudiandae ne, ei his diceret suscipit disputando,
-    eam vocent postulant aliquando te. Est ad bonorum intellegat voluptaria, eum
-    id appetere persecuti, sit iudico evertitur moderatius ex.
-
-
-    Veritus senserit
-    ullamcorper nec ne, ne has aliquip tibique copiosae. Solum tractatos ius te,
-    cu ullum causae mnesarchum sed. Mollis philosophia has ne, id ius sonet dissentiet,
-    ancillae disputando mediocritatem no usu. Sea id offendit voluptua. Cum te probo
-    expetenda tincidunt, ei solum malis veniam eam.'
+  m_text: "To whoever finds this letter:\n\nHello. My name is Chelse.\nI don\u2019t
+    know who you are, but if you\u2019re reading this, you must have both the wisdom
+    and the curiosity to wonder what it truly means to be alive. It\u2019s not an
+    easy question to answer\u2014but perhaps finding this flower is where it begins.\n\nI
+    discovered its seed in Outer Zone 7, a wasteland marked by the system as a \u201Cforbidden
+    area.\u201D When I saw it sprout in the synthetic soil, I could hardly breathe.
+    For the first time in years, something inside me trembled\u2014it reminded me
+    that I still cared.\n\nI\u2019ve been to that zone a few times. Someone seems
+    to live there, though not as we do. Their way of life is different\u2014unregulated,
+    unfiltered, surrounded by things the system calls natural. It\u2019s chaotic,
+    but it feels alive.\n\nUnfortunately, I think they\u2019ve tracked my movements.
+    The enforcers will find me soon.\nHow I wish I could see the flower in full bloom\u2014but
+    I know I\u2019m running out of time.\n\nIf you ever see it blossom, if you feel
+    the same warmth I once did\u2014\ngo to Outer Zone 7. You may find more traces
+    of the world we lost.\n\nBy the time you read this, I might already be imprisoned\u2026
+    or still on the run.\nBut I hope that you, I, and this flower will meet again
+    someday\u2014\nin a place where we can finally be free.\n\n\u2014 Chelse"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1427,7 +1430,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 773725992}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.225
+  m_Size: 0.375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
