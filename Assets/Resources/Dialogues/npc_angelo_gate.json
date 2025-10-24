@@ -5,7 +5,7 @@
     "angelo_entry_router": {
       "id": "angelo_entry_router",
       "speaker": "Angelo",
-      "text": "Hold on there. You are not allowed to get in here.",
+      "text": "Angelo: Hold on there. You are not allowed to get in here.",
       "portraitKey": "",
       "nextId": null,
       "options": [
@@ -33,7 +33,7 @@
     "angelo_ramen_bribe_reject": {
       "id": "angelo_ramen_bribe_reject",
       "speaker": "Angelo",
-      "text": "Get the fuck off, I am not taking it.",
+      "text": "Angelo: Get the fuck off, I am not taking it.",
       "portraitKey": "",
       "nextId": "angelo_ramen_push",
       "options": [],
@@ -42,7 +42,7 @@
     "angelo_ramen_push": {
       "id": "angelo_ramen_push",
       "speaker": "Tom",
-      "text": "The ramen is really important for Knife and Knife... wants it now. Let me in or I told Brien who told me to leave.",
+      "text": "Tom: The ramen is really important for Knife and Knife... wants it now. Let me in or I told Brien who told me to leave.",
       "portraitKey": "",
       "nextId": "angelo_ramen_wait",
       "options": [],
@@ -51,7 +51,7 @@
     "angelo_ramen_wait": {
       "id": "angelo_ramen_wait",
       "speaker": "Angelo",
-      "text": "Wait here.",
+      "text": "Angelo: Wait here.",
       "portraitKey": "",
       "nextId": "angelo_ramen_back",
       "options": [],
@@ -60,7 +60,7 @@
     "angelo_ramen_back": {
       "id": "angelo_ramen_back",
       "speaker": "Angelo",
-      "text": "…",
+      "text": "Angelo: …",
       "portraitKey": "",
       "nextId": "angelo_ramen_ok",
       "options": [],
@@ -69,7 +69,7 @@
     "angelo_ramen_ok": {
       "id": "angelo_ramen_ok",
       "speaker": "Angelo",
-      "text": "Fine. Go in.",
+      "text": "Angelo: Fine. Go in.",
       "portraitKey": "",
       "nextId": "angelo_end",
       "options": [],
@@ -78,7 +78,7 @@
     "angelo_ramen_01": {
       "id": "angelo_ramen_01",
       "speaker": "Tom",
-      "text": "I am delivering ramen for Knife.",
+      "text": "Tom: I am delivering ramen for Knife.",
       "portraitKey": "",
       "nextId": "angelo_ramen_02",
       "options": [],
@@ -87,7 +87,7 @@
     "angelo_ramen_02": {
       "id": "angelo_ramen_02",
       "speaker": "Angelo",
-      "text": "So what?",
+      "text": "Angelo: So what?",
       "portraitKey": "",
       "nextId": "angelo_ramen_03",
       "options": [],
@@ -96,7 +96,7 @@
     "angelo_ramen_03": {
       "id": "angelo_ramen_03",
       "speaker": "Tom",
-      "text": "Knife needs it now. Let me in.",
+      "text": "Tom: Knife needs it now. Let me in.",
       "portraitKey": "",
       "nextId": "angelo_ramen_04",
       "options": [],
@@ -105,7 +105,7 @@
     "angelo_ramen_04": {
       "id": "angelo_ramen_04",
       "speaker": "Angelo",
-      "text": "No.",
+      "text": "Angelo: No.",
       "portraitKey": "",
       "nextId": null,
       "options": [
@@ -129,7 +129,7 @@
     "angelo_nothing_end": {
       "id": "angelo_nothing_end",
       "speaker": "Narration",
-      "text": "(Conversation ends.)",
+      "text": "Narration: (Conversation ends.)",
       "portraitKey": "",
       "nextId": "angelo_end",
       "options": [],
@@ -147,7 +147,7 @@
     "angelo_nelson_01": {
       "id": "angelo_nelson_01",
       "speaker": "Tom",
-      "text": "Nelson said I can come in.",
+      "text": "Tom: Nelson said I can come in.",
       "portraitKey": "",
       "nextId": "angelo_nelson_02",
       "options": [],
@@ -156,7 +156,7 @@
     "angelo_nelson_02": {
       "id": "angelo_nelson_02",
       "speaker": "Angelo",
-      "text": "Let me check.",
+      "text": "Angelo: Let me check.",
       "portraitKey": "",
       "nextId": "angelo_nelson_03",
       "options": [],
@@ -165,7 +165,7 @@
     "angelo_nelson_03": {
       "id": "angelo_nelson_03",
       "speaker": "Angelo",
-      "text": "…",
+      "text": "Angelo: …",
       "portraitKey": "",
       "nextId": "angelo_nelson_04",
       "options": [],
@@ -174,7 +174,7 @@
     "angelo_nelson_04": {
       "id": "angelo_nelson_04",
       "speaker": "Angelo",
-      "text": "He didn’t leave a ticket for you.",
+      "text": "Angelo: He didn’t leave a ticket for you.",
       "portraitKey": "",
       "nextId": null,
       "options": [
@@ -198,7 +198,7 @@
     "angelo_nelson_bribe_ok": {
       "id": "angelo_nelson_bribe_ok",
       "speaker": "Angelo",
-      "text": "Fine. Go in.",
+      "text": "Angelo: Fine. Go in.",
       "portraitKey": "",
       "nextId": "angelo_end",
       "options": [],

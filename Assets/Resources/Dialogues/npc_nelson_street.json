@@ -5,7 +5,7 @@
     "nelson_01": {
       "id": "nelson_01",
       "speaker": "Tom",
-      "text": "How's going Nelson, you're on street duty today huh.",
+      "text": "Tom: How's going Nelson, you're on street duty today huh.",
       "portraitKey": "",
       "nextId": "nelson_02",
       "options": [],
@@ -14,7 +14,7 @@
     "nelson_02": {
       "id": "nelson_02",
       "speaker": "Nelson",
-      "text": "Yeah nothing interesting. You?",
+      "text": "Nelson: Yeah nothing interesting. You?",
       "portraitKey": "",
       "nextId": "nelson_03",
       "options": [],
@@ -23,7 +23,7 @@
     "nelson_03": {
       "id": "nelson_03",
       "speaker": "Tom",
-      "text": "Just hanging around.",
+      "text": "Tom: Just hanging around.",
       "portraitKey": "",
       "nextId": "nelson_04",
       "options": [],
@@ -32,7 +32,7 @@
     "nelson_04": {
       "id": "nelson_04",
       "speaker": "Nelson",
-      "text": "You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
+      "text": "Nelson: You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
       "portraitKey": "",
       "nextId": "nelson_05",
       "options": [],
@@ -41,7 +41,7 @@
     "nelson_05": {
       "id": "nelson_05",
       "speaker": "Tom",
-      "text": "Well... I wanna get something that could not be found in a casual grocery. Any thought?",
+      "text": "Tom: Well... I wanna get something that could not be found in a casual grocery. Any thought?",
       "portraitKey": "",
       "nextId": "nelson_06",
       "options": [],
@@ -50,7 +50,7 @@
     "nelson_06": {
       "id": "nelson_06",
       "speaker": "Nelson",
-      "text": "Maybe I have and maybe I don't.",
+      "text": "Nelson: Maybe I have and maybe I don't.",
       "portraitKey": "",
       "nextId": null,
       "options": [
@@ -79,7 +79,7 @@
     "nelson_bribe": {
       "id": "nelson_bribe",
       "speaker": "Nelson",
-      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
+      "text": "Nelson: You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
       "portraitKey": "",
       "nextId": "",
       "options": [],
@@ -88,7 +88,7 @@
     "nelson_refuse": {
       "id": "nelson_refuse",
       "speaker": "Nelson",
-      "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+      "text": "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.",
       "portraitKey": "",
       "nextId": "",
       "options": [],

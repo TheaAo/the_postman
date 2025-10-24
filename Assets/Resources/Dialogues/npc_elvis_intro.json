@@ -5,7 +5,7 @@
     "elvis_intro_01": {
       "id": "elvis_intro_01",
       "speaker": "Elvis",
-      "text": "You’ve been quiet. Been avoiding everyone?",
+      "text": "Elvis: You’ve been quiet. Been avoiding everyone?",
       "portraitKey": "",
       "nextId": "elvis_intro_02",
       "options": [],
@@ -14,7 +14,7 @@
     "elvis_intro_02": {
       "id": "elvis_intro_02",
       "speaker": "Tom",
-      "text": "Yeah… just working, trying to get by.",
+      "text": "Tom: Yeah… just working, trying to get by.",
       "portraitKey": "",
       "nextId": "elvis_intro_03",
       "options": [],
@@ -23,7 +23,7 @@
     "elvis_intro_03": {
       "id": "elvis_intro_03",
       "speaker": "Elvis",
-      "text": "You look exhuasted.",
+      "text": "Elvis: You look exhausted.",
       "portraitKey": "",
       "nextId": "elvis_intro_04",
       "options": [],
@@ -32,7 +32,7 @@
     "elvis_intro_04": {
       "id": "elvis_intro_04",
       "speaker": "Tom",
-      "text": "It's Jackson… he’s gone.",
+      "text": "Tom: It's Jackson… he’s gone.",
       "portraitKey": "",
       "nextId": "elvis_intro_05",
       "options": [],
@@ -41,7 +41,7 @@
     "elvis_intro_05": {
       "id": "elvis_intro_05",
       "speaker": "Elvis",
-      "text": "I know brother. I’m sorry.",
+      "text": "Elvis: I know brother. I’m sorry.",
       "portraitKey": "",
       "nextId": "elvis_intro_06",
       "options": [],
@@ -50,7 +50,7 @@
     "elvis_intro_06": {
       "id": "elvis_intro_06",
       "speaker": "Tom",
-      "text": "He left me a last wish.",
+      "text": "Tom: He left me a last wish.",
       "portraitKey": "",
       "nextId": "elvis_intro_07",
       "options": [],
@@ -59,7 +59,7 @@
     "elvis_intro_07": {
       "id": "elvis_intro_07",
       "speaker": "Elvis",
-      "text": "...What is it?",
+      "text": "Elvis: ...What is it?",
       "portraitKey": "",
       "nextId": "elvis_intro_08",
       "options": [],
@@ -68,7 +68,7 @@
     "elvis_intro_08": {
       "id": "elvis_intro_08",
       "speaker": "Tom",
-      "text": "A flower. A real flower. He wanted me to get one and give it to a women named Chelsea.",
+      "text": "Tom: A flower. A real flower. He wanted me to get one and give it to a women named Chelsea.",
       "portraitKey": "",
       "nextId": "elvis_intro_09",
       "options": [],
@@ -77,7 +77,7 @@
     "elvis_intro_09": {
       "id": "elvis_intro_09",
       "speaker": "Elvis",
-      "text": "A flower? How are you supposed to get that? And who's Chelsea???",
+      "text": "Elvis: A flower? How are you supposed to get that? And who's Chelsea???",
       "portraitKey": "",
       "nextId": "elvis_intro_10",
       "options": [],
@@ -86,7 +86,7 @@
     "elvis_intro_10": {
       "id": "elvis_intro_10",
       "speaker": "Tom",
-      "text": "I don’t know neither. But I have to try, I owed him a lot, you know it.",
+      "text": "Tom: I don’t know neither. But I have to try, I owed him a lot, you know it.",
       "portraitKey": "",
       "nextId": "elvis_intro_11",
       "options": [],
@@ -95,7 +95,7 @@
     "elvis_intro_11": {
       "id": "elvis_intro_11",
       "speaker": "Elvis",
-      "text": "Wait... I might know a place. There's a black market in the hood, they sell everything.",
+      "text": "Elvis: Wait... I might know a place. There's a black market in the hood, they sell everything.",
       "portraitKey": "",
       "nextId": "elvis_intro_12",
       "options": [],
@@ -104,7 +104,7 @@
     "elvis_intro_12": {
       "id": "elvis_intro_12",
       "speaker": "Tom",
-      "text": "Black market... Where is it? You've been there?",
+      "text": "Tom: Black market... Where is it? You've been there?",
       "portraitKey": "",
       "nextId": "elvis_intro_13",
       "options": [],
@@ -113,7 +113,7 @@
     "elvis_intro_13": {
       "id": "elvis_intro_13",
       "speaker": "Elvis",
-      "text": "No. I just heard of it in the bar. But I am sure it exists.",
+      "text": "Elvis: No. I just heard of it in the bar. But I am sure it exists.",
       "portraitKey": "",
       "nextId": "elvis_intro_14",
       "options": [],
@@ -122,7 +122,7 @@
     "elvis_intro_14": {
       "id": "elvis_intro_14",
       "speaker": "Tom",
-      "text": "Then I'll go for it.",
+      "text": "Tom: Then I'll go for it.",
       "portraitKey": "",
       "nextId": "elvis_intro_15",
       "options": [],
@@ -131,7 +131,7 @@
     "elvis_intro_15": {
       "id": "elvis_intro_15",
       "speaker": "Elvis",
-      "text": "Good luck.",
+      "text": "Elvis: Good luck.",
       "portraitKey": "",
       "nextId": "",
       "options": [],
