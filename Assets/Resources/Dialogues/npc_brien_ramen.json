@@ -123,7 +123,8 @@
           "requireFlags": [],
           "setFlags": ["brien.bribe", "has_ramen_for_knife"],
           "cost": 500,
-          "insufficientText": "Tom: This is a lot..."
+          "insufficientText": "(This is a lot...)",
+          "insufficientNextId": "brien_insufficient_options"
         },
         {
           "text": "I know you got a way.",
@@ -134,6 +135,28 @@
       ],
       "events": []
     },
+
+    "brien_insufficient_options": {
+      "id": "brien_insufficient_options",
+      "speaker": "Tom",
+      "text": "(Well then...)",
+      "portraitKey": "",
+      "nextId": null,
+      "options": [
+        {
+          "text": "I know you got a way.",
+          "nextId": "brien_persuade",
+          "setFlags": []
+        },
+        {
+          "text": "I shall go get some cash.",
+          "nextId": null,
+          "setFlags": []
+        }
+      ],
+      "events": []
+    },
+
     "brien_bribe_fail_to_agree": {
       "id": "brien_bribe_fail_to_agree",
       "speaker": "Brien",

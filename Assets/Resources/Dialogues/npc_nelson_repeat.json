@@ -1,0 +1,64 @@
+{
+  "id": "npc_nelson_street",
+  "startNodeId": "nelson_repeat_01",
+  "nodes": {
+    "nelson_repeat_01": {
+      "id": "nelson_repeat_01",
+      "speaker": "Nelson",
+      "text": "Filled up your mind, or your pocket?",
+      "options": [
+        {
+          "text": "Give him 500 euros",
+          "nextId": "nelson_bribe",
+          "requireFlags": [],
+          "setFlags": ["has_nelson_reco", "bribed_nelson"],
+          "cost": 500,
+          "insufficientText": "This is a lot...",
+          "insufficientNextId": "nelson_insufficient_options"
+        },
+        {
+          "text": "Nelson, come on—don't be like that.",
+          "nextId": "nelson_refuse",
+          "setFlags": ["Route.GoRamen"]
+        }
+      ],
+      "events": []
+    },
+
+    "nelson_insufficient_options": {
+      "id": "nelson_insufficient_options",
+      "speaker": "Tom",
+      "text": "(Well then...)",
+      "options": [
+        {
+          "text": "Screw you!",
+          "nextId": null,
+          "setFlags": ["Route.GoPolice"]
+        },
+        {
+          "text": "I shall go get some cash.",
+          "nextId": null,
+          "setFlags": ["nelson_need_cash"]
+        }
+      ],
+      "events": []
+    },
+
+    "nelson_bribe": {
+      "id": "nelson_bribe",
+      "speaker": "Nelson",
+      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
+      "nextId": null,
+      "options": [],
+      "events": ["has_nelson_reco", "Route.GoGuard"]
+    },
+    "nelson_refuse": {
+      "id": "nelson_refuse",
+      "speaker": "Nelson",
+      "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+      "nextId": null,
+      "options": [],
+      "events": ["Route.GoRamen"]
+    }
+  }
+}

@@ -5,8 +5,7 @@
     "nelson_01": {
       "id": "nelson_01",
       "speaker": "Tom",
-      "text": "Tom: How's going Nelson, you're on street duty today huh.",
-      "portraitKey": "",
+      "text": "How's going Nelson, you're on street duty today huh.",
       "nextId": "nelson_02",
       "options": [],
       "events": []
@@ -14,8 +13,7 @@
     "nelson_02": {
       "id": "nelson_02",
       "speaker": "Nelson",
-      "text": "Nelson: Yeah nothing interesting. You?",
-      "portraitKey": "",
+      "text": "Yeah nothing interesting. You?",
       "nextId": "nelson_03",
       "options": [],
       "events": []
@@ -23,8 +21,7 @@
     "nelson_03": {
       "id": "nelson_03",
       "speaker": "Tom",
-      "text": "Tom: Just hanging around.",
-      "portraitKey": "",
+      "text": "Just hanging around.",
       "nextId": "nelson_04",
       "options": [],
       "events": []
@@ -32,8 +29,7 @@
     "nelson_04": {
       "id": "nelson_04",
       "speaker": "Nelson",
-      "text": "Nelson: You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
-      "portraitKey": "",
+      "text": "You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
       "nextId": "nelson_05",
       "options": [],
       "events": []
@@ -41,8 +37,7 @@
     "nelson_05": {
       "id": "nelson_05",
       "speaker": "Tom",
-      "text": "Tom: Well... I wanna get something that could not be found in a casual grocery. Any thought?",
-      "portraitKey": "",
+      "text": "Well... I wanna get something that could not be found in a casual grocery. Any thought?",
       "nextId": "nelson_06",
       "options": [],
       "events": []
@@ -50,28 +45,21 @@
     "nelson_06": {
       "id": "nelson_06",
       "speaker": "Nelson",
-      "text": "Nelson: Maybe I have and maybe I don't.",
-      "portraitKey": "",
-      "nextId": null,
+      "text": "Maybe I have and maybe I don't.",
       "options": [
         {
-          "text": "(Lowkey) Give him 500 euros",
+          "text": "Give him 500 euros",
           "nextId": "nelson_bribe",
           "requireFlags": [],
-          "setFlags": [
-            "has_nelson_reco",
-            "bribed_nelson"
-          ],
+          "setFlags": ["has_nelson_reco", "bribed_nelson"],
           "cost": 500,
-          "insufficientText": "This is a lot..."
+          "insufficientText": "This is a lot...",
+          "insufficientNextId": "nelson_insufficient_options"
         },
         {
-          "text": "Nelson, come on\u2014don't be like that.",
+          "text": "Nelson, come on—don't be like that.",
           "nextId": "nelson_refuse",
-          "requireFlags": [],
-          "setFlags": [
-            "Route.GoRamen"
-          ]
+          "setFlags": ["Route.GoRamen"]
         }
       ],
       "events": []
@@ -79,20 +67,36 @@
     "nelson_bribe": {
       "id": "nelson_bribe",
       "speaker": "Nelson",
-      "text": "Nelson: You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
-      "portraitKey": "",
-      "nextId": "",
+      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
+      "nextId": null,
       "options": [],
-      "events": ["has_nelson_reco","Route.GoGuard"]
+      "events": ["has_nelson_reco", "Route.GoGuard"]
     },
     "nelson_refuse": {
       "id": "nelson_refuse",
       "speaker": "Nelson",
-      "text": "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.",
-      "portraitKey": "",
-      "nextId": "",
+      "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+      "nextId": null,
       "options": [],
       "events": ["Route.GoRamen"]
+    },
+    "nelson_insufficient_options": {
+      "id": "nelson_insufficient_options",
+      "speaker": "Tom",
+      "text": "(Well then...)",
+      "options": [
+        {
+          "text": "Screw you!",
+          "nextId": null,
+          "setFlags": ["Route.GoPolice"]
+        },
+        {
+          "text": "I shall go get some cash.",
+          "nextId": null,
+          "setFlags": ["nelson_need_cash"]
+        }
+      ],
+      "events": []
     }
   }
 }
