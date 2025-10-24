@@ -55,9 +55,40 @@ public class TextReveal : MonoBehaviour
         } else
         {
             textComponent.text = fullText;
+            if (scrollRect != null)
+            {
+                yield return null; 
+
+                float contentHeight = scrollRect.content.rect.height;
+                float viewportHeight = scrollRect.viewport.rect.height;
+
+                if (contentHeight > viewportHeight)
+                {
+                    yield return new WaitForSeconds(5f);
+                    yield return StartCoroutine(SmoothScrollToBottom(30f));
+                }
+            }
         }
         
         Debug.Log("Done!");
         actionButton.SetActive(true);
     }
+
+    IEnumerator SmoothScrollToBottom(float duration)
+{
+    float startValue = scrollRect.verticalNormalizedPosition;
+    float elapsed = 0f;
+
+    while (elapsed < duration)
+    {
+        elapsed += Time.deltaTime;
+        float t = Mathf.Clamp01(elapsed / duration);
+
+        scrollRect.verticalNormalizedPosition = Mathf.Lerp(startValue, 0f, t);
+
+        yield return null;
+    }
+
+    scrollRect.verticalNormalizedPosition = 0f;
+}
 }
