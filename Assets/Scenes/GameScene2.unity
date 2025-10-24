@@ -2566,6 +2566,10 @@ PrefabInstance:
       value: TrashBin_3
       objectReference: {fileID: 0}
     - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2575,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.112
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2608,6 +2612,18 @@ PrefabInstance:
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 394549777
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2904,7 +2920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.112
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2937,6 +2953,18 @@ PrefabInstance:
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 394549777
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3974,7 +4002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.112
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4007,6 +4035,18 @@ PrefabInstance:
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304982073924169740, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 394549777
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

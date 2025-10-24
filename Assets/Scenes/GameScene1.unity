@@ -944,7 +944,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 1.5
+  orthographic size: 1.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -969,7 +969,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.078, y: 0.48916706, z: -10}
+  m_LocalPosition: {x: -1.078, y: 1.042503, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   CameraDistance: 10
   DeadZoneDepth: 0
   Composition:
-    ScreenPosition: {x: 0, y: 0.19305569}
+    ScreenPosition: {x: 0, y: 0.3145842}
     DeadZone:
       Enabled: 0
       Size: {x: 0.2, y: 0.2}
@@ -2067,7 +2067,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 1.5
+    OrthographicSize: 1.8
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -2094,7 +2094,7 @@ Transform:
   m_GameObject: {fileID: 1028249534}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.078, y: 0.48916706, z: -10}
+  m_LocalPosition: {x: -1.078, y: 1.042503, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2164,8 +2164,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press F to open
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93442edfbf5fd485fbada86488640841, type: 2}
+  m_sharedMaterial: {fileID: 2884330094264527263, guid: 93442edfbf5fd485fbada86488640841, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2278,11 +2278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.928
+      value: -3.935
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02216
+      value: -0.099
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2459,8 +2459,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press F to open
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93442edfbf5fd485fbada86488640841, type: 2}
+  m_sharedMaterial: {fileID: 2884330094264527263, guid: 93442edfbf5fd485fbada86488640841, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3031,11 +3031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1.993
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02216
+      value: -0.099
       objectReference: {fileID: 0}
     - target: {fileID: 3630061447204296281, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_LocalPosition.z

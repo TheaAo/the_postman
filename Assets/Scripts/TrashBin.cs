@@ -56,8 +56,7 @@ public class TrashBin : MonoBehaviour
         if (closedVisual) closedVisual.SetActive(true);
         if (openedVisual) openedVisual.SetActive(false);
 
-        //if (Prompt_trashboxNotice != null && Prompt_trashboxNotice.activeSelf) 
-        Prompt_trashboxNotice.SetActive(false);
+        if (Prompt_trashboxNotice != null) Prompt_trashboxNotice.SetActive(false);
     }
 
     // 当玩家进入触发区
@@ -77,12 +76,13 @@ public class TrashBin : MonoBehaviour
 
     void Update()
     {
-        Prompt_trashboxNotice.SetActive(playerIn);
+        if (Prompt_trashboxNotice != null) Prompt_trashboxNotice.SetActive(playerIn);
         // 玩家在触发区且冷却结束时按键触发
         if (triggerOnEnter || onCd || !playerIn) return;
         if (InteractPressed()) 
         {
             Destroy(Prompt_trashboxNotice);
+            Prompt_trashboxNotice = null;
             if (exclamationMark != null)
                 {
                     exclamationMark.SetActive(false);
