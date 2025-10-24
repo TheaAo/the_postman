@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.InputSystem;
+
 
 public class TextReveal : MonoBehaviour
 {
@@ -45,6 +47,13 @@ public class TextReveal : MonoBehaviour
         {
           for (int i = 0; i < fullText.Length; i++)
           {
+              if (Keyboard.current.eKey.isPressed)
+              {
+                  textComponent.text = fullText;
+                  yield break; 
+              }
+
+
               currentText += fullText[i];
               textComponent.text = currentText;
               
