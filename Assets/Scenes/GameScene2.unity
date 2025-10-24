@@ -2473,6 +2473,10 @@ PrefabInstance:
       propertyPath: interactKey
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -4919497671848364536, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: Prompt_trashboxNotice
+      value: 
+      objectReference: {fileID: 2843584185427606577, guid: 37a4dade0a0101746a51a43061188f91, type: 3}
     - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_Name
       value: TrashBin_3
@@ -2566,6 +2570,7 @@ MonoBehaviour:
   closedVisual: {fileID: 6891934515522623346, guid: dd5d21588ae747b47bb85deb3ed10487, type: 3}
   openedVisual: {fileID: 4591847639206049330, guid: ba2b7fc39b925014288d717224de0249, type: 3}
   openOnlyOnce: 1
+  Prompt_trashboxNotice: {fileID: 0}
 --- !u!61 &1585453304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2801,6 +2806,10 @@ PrefabInstance:
       propertyPath: interactKey
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -4919497671848364536, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: Prompt_trashboxNotice
+      value: 
+      objectReference: {fileID: 2843584185427606577, guid: 37a4dade0a0101746a51a43061188f91, type: 3}
     - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_Name
       value: TrashBin_2
@@ -2890,6 +2899,7 @@ MonoBehaviour:
   closedVisual: {fileID: 6891934515522623346, guid: dd5d21588ae747b47bb85deb3ed10487, type: 3}
   openedVisual: {fileID: 4591847639206049330, guid: ba2b7fc39b925014288d717224de0249, type: 3}
   openOnlyOnce: 1
+  Prompt_trashboxNotice: {fileID: 0}
 --- !u!61 &1743436155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3866,6 +3876,10 @@ PrefabInstance:
       propertyPath: interactKey
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -4919497671848364536, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: Prompt_trashboxNotice
+      value: 
+      objectReference: {fileID: 2843584185427606577, guid: 37a4dade0a0101746a51a43061188f91, type: 3}
     - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_Name
       value: TrashBin_1

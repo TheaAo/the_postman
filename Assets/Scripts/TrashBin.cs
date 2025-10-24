@@ -45,7 +45,7 @@ public class TrashBin : MonoBehaviour
     bool onCd;           // 是否在冷却中
     bool hasOpened;      // 是否已经打开
     int seqIdx;          // 顺序模式下的计数
-
+    public GameObject Prompt_trashboxNotice;
     void Awake()
     {
         // 自动查找子物体（如果没有手动拖引用）
@@ -55,6 +55,9 @@ public class TrashBin : MonoBehaviour
         // 初始显示：关闭状态
         if (closedVisual) closedVisual.SetActive(true);
         if (openedVisual) openedVisual.SetActive(false);
+
+        //if (Prompt_trashboxNotice != null && Prompt_trashboxNotice.activeSelf) 
+        Prompt_trashboxNotice.SetActive(false);
     }
 
     // 当玩家进入触发区
@@ -74,10 +77,12 @@ public class TrashBin : MonoBehaviour
 
     void Update()
     {
+        Prompt_trashboxNotice.SetActive(playerIn);
         // 玩家在触发区且冷却结束时按键触发
         if (triggerOnEnter || onCd || !playerIn) return;
         if (InteractPressed()) 
         {
+            Destroy(Prompt_trashboxNotice);
             if (exclamationMark != null)
                 {
                     exclamationMark.SetActive(false);

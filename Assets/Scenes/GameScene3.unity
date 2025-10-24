@@ -2311,6 +2311,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4919497671848364536, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
+      propertyPath: Prompt_trashboxNotice
+      value: 
+      objectReference: {fileID: 2843584185427606577, guid: 37a4dade0a0101746a51a43061188f91, type: 3}
     - target: {fileID: 3091615258959186555, guid: 40e9523bc30b07641a958148db69fc1c, type: 3}
       propertyPath: m_Name
       value: TrashBin
