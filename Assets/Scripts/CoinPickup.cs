@@ -5,18 +5,18 @@ public class CoinPickup : MonoBehaviour
 {
     public enum CoinType { Small, Medium, Large }
 
-    [SerializeField] private CoinType coinType;       // 金币类型
-    [SerializeField] private int value = 1;           // 金币价值
+    [SerializeField] private CoinType coinType;       
+    [SerializeField] private int value = 1;           
     [SerializeField] private string playerTag = "Player";
 
     void Reset()
     {
-        GetComponent<Collider2D>().isTrigger = true;  // 自动设为触发器
+        GetComponent<Collider2D>().isTrigger = true;  // Automatically set isTrigger to be true
     }
 
     void Start()
     {
-        // 根据类型设置金币价值（也可在 Inspector 手动改）
+        // Set gold value according to type (can also be changed manually in Inspector)
         switch (coinType)
         {
             case CoinType.Small:
@@ -35,7 +35,7 @@ public class CoinPickup : MonoBehaviour
     {
         if (!other.CompareTag(playerTag)) return;
 
-        GameManager.I?.AddGold(value);    // 增加金币
-        Destroy(gameObject);              // 销毁金币
+        GameManager.I?.AddGold(value);    // Increase Gold
+        Destroy(gameObject);              // Destroy Coin object
     }
 }

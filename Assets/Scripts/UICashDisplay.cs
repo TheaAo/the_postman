@@ -16,7 +16,7 @@ public class UICashDisplay : MonoBehaviour
         if (GameManager.I != null)
         {
             GameManager.I.OnGoldChanged += UpdateCashText;
-            UpdateCashText(GameManager.I.GetGold()); // 进场同步
+            UpdateCashText(GameManager.I.GetGold());
         }
     }
 

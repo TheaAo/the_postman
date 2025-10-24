@@ -5,7 +5,7 @@
     "nelson_repeat_01": {
       "id": "nelson_repeat_01",
       "speaker": "Nelson",
-      "text": "Filled up your mind, or your pocket?",
+      "text": "Nelson: Filled up your mind, or your pocket?",
       "options": [
         {
           "text": "Give him 500 euros",
@@ -47,7 +47,7 @@
     "nelson_bribe": {
       "id": "nelson_bribe",
       "speaker": "Nelson",
-      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
+      "text": "Nelson: You do know the rules. Go to the Backyard of the Old Cinema and say Rabbit recommends you.",
       "nextId": null,
       "options": [],
       "events": ["has_nelson_reco", "Route.GoGuard"]
@@ -55,7 +55,7 @@
     "nelson_refuse": {
       "id": "nelson_refuse",
       "speaker": "Nelson",
-      "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+      "text": "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.",
       "nextId": null,
       "options": [],
       "events": ["Route.GoRamen"]

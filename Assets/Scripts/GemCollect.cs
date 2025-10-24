@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class GemCollect: MonoBehaviour
 {
-    public AudioClip pickupSound;   // 在 Inspector 里放入pick up时要播放的音效
+    public AudioClip pickupSound;   // Put the sound you want to play when you pick up in the Inspector.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 调试输出，看看有没有触发到
+        // Debug and see if it triggers the
         Debug.Log("Hit: " + collision.name);
-        // 确认碰到的是玩家
+        // Confirm that you've met a player.
         if (collision.CompareTag("Gem"))
         {
-            // 播放音效
+            // Play sound effects
             AudioSource.PlayClipAtPoint(pickupSound, transform.position);
 
-            // 让物体消失
+            // Disappearance of objects
             Destroy(collision.gameObject);
 
-            // 这里也可以加拾取音效、加分数、背包逻辑等
-       
+            // Here you can also add pickup sound effects, add scores, backpack logic, etc.
+
         }
     }
 }

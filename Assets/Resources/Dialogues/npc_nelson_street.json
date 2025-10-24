@@ -5,7 +5,7 @@
     "nelson_01": {
       "id": "nelson_01",
       "speaker": "Tom",
-      "text": "How's going Nelson, you're on street duty today huh.",
+      "text": "Tom: How's going Nelson, you're on street duty today huh.",
       "nextId": "nelson_02",
       "options": [],
       "events": []
@@ -13,7 +13,7 @@
     "nelson_02": {
       "id": "nelson_02",
       "speaker": "Nelson",
-      "text": "Yeah nothing interesting. You?",
+      "text": "Nelson: Yeah nothing interesting. You?",
       "nextId": "nelson_03",
       "options": [],
       "events": []
@@ -21,7 +21,7 @@
     "nelson_03": {
       "id": "nelson_03",
       "speaker": "Tom",
-      "text": "Just hanging around.",
+      "text": "Tom: Just hanging around.",
       "nextId": "nelson_04",
       "options": [],
       "events": []
@@ -29,7 +29,7 @@
     "nelson_04": {
       "id": "nelson_04",
       "speaker": "Nelson",
-      "text": "You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
+      "text": "Nelson: You aren't gonna talk to me when you are 'just hanging around'. Don't waste my time.",
       "nextId": "nelson_05",
       "options": [],
       "events": []
@@ -37,7 +37,7 @@
     "nelson_05": {
       "id": "nelson_05",
       "speaker": "Tom",
-      "text": "Well... I wanna get something that could not be found in a casual grocery. Any thought?",
+      "text": "Tom: Well... I wanna get something that could not be found in a casual grocery. Any thought?",
       "nextId": "nelson_06",
       "options": [],
       "events": []
@@ -45,7 +45,7 @@
     "nelson_06": {
       "id": "nelson_06",
       "speaker": "Nelson",
-      "text": "Maybe I have and maybe I don't.",
+      "text": "Nelson: Maybe I have and maybe I don't.",
       "options": [
         {
           "text": "Give him 500 euros",
@@ -67,7 +67,7 @@
     "nelson_bribe": {
       "id": "nelson_bribe",
       "speaker": "Nelson",
-      "text": "You do know the rules. Go to \"TBD\" and say Rabbit recommends you.",
+      "text": "Nelson: You do know the rules. Go to the Backyard of the Old Cinema and say Rabbit recommends you.",
       "nextId": null,
       "options": [],
       "events": ["has_nelson_reco", "Route.GoGuard"]
@@ -75,7 +75,7 @@
     "nelson_refuse": {
       "id": "nelson_refuse",
       "speaker": "Nelson",
-      "text": "And you know I am a police. Get off my face before I arrest you for assaulting a police.",
+      "text": "Nelson: And you know I am a police. Get off my face before I arrest you for assaulting a police.",
       "nextId": null,
       "options": [],
       "events": ["Route.GoRamen"]

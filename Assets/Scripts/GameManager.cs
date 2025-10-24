@@ -3,12 +3,12 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager I { get; private set; }   // 单例实例
-    public event Action<int> OnGoldChanged;             // 金币变化事件
+    public static GameManager I { get; private set; }   
+    public event Action<int> OnGoldChanged;             // Gold change events
 
-    private int goldCount = 0;                          // 当前金币数
+    private int goldCount = 0;                          // Current number of coins
 
-    // 在加载场景前自动创建 GameManager
+    // Automatically creates GameManager before loading the scene 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void AutoCreate()
     {
@@ -20,24 +20,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 增减金币（默认+1）
+    // Increase or decrease gold (default +1)
     public void AddGold(int amount = 1)
     {
         goldCount += amount;
         if (goldCount < 0) goldCount = 0;
         OnGoldChanged?.Invoke(goldCount);
 
-        // ✅ 调试输出
-        Debug.Log($"当前金币数：{goldCount}");
+        Debug.Log($"Current number of coins：{goldCount}");
     }
 
-    // 获取当前金币数
+    // Get the current number of coins
     public int GetGold()
     {
         return goldCount;
     }
 
-    // 设置金币数（如加载存档）
+    // Setting the number of coins (e.g. loading an archive)
     public void SetGold(int newAmount)
     {
         goldCount = Mathf.Max(0, newAmount);

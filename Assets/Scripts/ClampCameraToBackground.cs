@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class ClampCameraToBackground : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer background; // 拖你的背景 SpriteRenderer
+    [SerializeField] private SpriteRenderer background; 
     private Camera cam;
 
     void Awake() => cam = GetComponent<Camera>();
@@ -17,7 +17,7 @@ public class ClampCameraToBackground : MonoBehaviour
         float halfH = cam.orthographicSize;
         float halfW = halfH * cam.aspect;
 
-        // 计算可移动范围（背景边界扣掉半个视口）
+        // Calculate moveable range (background boundary deducts half the viewport)
         float minX = bounds.min.x + halfW;
         float maxX = bounds.max.x - halfW;
         float minY = bounds.min.y + halfH;

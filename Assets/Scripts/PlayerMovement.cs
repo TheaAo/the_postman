@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using Game.Dialogue.Runtime; // 引入对话事件命名空间
+using Game.Dialogue.Runtime; // Introducing the dialogue event namespace
 
 public class PlayerMovement : MonoBehaviour {
     [Header("Movement Settings")]
@@ -12,12 +12,12 @@ public class PlayerMovement : MonoBehaviour {
     private InputSystem_Actions inputControl;
     private Vector2 inputDirection;
 
-    // 记录动作状态
+    // Recording of movement status
     private bool _moveWasEnabled;
     private bool _jumpWasEnabled;
 
-    [Header("跳跃设置")]
-    public int maxJumps = 1;  // 最多跳1次
+    [Header("Jump Setting")]
+    public int maxJumps = 1;  // Maximum 1 jump
 
     private int jumpCount = 0;
 
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
     void OnEnable() {
         inputControl.Enable();
 
-        // ✅ 监听对话事件
+        // Listening to dialogue events
         DialogueEvents.OnStarted += HandleDialogueStarted;
         DialogueEvents.OnEnded += HandleDialogueEnded;
     }
@@ -44,41 +44,41 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void HandleDialogueStarted(string graphId) {
-        // 记录当前状态
+        // Record the current state
         _moveWasEnabled = inputControl.Player.Move.enabled;
         _jumpWasEnabled = inputControl.Player.Jump.enabled;
 
-        // ❌ 禁用移动和跳跃
+        // Disable movement and jumping
         if (_moveWasEnabled) inputControl.Player.Move.Disable();
         if (_jumpWasEnabled) inputControl.Player.Jump.Disable();
 
-        // 如果希望角色站定，可以强制速度清零
+        // force the speed to be zeroed out
         rb.linearVelocity = Vector2.zero;
     }
 
     private void HandleDialogueEnded(string graphId) {
-        // ✅ 对话结束恢复动作
+        // Resume action at the end of the dialogue
         if (_moveWasEnabled) inputControl.Player.Move.Enable();
         if (_jumpWasEnabled) inputControl.Player.Jump.Enable();
     }
 
     void Update() {
-        // 读取移动输入
+        // Read mobile inputs
         inputDirection = inputControl.Player.Move.ReadValue<Vector2>();
 
-        // 动画控制
+        // Animation control
         if (animator != null) {
             animator.SetFloat("Horizontal", inputDirection.x);
         }
 
-        // 只有在地面时才能跳跃
+        // You can only jump when you're on the ground.
         if (inputControl.Player.Jump.triggered && jumpCount < maxJumps)
         {
             Jump();
             jumpCount++;
         }
 
-        // 实际移动（对话期间 Move 被禁用 → 这里 inputDirection 会是 0）
+        // Actual movement (Move is disabled during the dialogue → here inputDirection will be 0)
         rb.linearVelocity = new Vector2(inputDirection.x * speed, rb.linearVelocity.y);
     }
     void OnCollisionEnter2D(Collision2D collision)
