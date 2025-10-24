@@ -50,7 +50,7 @@ public class TextReveal : MonoBehaviour
               if (Keyboard.current.eKey.isPressed)
               {
                   textComponent.text = fullText;
-                  yield break; 
+                  break; 
               }
 
 
