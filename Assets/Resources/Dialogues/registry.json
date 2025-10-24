@@ -21,6 +21,11 @@
       "npc": "Brien",
       "whenAllFlags": ["NPC.Brien.Visited"],
       "nextGraph": "npc_brien_repeat_short"
+    },
+    {
+      "npc": "Nelson",
+      "whenAllFlags": ["NPC.Nelson.Visited"],
+      "nextGraph": "npc_nelson_repeat"
     }
   ]
 }
