@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Cross-scene flag store. One source of truth for narrative flags.
-/// </summary>
+
+// Cross-scene flag store. One source of truth for narrative flags.
+
 public sealed class GlobalFlagStore : MonoBehaviour
 {
     public static GlobalFlagStore I { get; private set; }
@@ -26,7 +26,7 @@ public sealed class GlobalFlagStore : MonoBehaviour
         _flags.Add(key);
     }
 
-    /// <summary>Check and remove the key in one step. Returns true if removed.</summary>
+    // Check and remove the key in one step. Returns true if removed.
     public bool Consume(string key)
     {
         if (string.IsNullOrEmpty(key)) return false;

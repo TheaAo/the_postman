@@ -101,8 +101,8 @@ namespace Game.Dialogue.Runtime {
         void Awake() {
             Source = sourceComponent as IRuntimeDialogueSource;
             View = viewComponent;
-            if (Source == null) Debug.LogError("[DialogueRunner] 数据源未设置或未实现 IRuntimeDialogueSource");
-            if (View == null) Debug.LogError("[DialogueRunner] 视图未设置或未实现 IRuntimeDialogueView");
+            if (Source == null) Debug.LogError("[DialogueRunner] Data source not set or not implement IRuntimeDialogueSource");
+            if (View == null) Debug.LogError("[DialogueRunner] View not set or not implemented IRuntimeDialogueView");
         }
 
         public Coroutine StartDialogue(string graphId, string startNodeId = null) {
@@ -121,7 +121,7 @@ namespace Game.Dialogue.Runtime {
 
                 if (!PassFlags(node.requireFlags)) break;
 
-                Debug.Log($"当前node：{State.currentNodeId}");
+                Debug.Log($"current node：{State.currentNodeId}");
 
                 State.visitedNodes.Add(node.id);
                 DialogueEvents.RaiseNode(node.id);
@@ -152,7 +152,7 @@ namespace Game.Dialogue.Runtime {
                 var opt = visible[chosen.Value];
                 DialogueEvents.RaiseOption(node.id, chosen.Value);
 
-                // 金币检查逻辑
+                // Coin checking
                 if (opt.cost > 0) {
                     int currentGold = 0;
                     var gm = GameManager.I;
@@ -163,13 +163,13 @@ namespace Game.Dialogue.Runtime {
                         View.ShowLine(null, msg);
                         yield return View.WaitForConfirm();
 
-                        // 新逻辑：跳转到 insufficientNextId
+                        // jump to insufficientNextId
                         if (!string.IsNullOrEmpty(opt.insufficientNextId)) {
                             State.currentNodeId = opt.insufficientNextId;
                             continue;
                         }
 
-                        // 默认逻辑：回到当前节点
+                        // Default logic: return to current node
                         continue;
                     }
                     else {

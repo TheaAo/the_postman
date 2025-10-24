@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Dialogue.Runtime {
-    /// <summary>
-    /// 选项按钮脚本：挂在你的选项预制体根物体上
-    /// 预制体内需要 Button + TextMeshProUGUI
-    /// </summary>
+    // Option Button Script: hooked to the root object of your option prefab.
+    // Button + TextMeshProUGUI are needed inside the prefab.
+    // 
     public class OptionButton : MonoBehaviour {
         [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI label;

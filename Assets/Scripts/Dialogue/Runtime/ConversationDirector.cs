@@ -5,23 +5,21 @@ using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace Game.Dialogue.Runtime {
-    /// <summary>
-    /// 负责“这次与某 NPC 对话，应该启动哪个 graphId？”
-    /// - 读取 Resources 下的 registry.json
-    /// - 按 routes 里 whenAllFlags 匹配；命中则返回 nextGraph；否则回落 npcToGraph 的默认
-    /// - 监听 DialogueEvents.OnEnded 写入 NPC.{Npc}.Visited
-    /// </summary>
+    // - Responsible for "Which graphId should be started for this conversation with an NPC?"
+    // - Reads registry.json under Resources.
+    // - Match whenAllFlags in routes; if it hits, return nextGraph; otherwise fall back to the npcToGraph default.
+    // - Listen to DialogueEvents.OnEnded write to NPC.{Npc}.Visited
     public class ConversationDirector : MonoBehaviour {
         [Header("Resources path")]
         [SerializeField] private string registryPath = "Dialogues";
 
-        [Header("调试")]
+        [Header("debug")]
         public bool verbose = true;
 
-        // 数据
+        // data
         private readonly Dictionary<string, string> _npcToDefault = new();  // npc -> defaultGraph
-        private readonly List<Route> _routes = new();                      // 路由规则
-        private readonly Dictionary<string, string> _graphToNpc = new();    // 反向索引：graph -> npc（用于写 Visited）
+        private readonly List<Route> _routes = new();                      // Routing Rules
+        private readonly Dictionary<string, string> _graphToNpc = new();    // Reverse index: graph -> npc (for writing Visited)
 
         [Serializable]
         class Route {
@@ -46,7 +44,7 @@ namespace Game.Dialogue.Runtime {
 
             var ta = Resources.Load<TextAsset>(registryPath);
             if (ta == null) {
-                Debug.LogWarning($"[ConversationDirector] 未找到 {registryPath}.json，使用空注册表。");
+                Debug.LogWarning($"[ConversationDirector] did not find {registryPath}.json, use an empty registry.");
                 return;
             }
 
@@ -58,7 +56,7 @@ namespace Game.Dialogue.Runtime {
                     var g = kv.Value?.Value<string>();
                     if (!string.IsNullOrEmpty(npc) && !string.IsNullOrEmpty(g)) {
                         _npcToDefault[npc] = g;
-                        _graphToNpc[g] = npc; // 反向索引：默认图
+                        _graphToNpc[g] = npc; // Reverse index: default map
                     }
                 }
             }
@@ -75,12 +73,12 @@ namespace Game.Dialogue.Runtime {
                     };
                     if (string.IsNullOrEmpty(r.npc) || string.IsNullOrEmpty(r.nextGraph)) continue;
                     _routes.Add(r);
-                    _graphToNpc[r.nextGraph] = r.npc; // 反向索引：路由图
+                    _graphToNpc[r.nextGraph] = r.npc; // Reverse Index: Route Map
                 }
             }
 
             if (verbose) {
-                Debug.Log($"[ConversationDirector] 载入 {_npcToDefault.Count} 个默认图，{_routes.Count} 条路由。");
+                Debug.Log($"[ConversationDirector] loaded {_npcToDefault.Count} default graphes，{_routes.Count} routes。");
             }
         }
 
@@ -93,27 +91,27 @@ namespace Game.Dialogue.Runtime {
             return list;
         }
 
-        /// <summary> 入口：给 NPC 取这次要开的图。 </summary>
+        /// Give the NPC the map you want to open this time.
         public string GetGraphForNpc(VariableStore store, string npc) {
             if (string.IsNullOrEmpty(npc)) return null;
-            // 1) 路由优先：顺序匹配 whenAllFlags
+            // 1) Routing priority: sequential matching whenAllFlags
             foreach (var r in _routes.Where(r => string.Equals(r.npc, npc, StringComparison.Ordinal))) {
                 if (PassAll(store, r.whenAllFlags)) {
-                    if (verbose) Debug.Log($"[ConversationDirector] 命中路由 npc={npc} -> {r.nextGraph} (flags: {string.Join(",", r.whenAllFlags)})");
+                    if (verbose) Debug.Log($"[ConversationDirector] hit route npc={npc} -> {r.nextGraph} (flags: {string.Join(",", r.whenAllFlags)})");
                     return r.nextGraph;
                 }
             }
-            // 2) 默认
+            // 2) Default
             if (_npcToDefault.TryGetValue(npc, out var g)) {
-                if (verbose) Debug.Log($"[ConversationDirector] 未命中路由，使用默认 npc={npc} -> {g}");
+                if (verbose) Debug.Log($"[ConversationDirector] No route hit, use default npc={npc} -> {g}");
                 return g;
             }
-            Debug.LogWarning($"[ConversationDirector] 未找到 NPC={npc} 的默认图，返回 null");
+            Debug.LogWarning($"[ConversationDirector] did not found {npc}'s default map, return null");
             return null;
         }
 
         static bool PassAll(VariableStore store, List<string> flags) {
-            if (flags == null || flags.Count == 0) return false; // 约束：必须有条件才算路由
+            if (flags == null || flags.Count == 0) return false; // Constraints: must be conditional to be routed
             foreach (var f in flags) if (!store.Has(f)) return false;
             return true;
         }
@@ -121,12 +119,12 @@ namespace Game.Dialogue.Runtime {
         void OnDialogueEnded(string graphId) {
             if (string.IsNullOrEmpty(graphId)) return;
             if (_graphToNpc.TryGetValue(graphId, out var npc)) {
-                // 写入通用“聊过”标记
+                // Write generic "visited" tags
                 var flag = $"NPC.{npc}.Visited";
                 var runner = FindAnyObjectByType<DialogueRunner>();
                 if (runner != null) {
                     runner.Store.Add(flag);
-                    if (verbose) Debug.Log($"[ConversationDirector] 对话结束：标记 {flag}=true");
+                    if (verbose) Debug.Log($"[ConversationDirector] End of dialogue: marking {flag}=true");
                 }
             }
         }

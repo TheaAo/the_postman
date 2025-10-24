@@ -1,15 +1,15 @@
-// 数据层：只存数据，不做任何 UI/流程逻辑
+// Data layer: data only, no UI/process logic
 
 using System;
 using System.Collections.Generic;
 
 namespace Game.Dialogue {
-    // 一段完整对话（通常对应一个NPC）
+    // A complete dialogue (usually corresponding to an NPC)
     [Serializable]
     public class DialogueGraph {
-        public string id;                     // 对话图ID（如：npc_blacksmith）
-        public string startNodeId;            // 进入时的起始节点
-        public Dictionary<string, DialogueNode> nodes = new();  // 节点表
+        public string id;                     // Dialogue map ID
+        public string startNodeId;            // Starting node on entry
+        public Dictionary<string, DialogueNode> nodes = new();  // list of nodes
 
         public DialogueNode GetNodeOrNull(string nodeId) {
             if (string.IsNullOrEmpty(nodeId)) return null;
@@ -18,34 +18,34 @@ namespace Game.Dialogue {
         }
     }
 
-    // 单个台词/步骤
+    // Individual dialogue
     [Serializable]
     public class DialogueNode {
-        public string id;                     // 节点ID（如：intro_01）
-        public string speaker;                // 说话者显示名
-        public string text;                   // 台词文本
-        public string portraitKey;            // 头像资源key，可空
-        public List<DialogueOption> options = new(); // 选项列表
-        public string nextId;                 // 线性下一节点（无选项时使用）
-        public List<string> events = new();   // 进入节点时触发的事件key
+        public string id;                     // Node ID (e.g., intro_01)
+        public string speaker;                // Speaker display name
+        public string text;                   // Text of the lines
+        public string portraitKey;            // Avatar resource key, nullable
+        public List<DialogueOption> options = new(); // Options list
+        public string nextId;                 // Linear next node (used when there is no option)
+        public List<string> events = new();   // Event key triggered when entering the node
     }
 
-    // 一个可选分支
+    // An option
     [Serializable]
     public class DialogueOption {
-        public string text;                   // 按钮显示文字
-        public string nextId;                 // 选择后跳转的节点
-        public List<string> requireFlags = new(); // 显示需要满足的flag
-        public List<string> setFlags = new();     // 选择后设置的flag
+        public string text;                   // Button display text
+        public string nextId;                 // Node to jump to after selection
+        public List<string> requireFlags = new(); // Show flags that need to be met
+        public List<string> setFlags = new();     // Flag set after selection
     }
 
-    // 对话内容来源接口（可从JSON/资源等加载）
+    // Dialogue content source interface
     public interface IDialogueSource {
         DialogueGraph LoadGraph(string graphId);
         bool HasGraph(string graphId);
     }
 
-    // NPC和对话图的映射表
+    // Mapping table of NPCs and dialogue graphs
     [Serializable]
     public class DialogueRegistry {
         public Dictionary<string, string> npcToGraph = new();
@@ -59,42 +59,42 @@ namespace Game.Dialogue {
         }
     }
 
-    // 辅助：检查引用是否有效
+    // util: check if the reference is valid
     public static class DialogueValidation {
         public static bool Validate(DialogueGraph graph, List<string> errors) {
             bool ok = true;
             if (graph == null) {
-                errors?.Add("Graph 为 null");
+                errors?.Add("Graph is null");
                 return false;
             }
             if (string.IsNullOrEmpty(graph.id)) {
-                ok = false; errors?.Add("Graph.id 为空");
+                ok = false; errors?.Add("Graph.id is empty");
             }
             if (string.IsNullOrEmpty(graph.startNodeId) || !graph.nodes.ContainsKey(graph.startNodeId)) {
-                ok = false; errors?.Add($"起始节点不存在：{graph.startNodeId}");
+                ok = false; errors?.Add($"Starting node does not exist：{graph.startNodeId}");
             }
 
             foreach (var kv in graph.nodes) {
                 var node = kv.Value;
                 if (node == null) {
-                    ok = false; errors?.Add($"节点 {kv.Key} 为 null");
+                    ok = false; errors?.Add($"node {kv.Key} is null");
                     continue;
                 }
                 if (!string.IsNullOrEmpty(node.nextId) && !graph.nodes.ContainsKey(node.nextId)) {
-                    ok = false; errors?.Add($"节点 {node.id} 的 nextId 无效：{node.nextId}");
+                    ok = false; errors?.Add($"node {node.id} has invalid nextId ：{node.nextId}");
                 }
                 if (node.options != null) {
                     for (int i = 0; i < node.options.Count; i++) {
                         var opt = node.options[i];
                         if (opt == null) {
-                            ok = false; errors?.Add($"节点 {node.id} 的选项 {i} 为 null");
+                            ok = false; errors?.Add($"node {node.id}'s option{i} is null");
                             continue;
                         }
                         if (string.IsNullOrEmpty(opt.text)) {
-                            ok = false; errors?.Add($"节点 {node.id} 的选项 {i} 文本为空");
+                            ok = false; errors?.Add($"node {node.id}'s option{i} has empty text");
                         }
                         if (string.IsNullOrEmpty(opt.nextId) || !graph.nodes.ContainsKey(opt.nextId)) {
-                            ok = false; errors?.Add($"节点 {node.id} 的选项 {i} 的 nextId 无效：{opt.nextId}");
+                            ok = false; errors?.Add($"node {node.id}'s option{i} has invalid nextId：{opt.nextId}");
                         }
                     }
                 }

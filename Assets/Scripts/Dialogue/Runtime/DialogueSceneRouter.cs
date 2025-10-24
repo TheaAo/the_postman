@@ -3,10 +3,10 @@ using UnityEngine;
 using Game.Dialogue.Runtime; // for DialogueEvents
 
 
-/// <summary>
+
 /// Listens for dialogue end, then routes to a target scene if a Route.* flag is present.
 /// Keep routing out of the DialogueRunner to maintain separation of concerns.
-/// </summary>
+
 public sealed class DialogueSceneRouter : MonoBehaviour
 {
     [SerializeField] private string ramenSceneName = "RamenShop_Scene";

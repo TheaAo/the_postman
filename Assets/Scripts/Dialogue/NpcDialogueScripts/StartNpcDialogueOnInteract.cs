@@ -8,7 +8,6 @@ public class StartNpcDialogueOnInteract : MonoBehaviour {
     public ConversationDirector director;
     public string graphId;
 
-    [Header("�Ǵ����������")]
     public float interactRadius = 1.6f;
     public LayerMask playerMask;
     public Transform player;

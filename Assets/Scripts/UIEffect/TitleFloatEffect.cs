@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class TitleFloatEffect : MonoBehaviour
 {
-    public float floatSpeed = 2f;         // 上下浮动的速度
-    public float floatAmplitude = 20f;    // 上下浮动的幅度
-    public float alphaSpeed = 2f;         // Alpha 闪烁速度
-    public float alphaMin = 0.6f;         // 最低透明度
-    public float alphaMax = 1f;           // 最高透明度
+    public float floatSpeed = 2f;         // Speed of float up and down
+    public float floatAmplitude = 20f;    // Up and down range
+    public float alphaSpeed = 2f;         // Alpha flash rate
+    public float alphaMin = 0.6f;         // Minimum transparency
+    public float alphaMax = 1f;           // Maximum transparency
 
     private RectTransform rectTransform;
     private Vector2 startPos;
@@ -30,11 +30,11 @@ public class TitleFloatEffect : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        // 漂浮效果（上下浮动）
+        // Floating effect (up and down)
         float yOffset = Mathf.Sin(time * floatSpeed) * floatAmplitude;
         rectTransform.anchoredPosition = startPos + new Vector2(0, yOffset);
 
-        // // Alpha 闪烁
+        // // Alpha blinks
         // if (image != null)
         // {
         //     float alpha = Mathf.Lerp(alphaMin, alphaMax, (Mathf.Sin(time * alphaSpeed) + 1f) / 2f);

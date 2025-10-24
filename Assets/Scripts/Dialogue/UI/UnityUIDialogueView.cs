@@ -2,43 +2,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Game.Dialogue.Runtime {
-    /// <summary>
-    /// 基于 UGUI 的对话视图，实现 IRuntimeDialogueView（对接 DialogueRunner）。
-    /// - ShowLine：把一行文字刷到 UI（可选打字机）；
-    /// - WaitForConfirm：等待“继续”确认（按钮或点击遮罩），也可自动确认；
-    /// - ShowOptions：生成/复用选项按钮池，并把选择回调给外层；
-    /// - ClearOptions：隐藏所有选项按钮。
-    /// </summary>
+
+    // Implement IRuntimeDialogueView based on UGUI's dialogue view (docked to DialogueRunner).
+    // - ShowLine: Brush a line of text to the UI (optional typewriter);
+    // - WaitForConfirm: wait for "continue" confirmation (button or clickable mask), or autoconfirm;
+    // - ShowOptions: generate/reuse pool of option buttons and callback the selection to the outer layer;
+    // - ClearOptions: hide all option buttons.
+
     public class UnityUIDialogueView : MonoBehaviour, IRuntimeDialogueView {
-        [Header("UI 引用")]
+        [Header("UI References")]
         [SerializeField] private TextMeshProUGUI speakerText;
         [SerializeField] private TextMeshProUGUI bodyText;
         [SerializeField] private Image portraitImage;
-        [SerializeField] private GameObject panelRoot;  // 指向整个对话Panel的根
+        [SerializeField] private GameObject panelRoot;  // the root of the entire Dialogue Panel
 
-        [Header("确认（继续）")]
-        [SerializeField] private Button continueButton;     // 点它等于“确认”
-        [SerializeField] private Button clickAnywhereMask;  // 可空；若提供，则点击整块区域也等于“确认”
+        [Header("Comfirmed (continued)")]
+        [SerializeField] private Button continueButton;     // Tapping on it equals "Confirm."
+        [SerializeField] private Button clickAnywhereMask;  // Can be empty; if supplied, clicking on the whole area also equals "confirm"
 
-        [Header("选项")]
-        [SerializeField] private Transform optionsRoot;     // 选项按钮容器
-        [SerializeField] private OptionButton optionPrefab; // 选项按钮预制体（见下方类）
+        [Header("Options")]
+        [SerializeField] private Transform optionsRoot;     // Options Button Container
+        [SerializeField] private OptionButton optionPrefab; // Option button prefabricated body (see class below)
 
-        [Header("打字机")]
+        [Header("typewriter")]
         [SerializeField] private bool enableTypewriter = true;
         [SerializeField, Range(1, 120)] private float charsPerSecond = 45f;
 
-        [Header("自动化（用于测试）")]
-        public bool autoConfirm = false;                    // true 时 WaitForConfirm 自动通过
-        public bool autoChooseFirstOption = false;          // true 时自动选择第一个选项
+        [Header("Automation (for testing)")]
+        public bool autoConfirm = false;                    // WaitForConfirm automatically passes if true.
+        public bool autoChooseFirstOption = false;          // The first option is automatically selected when true
         [Range(0f, 2f)] public float autoDelay = 0.05f;
 
-        // --- 内部状态 ---
+        // internal states 
         private readonly List<OptionButton> _pool = new();
         private Action<int> _onChoose;
         private bool _waitingConfirm;
@@ -46,13 +47,13 @@ namespace Game.Dialogue.Runtime {
         private string _currentFullText;
         private GameObject Root => panelRoot ? panelRoot : gameObject;
 
-        // ================= IRuntimeDialogueView =================
+        // IRuntimeDialogueView 
         private void SetPanelVisible(bool v) {
             if (Root) Root.SetActive(v);
         }
 
         void OnEnable() {
-            SetPanelVisible(false); // 初始隐藏
+            SetPanelVisible(false); // Initial concealment
             Game.Dialogue.Runtime.DialogueEvents.OnStarted += HandleStarted;
             Game.Dialogue.Runtime.DialogueEvents.OnEnded += HandleEnded;
         }
@@ -72,21 +73,21 @@ namespace Game.Dialogue.Runtime {
 
         public void ShowLine(string speaker, string text) {
             SetPanelVisible(true);
-            // 每次显示一行：清掉选项、停止打字机、更新头像&名字
+            // One line at a time: clear options, stop typewriter, update avatar & name
             ClearOptions();
             StopTypingIfAny();
 
             if (speakerText) speakerText.text = string.IsNullOrEmpty(speaker) ? "" : speaker;
 
-            _currentFullText = text ?? "";                    // ✨ 新增：缓存整句
+            _currentFullText = text ?? "";                    // Cache whole sentences
 
             if (bodyText) bodyText.text = enableTypewriter ? "" : (text ?? "");
-            // portraitImage 的 sprite 由外层自己决定是否设置，这里不改
+            // The sprite of portraitImage is up to the outer layer to decide whether to set it or not, so I won't change it here.
 
             if (enableTypewriter && !string.IsNullOrEmpty(_currentFullText))
-                _typingCo = StartCoroutine(TypeRoutine(_currentFullText));    // 用缓存启动
+                _typingCo = StartCoroutine(TypeRoutine(_currentFullText));    // Starting with cache
 
-            // 显示“继续”交互
+            // Show "Continue" interaction
             SetContinueInteractable(true);
         }
 
@@ -99,13 +100,13 @@ namespace Game.Dialogue.Runtime {
             _waitingConfirm = true;
             bool confirmed = false;
 
-            // 绑定按钮
+            // Bind button
             Action bind = () => {
                 if (continueButton) {
                     continueButton.onClick.RemoveAllListeners();
                     continueButton.onClick.AddListener(() =>
                     {
-                        // 若仍在打字：第一次点击先跳满；第二次才真正确认
+                        // If still typing: the first click skips full; the second actually confirms it
                         if (_typingCo != null) { StopTypingIfAny(); return; }
                         confirmed = true;
                     });
@@ -114,7 +115,7 @@ namespace Game.Dialogue.Runtime {
                     clickAnywhereMask.onClick.RemoveAllListeners();
                     clickAnywhereMask.onClick.AddListener(() =>
                     {
-                        // 若仍在打字：第一次点击先跳满；第二次才真正确认
+                        // If still typing: the first click skips full; the second actually confirms it
                         if (_typingCo != null) { StopTypingIfAny(); return; }
                         confirmed = true;
                     });
@@ -122,9 +123,10 @@ namespace Game.Dialogue.Runtime {
             };
             bind();
 
-            // —— 同时监听空格键（Input System）——
+            // IMPORTANT: Somehow this doesn't work.......
+            // Listening to the spacebar at the same time（Input System
             while (!confirmed) {
-                // 键盘可能为空（例如手柄-only），所以要判空
+                // The keyboard may be null (e.g. controller-only), so judge the null
                 var kb = Keyboard.current;
                 if (kb != null && kb.eKey.wasPressedThisFrame) {
                     if (_typingCo != null) { StopTypingIfAny(); }
@@ -151,7 +153,7 @@ namespace Game.Dialogue.Runtime {
                     _pool[i].Setup(i, options[i], HandleChoose);
             }
 
-            // 自动选择（用于快速联调，和 DebugConsole 行为一致）
+            // AutoSelect (for quick debugging, consistent with DebugConsole behaviour)
             if ((_onChoose != null) && autoChooseFirstOption && _pool.Count > 0)
                 StartCoroutine(AutoPickFirst());
         }
@@ -162,21 +164,21 @@ namespace Game.Dialogue.Runtime {
                 _pool[i].gameObject.SetActive(false);
         }
 
-        // ================= 内部：按钮池 / 打字机 =================
+        // Internal: Pushbutton Pool / Typewriter 
 
         private void HandleChoose(int index) {
-            // 点选项时，立即把索引回调给 Runner
+            // When you tap the option, the index is immediately called back to the Runner
             _onChoose?.Invoke(index);
         }
 
         private void EnsureCount(int n) {
-            // 生成
+            // generating
             while (_pool.Count < n) {
                 var btn = Instantiate(optionPrefab, optionsRoot);
                 btn.gameObject.SetActive(false);
                 _pool.Add(btn);
             }
-            // 隐掉多余的
+            // Hide the excess.
             for (int i = n; i < _pool.Count; i++)
                 _pool[i].gameObject.SetActive(false);
         }
@@ -202,7 +204,7 @@ namespace Game.Dialogue.Runtime {
             if (_typingCo != null) {
                 StopCoroutine(_typingCo);
                 _typingCo = null;
-                if (bodyText) bodyText.text = _currentFullText ?? "";  //立即补满
+                if (bodyText) bodyText.text = _currentFullText ?? "";  // Immediate replenishment
             }
         }
 

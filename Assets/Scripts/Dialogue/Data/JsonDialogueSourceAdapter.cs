@@ -1,5 +1,4 @@
-// 作用：把 Resources/Dialogues/*.json 解析为 RuntimeNode/RuntimeOption，提供给 DialogueRunner 使用。
-// 依赖：Newtonsoft.Json（Unity 6 自带）
+// Parses Resources/Dialogues/*.json into a RuntimeNode/RuntimeOption for use by the DialogueRunner.
 
 using System;
 using System.Collections.Generic;
@@ -8,10 +7,10 @@ using UnityEngine;
 
 namespace Game.Dialogue.Runtime {
     public class JsonDialogueSourceAdapter : MonoBehaviour, IRuntimeDialogueSource {
-        [Header("Resources 文件夹名")]
+        [Header("Resources folder name")]
         [SerializeField] private string resourcesFolder = "Dialogues";
 
-        // graphId -> 运行时缓存
+        // graphId -> run-time cache
         private readonly Dictionary<string, GraphCache> _cache = new();
 
         private class GraphCache {
@@ -32,16 +31,16 @@ namespace Game.Dialogue.Runtime {
             return g.nodes.TryGetValue(nodeId, out node);
         }
 
-        // —— 内部：构建或取缓存 —— //
+        // —— Build or fetch cache —— //
         GraphCache GetOrBuild(string graphId) {
             if (string.IsNullOrEmpty(graphId)) return null;
             if (_cache.TryGetValue(graphId, out var gc)) return gc;
 
-            // 1) 优先：文件名 == graphId
+            // 1) first：File name == graphId
             var path = string.IsNullOrEmpty(resourcesFolder) ? graphId : $"{resourcesFolder}/{graphId}";
             var ta = Resources.Load<TextAsset>(path);
 
-            // 2) 备选：遍历文件夹，按 JSON 的 "id" 字段匹配
+            // 2) Optional: Traverse the folder, matching by the JSON "id" field.
             if (ta == null) {
                 foreach (var candidate in Resources.LoadAll<TextAsset>(resourcesFolder)) {
                     try {
@@ -51,12 +50,12 @@ namespace Game.Dialogue.Runtime {
                             break;
                         }
                     }
-                    catch { /* 忽略坏文件 */ }
+                    catch { }
                 }
             }
 
             if (ta == null) {
-                Debug.LogError($"[JsonDialogueSourceAdapter] 未找到图资源：graphId={graphId}");
+                Debug.LogError($"[JsonDialogueSourceAdapter] No graphical resources found：graphId={graphId}");
                 return null;
             }
 
@@ -66,7 +65,7 @@ namespace Game.Dialogue.Runtime {
                 var startNodeId = root["startNodeId"]?.Value<string>();
                 var nodesToken = root["nodes"] as JObject;
                 if (nodesToken == null) {
-                    Debug.LogError($"[JsonDialogueSourceAdapter] JSON 缺少 nodes：{ta.name}");
+                    Debug.LogError($"[JsonDialogueSourceAdapter] JSON lacks nodes：{ta.name}");
                     return null;
                 }
 
@@ -112,7 +111,7 @@ namespace Game.Dialogue.Runtime {
                 return gc;
             }
             catch (Exception e) {
-                Debug.LogError($"[JsonDialogueSourceAdapter] 解析异常（{ta.name}）：\n{e}");
+                Debug.LogError($"[JsonDialogueSourceAdapter] parsing anomaly（{ta.name}）：\n{e}");
                 return null;
             }
         }

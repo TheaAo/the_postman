@@ -7,18 +7,18 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager Instance { get; private set; }
 
     [Header("Setup")]
-    public GameObject puzzlePanel;   // 指向 PuzzleBoard (含 GridLayoutGroup)
-    public GameObject tilePrefab;      // 指向 tile prefab (UI Button + Image + PuzzleTile)
-    public Sprite sourceImage;         // 要切分的正方形图片 (Sprite)
+    public GameObject puzzlePanel;   // refer to PuzzleBoard (including GridLayoutGroup)
+    public GameObject tilePrefab;      // refer to tile prefab (UI Button + Image + PuzzleTile)
+    public Sprite sourceImage;         // Picture of a square to be cut (Sprite)
     public int gridSize = 3;           // 3 -> 3x3
-    public int shuffleMoves = 100;     // 随机打乱的步数（使用合法移动保证可解）
+    public int shuffleMoves = 100;     // Randomly disrupted steps (using legal moves to ensure solvability)
 
     [Header("Layout")]
-    public GridLayoutGroup gridLayout; // 指向 PuzzleBoard 上的 GridLayoutGroup
+    public GridLayoutGroup gridLayout; // Points to the GridLayoutGroup on the PuzzleBoard.
 
-    // 运行数据
+    // Operational data
     private List<PuzzleTile> tiles = new List<PuzzleTile>(); // 8 个 tile
-    private int emptyIndex; // 空格的索引（0..gridSize*gridSize-1）
+    private int emptyIndex; // Index of spaces（0..gridSize*gridSize-1）
     private bool isShuffling = false;
 
     private void Awake() {
@@ -34,7 +34,7 @@ public class PuzzleManager : MonoBehaviour
     
     void ClearPuzzle()
     {
-        // 清空已有子对象（如果重复运行）
+        // Empty existing child objects (if run repeatedly)
         tiles.Clear();
         for (int i = gridLayout.transform.childCount - 1; i >= 0; i--)
         {
@@ -42,14 +42,14 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    // 创建拼图（按行上到下、左到右的 sibling 顺序）
+    // Create a puzzle (in sibling order of rows top to bottom, left to right)
     void CreatePuzzle()
     {
         ClearPuzzle();
 
-        // 源贴图的 texture（注意 y 方向）
+        // The texture of the source texture (note the y-direction).
         Texture2D tex = sourceImage.texture;
-        // 如果 sourceImage 是一个 Sprite 的 subrect（例如 atlas），则需用 sourceImage.rect
+        // If the sourceImage is a subrect of a Sprite (e.g. atlas), use sourceImage.rect
         int fullWidth = Mathf.RoundToInt(sourceImage.rect.width);
         int fullHeight = Mathf.RoundToInt(sourceImage.rect.height);
         float pixelsPerUnit = sourceImage.pixelsPerUnit;
@@ -58,7 +58,7 @@ public class PuzzleManager : MonoBehaviour
         int pieceH = fullHeight / gridSize;
 
         int total = gridSize * gridSize;
-        emptyIndex = total - 1; // 最后一个位置为空（右下角）
+        emptyIndex = total - 1; // The last position is empty (bottom right)
 
         // IMPORTANT: GridLayoutGroup Start Corner = Upper Left, but Texture y=0 是底部
         // We'll create sprites row by row top->bottom so compute y offset accordingly.
@@ -95,7 +95,7 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    // 检查是否与空格相邻（上下左右）
+    // Check for proximity to spaces (top, bottom, left, right)
     bool IsAdjacent(int a, int b)
     {
         int ax = a % gridSize, ay = a / gridSize;
@@ -103,22 +103,22 @@ public class PuzzleManager : MonoBehaviour
         return (Mathf.Abs(ax - bx) + Mathf.Abs(ay - by)) == 1;
     }
 
-    // 尝试移动 tile（当点击 tile 时调用）
+    // Try to move the tile (called when the tile is clicked)
     public bool TryMoveTile(PuzzleTile tile)
     {
         if (!IsAdjacent(tile.currentIndex, emptyIndex))
             return false;
 
         Transform parent = gridLayout.transform;
-        Transform emptySlot = parent.GetChild(emptyIndex); // 找到空格对象
+        Transform emptySlot = parent.GetChild(emptyIndex); // Find the space object
 
         int tileOldIndex = tile.currentIndex;
 
-        // 交换层级顺序（移动 tile 到空格位置，空格到 tile 旧位置）
+        // Swap hierarchical order (move tile to space position, space to old tile position)
         tile.transform.SetSiblingIndex(emptyIndex);
         emptySlot.SetSiblingIndex(tileOldIndex);
 
-        // 更新逻辑索引
+        // Update Logical Index
         tile.currentIndex = emptyIndex;
         emptyIndex = tileOldIndex;
 

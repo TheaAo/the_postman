@@ -2,22 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem; // 新输入系统
+using UnityEngine.InputSystem; 
 
 namespace Game.Dialogue.Runtime {
-    /// <summary>
-    /// 仅使用新输入系统的 Console 调试视图：
-    /// Space 确认；数字键 1..9（含小键盘）选择；可自动确认/自动选第一项。
-    /// </summary>
+    /// Console debug view with new input system only:
+    /// Space Confirmation; selection by numeric keys 1..9 (including keypad); autoconfirmation/auto selection of the first item is possible.
     public class DebugConsoleDialogueView : MonoBehaviour, IRuntimeDialogueView {
-        [Header("行为设置")]
-        [Tooltip("是否自动确认下一句（无需按 Space）")]
+        [Header("Behavioural settings")]
+        [Tooltip("Whether to automatically confirm the next sentence (without pressing Space)")]
         public bool autoConfirm = true;
 
-        [Tooltip("是否自动选择第一个选项（无需按数字键）")]
+        [Tooltip("Whether the first option is automatically selected (without pressing the number keys)")]
         public bool autoChooseFirstOption = true;
 
-        [Tooltip("自动确认/自动选择的延迟秒数")]
+        [Tooltip("Delay seconds for auto-confirmation/auto-selection")]
         [Range(0f, 2f)] public float autoDelay = 0.05f;
 
         private Action<int> _onChosen;
@@ -84,10 +82,9 @@ namespace Game.Dialogue.Runtime {
             _optionCount = 0;
         }
 
-        // -------- 输入工具（新输入系统） --------
         bool TryGetNumberPressed(Keyboard kb, out int index) {
             index = -1;
-            // 顶部数字 1..9
+            // top figure 1..9
             if (kb.digit1Key.wasPressedThisFrame) index = 0;
             else if (kb.digit2Key.wasPressedThisFrame) index = 1;
             else if (kb.digit3Key.wasPressedThisFrame) index = 2;
@@ -98,7 +95,7 @@ namespace Game.Dialogue.Runtime {
             else if (kb.digit8Key.wasPressedThisFrame) index = 7;
             else if (kb.digit9Key.wasPressedThisFrame) index = 8;
 
-            // 小键盘 1..9（如果上面没命中）
+            // keypad 1..9 (If the above doesn't hit)
             if (index < 0) {
                 if (kb.numpad1Key.wasPressedThisFrame) index = 0;
                 else if (kb.numpad2Key.wasPressedThisFrame) index = 1;

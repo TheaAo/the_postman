@@ -1,24 +1,23 @@
 using UnityEngine;
 
 namespace Game.Dialogue.Runtime {
-    /// <summary>
-    /// 场景开始时自动启动一个对话，用于快速测试。
-    /// 把它挂到任意物体上，在 Inspector 填好 graphId 即可。
-    /// </summary>
+    /// Automatically start a dialogue at the beginning of the scene for quick testing.
+    /// Hook it up to any object and fill in the graphId in the Inspector.
+
     public class DialoguePlayOnStart : MonoBehaviour {
-        [Header("要启动的对话")]
+        [Header("Dialogues to be initiated")]
         public DialogueRunner runner;
-        public string graphId = "flag_bm_gate_angelo"; // 你的 JSON / graphId
-        public string startNodeId = null;               // 可留空使用 JSON 的 startNodeId
+        public string graphId = "flag_bm_gate_angelo"; 
+        public string startNodeId = null;             
 
         void Reset() {
-            // 尝试在场景里找一个 Runner
+            // Try to find a Runner in the scene
             if (runner == null) runner = Object.FindAnyObjectByType<DialogueRunner>();
         }
 
         void Start() {
             if (runner == null) {
-                Debug.LogError("[DialoguePlayOnStart] 未找到 DialogueRunner。");
+                Debug.LogError("[DialoguePlayOnStart] did not find DialogueRunner。");
                 return;
             }
             runner.StartDialogue(graphId, string.IsNullOrEmpty(startNodeId) ? null : startNodeId);

@@ -4,13 +4,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class PuzzleTile : MonoBehaviour
 {
-    public int originalIndex;    // 这块在初始正确位置的索引（0..gridSize*gridSize-2）
-    [HideInInspector] public int currentIndex; // 当前在 board 中的位置索引
+    public int originalIndex;    // Index of this block at the initial correct position (0..gridSize*gridSize-2)
+    [HideInInspector] public int currentIndex; // Current position index in the board
     private PuzzleManager manager;
     private Image image;
     private Button button;
 
-    // 初始化：manager、原始索引、sprite
+    // initialisation：manager、Raw Index、sprite
     public void Init(PuzzleManager mgr, int origIndex, Sprite sprite)
     {
         manager = mgr;
@@ -22,18 +22,18 @@ public class PuzzleTile : MonoBehaviour
         image.sprite = sprite;
         image.preserveAspect = true;
 
-        // 绑定点击（动态绑定可避免在 Inspector 手动绑定）
+        // Bind on click (dynamic binding avoids manual binding in Inspector)
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(OnClicked);
     }
 
     private void OnClicked()
     {
-        // 请求 manager 移动这块
+        // Request manager to move this piece
         manager.TryMoveTile(this);
     }
 
-    // 判断是否回到原始位置（胜利判定）
+    // Determining whether to return to the original position (victory decision)
     public bool IsAtOrigin()
     {
         return currentIndex == originalIndex;

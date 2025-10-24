@@ -6,24 +6,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Dialogue.UI {
-    // =============== 接口（照你的图） ===============
+
     public interface IDialogueView {
         void RenderLine(DialogueLineVM line, Action onCompleted);
         void ShowOptions(IReadOnlyList<string> options, Action<int> onChoose);
         void Clear();
     }
 
-    // =============== 轻量 VM（只做显示） ===============
+    // Lightweight VM (display only) 
     [Serializable]
     public class DialogueLineVM {
         public string speaker;
         public string text;
 
-        // 可空；如果你只有 portraitKey，在外层把 key -> Sprite 转好再塞进来即可
+   
         public Sprite portrait;
     }
 
-    // =============== 选项按钮脚本（挂到按钮预制体上） ===============
+    // Option button script
     public class OptionButton : MonoBehaviour {
         [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI label;
@@ -36,7 +36,7 @@ namespace Game.Dialogue.UI {
             _onClick = onClick;
             if (label) label.text = text;
 
-            // 防止多次叠加监听
+            // Prevent multiple overlapping listens
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => _onClick?.Invoke(_index));
         }
@@ -44,7 +44,7 @@ namespace Game.Dialogue.UI {
         public void SetVisible(bool v) => gameObject.SetActive(v);
     }
 
-    // =============== View 实现（MonoBehaviour） ===============
+    //View implement
     public class DialogueView : MonoBehaviour, IDialogueView {
         [Header("UI Refs")]
         [SerializeField] private TextMeshProUGUI nameText;
@@ -59,13 +59,13 @@ namespace Game.Dialogue.UI {
         [SerializeField] private bool enableTypewriter = true;
         [SerializeField, Range(0.5f, 60f)] private float charsPerSecond = 30f;
 
-        // —— 内部态 —— //
+
         private readonly List<OptionButton> _pool = new();
         private Coroutine _typingCo;
         private bool _isTyping;
         private Action _lineCompletedCallback;
 
-        // ========== IDialogueView ==========
+        // IDialogueView
         public void RenderLine(DialogueLineVM line, Action onCompleted) {
             StopTypingIfAny();
             HideAllOptions();
@@ -77,13 +77,13 @@ namespace Game.Dialogue.UI {
 
             if (!enableTypewriter || string.IsNullOrEmpty(line?.text)) {
                 if (bodyText) bodyText.text = line?.text ?? string.Empty;
-                // 直接完成
+                // completion
                 _lineCompletedCallback?.Invoke();
                 _lineCompletedCallback = null;
                 return;
             }
 
-            // 打字机
+            // typewriters
             _typingCo = StartCoroutine(TypeRoutine(line.text));
         }
 
@@ -106,12 +106,12 @@ namespace Game.Dialogue.UI {
             HideAllOptions();
         }
 
-        // ========== 打字机（可选） ==========
+        // typewriters
         private IEnumerator TypeRoutine(string fullText) {
             _isTyping = true;
             bodyText.text = string.Empty;
 
-            // 每帧增加字符
+            // Add characters per frame
             float t = 0f;
             int shown = 0;
 
@@ -140,19 +140,19 @@ namespace Game.Dialogue.UI {
             _isTyping = false;
         }
 
-        // 供外部或输入系统调用：正在打字时跳过并瞬间显示完整
+        // For external or input system calls: skips while typing and instantly displays in full
         public void SkipTypeIfTyping() {
             if (!_isTyping) return;
             StopTypingIfAny();
-            // 补全文本
-            // 注意：bodyText.text 此时已经是上一句的局部；简单起见直接触发完成回调
+            // Supplementary text
+            // Note: bodyText.text is already a partial of the previous sentence; for simplicity, trigger the completion callback directly.
             _lineCompletedCallback?.Invoke();
             _lineCompletedCallback = null;
         }
 
-        // ========== 选项按钮池 ==========
+        // Option Button Pool
         private void EnsureCount(int n) {
-            // 生成或回收
+            // Generate or recycle
             while (_pool.Count < n) {
                 var btn = Instantiate(optionPrefab, optionsRoot);
                 btn.SetVisible(false);
