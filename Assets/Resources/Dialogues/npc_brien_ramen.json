@@ -5,7 +5,7 @@
     "brien_01": {
       "id": "brien_01",
       "speaker": "Brien",
-      "text": "Yo Tom, haven't seen you come eat ramen for days, what's going on?",
+      "text": "Brien: Yo Tom, haven't seen you come eat ramen for days, what's going on?",
       "portraitKey": "",
       "nextId": "brien_02",
       "options": [],
@@ -14,7 +14,7 @@
     "brien_02": {
       "id": "brien_02",
       "speaker": "Tom",
-      "text": "My best friend just... passed away.",
+      "text": "Tom: My best friend just... passed away.",
       "portraitKey": "",
       "nextId": "brien_03",
       "options": [],
@@ -23,7 +23,7 @@
     "brien_03": {
       "id": "brien_03",
       "speaker": "Brien",
-      "text": "Oh...",
+      "text": "Brien: Oh...",
       "portraitKey": "",
       "nextId": "brien_04",
       "options": [],
@@ -32,7 +32,7 @@
     "brien_04": {
       "id": "brien_04",
       "speaker": "Tom",
-      "text": "He was like a brother to me Brien.",
+      "text": "Tom: He was like a brother to me Brien.",
       "portraitKey": "",
       "nextId": "brien_05",
       "options": [],
@@ -41,7 +41,7 @@
     "brien_05": {
       "id": "brien_05",
       "speaker": "Brien",
-      "text": "I am so sorry for you my friend.",
+      "text": "Brien: I am so sorry for you my friend.",
       "portraitKey": "",
       "nextId": "brien_06",
       "options": [],
@@ -50,7 +50,7 @@
     "brien_06": {
       "id": "brien_06",
       "speaker": "Tom",
-      "text": "Thanks. You've been running this ramen place for 10 years since I came here, must know a lot hidden things.",
+      "text": "Tom: Thanks. You've been running this ramen place for 10 years since I came here, must know a lot hidden things.",
       "portraitKey": "",
       "nextId": "brien_07",
       "options": [],
@@ -59,7 +59,7 @@
     "brien_07": {
       "id": "brien_07",
       "speaker": "Brien",
-      "text": "What do you mean?",
+      "text": "Brien: What do you mean?",
       "portraitKey": "",
       "nextId": "brien_08",
       "options": [],
@@ -68,7 +68,7 @@
     "brien_08": {
       "id": "brien_08",
       "speaker": "Tom",
-      "text": "Like, a black market.",
+      "text": "Tom: Like, a black market.",
       "portraitKey": "",
       "nextId": "brien_09",
       "options": [],
@@ -77,7 +77,7 @@
     "brien_09": {
       "id": "brien_09",
       "speaker": "Brien",
-      "text": "Our decent worker now are in gangster things?",
+      "text": "Brien: Our decent worker now are in gangster things?",
       "portraitKey": "",
       "nextId": "brien_10",
       "options": [],
@@ -86,7 +86,7 @@
     "brien_10": {
       "id": "brien_10",
       "speaker": "Tom",
-      "text": "Just tell me where is it.",
+      "text": "Tom: Just tell me where is it.",
       "portraitKey": "",
       "nextId": "brien_11",
       "options": [],
@@ -95,7 +95,7 @@
     "brien_11": {
       "id": "brien_11",
       "speaker": "Brien",
-      "text": "It's not about where it is. They won't let everyone in and out like any shop you can find on the street, you need recommendation.",
+      "text": "Brien: It's not about where it is. They won't let everyone in and out like any shop you can find on the street, you need recommendation.",
       "portraitKey": "",
       "nextId": "brien_12",
       "options": [],
@@ -104,7 +104,7 @@
     "brien_12": {
       "id": "brien_12",
       "speaker": "Tom",
-      "text": "Can you help?",
+      "text": "Tom: Can you help?",
       "portraitKey": "",
       "nextId": "brien_13",
       "options": [],
@@ -113,7 +113,7 @@
     "brien_13": {
       "id": "brien_13",
       "speaker": "Brien",
-      "text": "What, you think I am a secret boss behind the scene and controls drugs and guns? No I can't!",
+      "text": "Brien: What, you think I am a secret boss behind the scene and controls drugs and guns? No I can't!",
       "portraitKey": "",
       "nextId": null,
       "options": [
@@ -123,7 +123,7 @@
           "requireFlags": [],
           "setFlags": ["brien.bribe", "has_ramen_for_knife"],
           "cost": 500,
-          "insufficientText": "This is a lot..."
+          "insufficientText": "Tom: This is a lot..."
         },
         {
           "text": "I know you got a way.",
@@ -137,7 +137,7 @@
     "brien_bribe_fail_to_agree": {
       "id": "brien_bribe_fail_to_agree",
       "speaker": "Brien",
-      "text": "It's not even about the money. I just got some customers from inside the market and I deliver ramen to them. I can't do anything.",
+      "text": "Brien: It's not even about the money. I just got some customers from inside the market and I deliver ramen to them. I can't do anything.",
       "portraitKey": "",
       "nextId": "brien_guilt_trip",
       "options": [],
@@ -146,7 +146,7 @@
     "brien_guilt_trip": {
       "id": "brien_guilt_trip",
       "speaker": "Tom",
-      "text": "I never asked you anything when I lent you 3000 euros 3 years ago.",
+      "text": "Tom: I never asked you anything when I lent you 3000 euros 3 years ago.",
       "portraitKey": "",
       "nextId": "brien_guilt_trip2",
       "options": [],
@@ -155,7 +155,7 @@
     "brien_guilt_trip2": {
       "id": "brien_guilt_trip2",
       "speaker": "Brien",
-      "text": "And I paid back.",
+      "text": "Brien: And I paid back.",
       "portraitKey": "",
       "nextId": "brien_guilt_trip3",
       "options": [],
@@ -164,7 +164,7 @@
     "brien_guilt_trip3": {
       "id": "brien_guilt_trip3",
       "speaker": "Tom",
-      "text": "And you know that was all I had in my bank account. You would be lying in the drain still if I didn't give you that.",
+      "text": "Tom: And you know that was all I had in my bank account. You would be lying in the drain still if I didn't give you that.",
       "portraitKey": "",
       "nextId": "brien_agree",
       "options": [],
@@ -173,7 +173,7 @@
     "brien_persuade": {
       "id": "brien_persuade",
       "speaker": "Brien",
-      "text": "Promise me you are not gonna cause any problem inside.",
+      "text": "Brien: Promise me you are not gonna cause any problem inside.",
       "portraitKey": "",
       "nextId": "brien_persuade2",
       "options": [],
@@ -182,7 +182,7 @@
     "brien_persuade2": {
       "id": "brien_persuade2",
       "speaker": "Tom",
-      "text": "Who you think I am? I will not and I can not.",
+      "text": "Tom: Who you think I am? I will not and I can not.",
       "portraitKey": "",
       "nextId": "brien_agree",
       "options": [],
@@ -191,7 +191,7 @@
     "brien_agree": {
       "id": "brien_agree",
       "speaker": "Brien",
-      "text": "You helped me 3 years ago, this pays that back.",
+      "text": "Brien: You helped me 3 years ago, this pays that back.",
       "portraitKey": "",
       "nextId": "brien_later",
       "options": [],
@@ -209,7 +209,7 @@
     "brien_delivery": {
       "id": "brien_delivery",
       "speaker": "Brien",
-      "text": "Just got a message from them. Bring these ramen with you and go to \"TBD\". Tell the guards you got some ramen for Knife.",
+      "text": "Brien: Just got a message from them. Bring these ramen with you and go to \"TBD\". Tell the guards you got some ramen for Knife.",
       "portraitKey": "",
       "nextId": "brien_curiosity",
       "options": [],
@@ -218,7 +218,7 @@
     "brien_curiosity": {
       "id": "brien_curiosity",
       "speaker": "Tom",
-      "text": "It's not just ramen right?",
+      "text": "Tom: It's not just ramen right?",
       "portraitKey": "",
       "nextId": "brien_tease",
       "options": [],
@@ -227,7 +227,7 @@
     "brien_tease": {
       "id": "brien_tease",
       "speaker": "Brien",
-      "text": "you've been too curious today.",
+      "text": "Brien: you've been too curious today.",
       "portraitKey": "",
       "nextId": "brien_not_boss",
       "options": [],
@@ -236,7 +236,7 @@
     "brien_not_boss": {
       "id": "brien_not_boss",
       "speaker": "Tom",
-      "text": "So you are that secret boss.",
+      "text": "Tom: So you are that secret boss.",
       "portraitKey": "",
       "nextId": "brien_denial",
       "options": [],
@@ -245,7 +245,7 @@
     "brien_denial": {
       "id": "brien_denial",
       "speaker": "Brien",
-      "text": "No. Now hurry, they won't be happy if you are late.",
+      "text": "Brien: No. Now hurry, they won't be happy if you are late.",
       "portraitKey": "",
       "nextId": null,
       "options": [],
